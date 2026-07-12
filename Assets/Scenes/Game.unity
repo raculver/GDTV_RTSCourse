@@ -7226,18 +7226,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1309110861901511685, guid: 60174e2531fe1794a81f4a279e17f61d, type: 3}
-      propertyPath: m_Extents.x
-      value: 0.85
-      objectReference: {fileID: 0}
-    - target: {fileID: 1309110861901511685, guid: 60174e2531fe1794a81f4a279e17f61d, type: 3}
-      propertyPath: m_Extents.y
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1309110861901511685, guid: 60174e2531fe1794a81f4a279e17f61d, type: 3}
-      propertyPath: m_Extents.z
-      value: 0.85
-      objectReference: {fileID: 0}
     - target: {fileID: 3007753749229990871, guid: 60174e2531fe1794a81f4a279e17f61d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.5423005
@@ -7281,10 +7269,6 @@ PrefabInstance:
     - target: {fileID: 6964012305514025925, guid: 60174e2531fe1794a81f4a279e17f61d, type: 3}
       propertyPath: m_Name
       value: Supply Hut
-      objectReference: {fileID: 0}
-    - target: {fileID: 6964012305514025925, guid: 60174e2531fe1794a81f4a279e17f61d, type: 3}
-      propertyPath: m_Layer
-      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9771,10 +9755,6 @@ PrefabInstance:
     - target: {fileID: 6510919576379171628, guid: 883b9682b823cb84cac42e4ad43d41d2, type: 3}
       propertyPath: m_Name
       value: Worker
-      objectReference: {fileID: 0}
-    - target: {fileID: 8538387421283765161, guid: 883b9682b823cb84cac42e4ad43d41d2, type: 3}
-      propertyPath: m_StoppingDistance
-      value: 0.75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -20856,7 +20836,7 @@ GameObject:
   - component: {fileID: 1525033864}
   - component: {fileID: 1525033863}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Note Overlay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29916,10 +29896,6 @@ PrefabInstance:
     - target: {fileID: 6510919576379171628, guid: 883b9682b823cb84cac42e4ad43d41d2, type: 3}
       propertyPath: m_Name
       value: Worker (11)
-      objectReference: {fileID: 0}
-    - target: {fileID: 8538387421283765161, guid: 883b9682b823cb84cac42e4ad43d41d2, type: 3}
-      propertyPath: m_StoppingDistance
-      value: 0.75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

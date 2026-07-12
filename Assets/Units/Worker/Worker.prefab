@@ -154,7 +154,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e81385d7416cc174dac6e9b9b5986a4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameDevTV.RTS.Units.Worker
+  <CurrentHealth>k__BackingField: 100
+  <MaximumHealth>k__BackingField: 100
   selectionDecal: {fileID: 1780025588308873654}
+  unitSO: {fileID: 11400000, guid: 82e2435211466c34d9b0943d68abf8a5, type: 2}
 --- !u!136 &8762007335747614977
 CapsuleCollider:
   m_ObjectHideFlags: 0

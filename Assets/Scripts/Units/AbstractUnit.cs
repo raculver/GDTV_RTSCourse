@@ -15,7 +15,8 @@ namespace GameDevTV.RTS.Units
             agent = GetComponent<NavMeshAgent>();
         }
 
-        void Start(){
+        protected override void Start(){
+            base.Start(); // call AbstractCommandable implementation of start
             Bus<UnitSpawnEvent>.Raise(new UnitSpawnEvent(this));
         }
 

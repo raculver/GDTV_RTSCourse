@@ -130,8 +130,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95206f7fd16b144479dd8a3430451361, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SupplyHut
+  <CurrentHealth>k__BackingField: 100
+  <MaximumHealth>k__BackingField: 100
   selectionDecal: {fileID: 4100993355984301950}
-  <Health>k__BackingField: 0
+  unitSO: {fileID: 11400000, guid: da5e9b1b59da1e34e81de3667c0a8674, type: 2}
 --- !u!208 &1309110861901511685
 NavMeshObstacle:
   m_ObjectHideFlags: 0

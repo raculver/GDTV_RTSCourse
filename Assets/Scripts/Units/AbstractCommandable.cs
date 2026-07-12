@@ -7,8 +7,17 @@ namespace GameDevTV.RTS.Units
 {   
     public abstract class AbstractCommandable : MonoBehaviour, ISelectable
     {
+        [field: SerializeField] public int CurrentHealth{get; private set;}
+        [field: SerializeField] public int MaximumHealth{get; private set;}
+
         [SerializeField] private DecalProjector selectionDecal;
-        [field: SerializeField] public int Health{get; private set;}
+        [SerializeField] private UnitSO unitSO;
+
+        // "virtual means the child classes can override if they need to".
+        protected virtual void Start(){
+            CurrentHealth = unitSO.Health;
+            MaximumHealth = unitSO.Health;
+        }
 
         public void Select() {
             if (selectionDecal != null){
