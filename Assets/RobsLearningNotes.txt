@@ -1,0 +1,38 @@
+﻿Cameras
+-CinemachineCamera
+--Controls the camera configuration
+--FoV, target to follow, "look at" etc.
+-CinemachineBrain
+--Determines which camera should be active and transitions between
+--Must be attached to "camera" ?? (main camera?)
+-CinemachineFollow
+-CinemachineRotationComposer
+Input System
+- Polling (checking every frame, less common these days)
+- Event-driven (recieving callback when input recieved, more common now)
+- This course will use polling.
+Physics Colliders
+- Edit / project settings / Physics / settings
+- Gives layerwise collider matrix.
+- Physics Materials: friction comes about as a combination of both collider physics materials! Can have zero friction from one and non-zero from the other.
+AI Navigation Toolbox
+- Nav mesh areas: different cost multipliers for different areas (different for different agent types)
+- Render meshes vs physics colliders
+- Nav surface volumes
+- Nav quality None (when gathering resources) and High when navigating
+- Nav priority: can push others out of the way (lower priority number is more powerful)
+- NavMeshModifiers and NavMeshModifiersVolumes: used to manipulate Areas when baking NavMesh
+- NavMeshObstacle: allows nav mesh to be effectively modifified at runtime through "carvingf", without requiring re-bake
+- Long story short: Use NavMeshModifierVolumes to change bake, and use NavMeshObstacle to change at runtime.
+- "Unit Dancing" problem: multiple nav agents with the same priority. Set new nav positions based on number of selected units 
+Decal URP Projector
+- Used in this project for selection
+- projects onto specific meshes that we can choose
+Event Bus
+- Loose coupling / sollution to interclass comms (Bus.cs example)
+- "public delegate void Event(T args);" // "Define a type 'Event' that represents any function returning void and taking one parameter of type T."
+- "public static event Event OnEvent;" // Define parameter of Event type that can only be invoked by Bus class ("event" keyword)
+- "public static void Raise(T evt) => OnEvent?.Invoke(evt);" // expression bodied function
+HashSet
+- high performace set (a set is collection w/o duplicates)
+- order isn't kept track of
