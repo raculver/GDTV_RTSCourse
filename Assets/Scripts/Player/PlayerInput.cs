@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using GameDevTV.RTS.EventBus;
 using GameDevTV.RTS.Events;
@@ -6,6 +7,7 @@ using NUnit.Framework;
 using Unity.Cinemachine;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 using UnityEngine.InputSystem;
 using UnityEngine.Splines;
 
@@ -178,10 +180,10 @@ public class PlayerInput : MonoBehaviour
 
         if (Mouse.current.leftButton.wasReleasedThisFrame)
         {
-            if (Physics.Raycast(ray, out RaycastHit hitInfo, float.MaxValue, selectableLayers)
-                && hitInfo.collider.TryGetComponent(out ISelectable selectable)){
-                
-                selectable.Select();
+            if (Physics.Raycast(ray, out RaycastHit hitInfo, float.MaxValue, selectableLayers)){
+                if(hitInfo.collider.TryGetComponent(out ISelectable selectable)){
+                    selectable.Select();
+                }
             }
         }
     }
