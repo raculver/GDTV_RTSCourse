@@ -1,3 +1,4 @@
+using GameDevTV.RTS.Commands;
 using GameDevTV.RTS.EventBus;
 using GameDevTV.RTS.Events;
 using UnityEngine;
@@ -9,6 +10,7 @@ namespace GameDevTV.RTS.Units
     {
         [field: SerializeField] public int CurrentHealth{get; private set;}
         [field: SerializeField] public int MaximumHealth{get; private set;}
+        [field: SerializeField] public ActionBase [] AvailableCommands{get; private set;}
 
         [SerializeField] private DecalProjector selectionDecal;
         [SerializeField] private UnitSO unitSO;

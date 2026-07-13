@@ -1,15 +1,11 @@
-using System;
 using System.Collections.Generic;
 using GameDevTV.RTS.EventBus;
 using GameDevTV.RTS.Events;
 using GameDevTV.RTS.Units;
-using NUnit.Framework;
+using GameDevTV.RTS.Commands;
 using Unity.Cinemachine;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
-using UnityEngine.Assertions.Must;
 using UnityEngine.InputSystem;
-using UnityEngine.Splines;
 
 namespace GameDevTV.RTS.Player
 {
@@ -197,23 +193,25 @@ public class PlayerInput : MonoBehaviour
         Ray ray = camera.ScreenPointToRay(Mouse.current.position.ReadValue());
 
         if (Mouse.current.rightButton.wasReleasedThisFrame
-            && Physics.Raycast(ray, out RaycastHit hitInfo, float.MaxValue, floorLayers))
+            && Physics.Raycast(ray, out RaycastHit hitInfo, float.MaxValue, floorLayers)){
+
+            // Find the appropriate command 
+            // issue command to units
+
+            List<AbstractUnit> abstractUnits = new List<AbstractUnit>(selectedUnits.Count);
+            foreach (ISelectable selectable in selectedUnits)
             {
-
-                List<AbstractUnit> abstractUnits = new List<AbstractUnit>(selectedUnits.Count);
-                foreach (ISelectable selectable in selectedUnits)
-                {
-                    if (selectable is AbstractUnit unit) { abstractUnits.Add(unit); }
+                if (selectable is AbstractUnit unit) { abstractUnits.Add(unit); 
                 }
+            }
 
-                FancyMoveUnits(hitInfo, abstractUnits);
-
-
-                // foreach (ISelectable selectable in selectedUnits) {
-                //     if (selectable is IMoveable moveable){ moveable.MoveTo(hitInfo.point);}
-                // }
+            foreach (AbstractUnit unit in abstractUnits){
+                foreach (ICommand command in unit.AvailableCommands){
+                    if (command.CanHandle(unit, hitInfo)){ command.Handle(unit, hitInfo);}
+                }
             }
         }
+    }
 
     private void HandleDragSelect(){
         if (selectionBox == null){return;}
@@ -245,7 +243,7 @@ public class PlayerInput : MonoBehaviour
             if (selectionBoxBounds.Contains(unitPosition)){
                 selectionBoxUnits.Add(unit);
             }
-        }
+        } 
     }
 
     private void HandleDragSelect_Stop(){
@@ -285,6 +283,7 @@ public class PlayerInput : MonoBehaviour
     #region Behaviours
     private void FancyMoveUnits(RaycastHit hitInfo, List<AbstractUnit> abstractUnits)
     {
+        //TODO: Now Broken.
         int unitsOnLayer = 0;
         int maxUnitsOnLayer = 1;
         float circleRadius = 0;
