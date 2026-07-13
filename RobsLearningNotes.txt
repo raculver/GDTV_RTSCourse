@@ -43,4 +43,5 @@ Nice reminder of inheritance in c#
 - protected virtual (allow children to overwrite function), protected override (force override of virtual). Nice example in AbstractUnit
 - To run parent Method, use base.Method(). Nice example in AbstractUnit
 Design Patterns
-- "Command" pattern
+- "Command" pattern and command contexts
+- Structs are much quicker to instantiate, apparently

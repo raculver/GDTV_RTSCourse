@@ -6,6 +6,7 @@ using GameDevTV.RTS.Commands;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Unity.VisualScripting;
 
 namespace GameDevTV.RTS.Player
 {
@@ -25,7 +26,6 @@ public class PlayerInput : MonoBehaviour
     private float zoomStartTime;
     private float rotationStartTime;
     private float maxRotationAmount;
-    private float fancyMoveRadius = 3.5f;
     private Vector3 defaultFollowOffset;
     private List<ISelectable> selectedUnits = new(12); // FORCE!!! a size of 12 for efficiency.
     private Vector2 startClickMousePos;
@@ -199,15 +199,20 @@ public class PlayerInput : MonoBehaviour
             // issue command to units
 
             List<AbstractUnit> abstractUnits = new List<AbstractUnit>(selectedUnits.Count);
-            foreach (ISelectable selectable in selectedUnits)
-            {
+            foreach (ISelectable selectable in selectedUnits){
                 if (selectable is AbstractUnit unit) { abstractUnits.Add(unit); 
                 }
             }
 
+            int unitCtr = 0;
             foreach (AbstractUnit unit in abstractUnits){
                 foreach (ICommand command in unit.AvailableCommands){
-                    if (command.CanHandle(unit, hitInfo)){ command.Handle(unit, hitInfo);}
+                    CommandContext cxt = new CommandContext(unit, hitInfo, unitCtr);
+                    if (command.CanHandle(cxt)){
+                         command.Handle(cxt);
+                         unitCtr +=1;
+                         break; // only issue one cmd per unit
+                    }
                 }
             }
         }
@@ -281,33 +286,7 @@ public class PlayerInput : MonoBehaviour
     #endregion
 
     #region Behaviours
-    private void FancyMoveUnits(RaycastHit hitInfo, List<AbstractUnit> abstractUnits)
-    {
-        //TODO: Now Broken.
-        int unitsOnLayer = 0;
-        int maxUnitsOnLayer = 1;
-        float circleRadius = 0;
-        float angularOffset = 0;
 
-        foreach (AbstractUnit unit in abstractUnits)
-        {
-            Vector3 targetPosition = new Vector3(
-                hitInfo.point.x + circleRadius * Mathf.Cos(angularOffset * unitsOnLayer),
-                hitInfo.point.y,
-                hitInfo.point.z + circleRadius * Mathf.Sin(angularOffset * unitsOnLayer)
-            );
-            unit.MoveTo(targetPosition);
-            unitsOnLayer++;
-
-            if (unitsOnLayer >= maxUnitsOnLayer)
-            {
-                unitsOnLayer = 0;
-                circleRadius += unit.AgentRadius * fancyMoveRadius;
-                maxUnitsOnLayer = Mathf.FloorToInt(2 * Mathf.PI * circleRadius / (unit.AgentRadius * 2));
-                angularOffset = 2 * Mathf.PI / maxUnitsOnLayer;
-            }
-        }
-    }
     #endregion
 
 }
