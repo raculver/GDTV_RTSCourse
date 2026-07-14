@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52980eb873ddd9444a8a9a52abc56b63, type: 3}
   m_Name: Command Post
   m_EditorClassIdentifier: Assembly-CSharp::GameDevTV.RTS.Units.UnitSO
-  <Health>k__BackingField: 100
+  <Health>k__BackingField: 500

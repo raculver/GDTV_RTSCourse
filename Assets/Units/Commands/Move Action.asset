@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1be8fe2cb54c4e346a30799bf1165e75, type: 3}
   m_Name: Move Action
   m_EditorClassIdentifier: Assembly-CSharp::GameDevTV.RTS.Commands.MoveCommand
+  fancyMoveRadius: 3.5
