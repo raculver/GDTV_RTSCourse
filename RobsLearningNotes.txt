@@ -45,3 +45,4 @@ Nice reminder of inheritance in c#
 Design Patterns
 - "Command" pattern and command contexts
 - Structs are much quicker to instantiate, apparently
+- See mermaid diagrams in ActionBase and PlayerInput for some nightmarish design patterns

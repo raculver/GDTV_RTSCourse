@@ -11,6 +11,15 @@ using Unity.VisualScripting;
 namespace GameDevTV.RTS.Player
 {
 
+
+// Unit Selection Bus Logic (mermaid)
+// flowchart TD
+//     A[PlayerInput.HandleLeftClick] --> B[AbstractCommandable.Select]
+//     B-->|Raises|C[Bus UnitSelectedEvent]
+//     C-->|Subscribes|D[PlayerInput.HandleUnitSelect]
+//     C-->|Subscribes|E[ActionIUI]
+
+
 public class PlayerInput : MonoBehaviour
 {
 
