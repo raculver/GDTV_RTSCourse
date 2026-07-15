@@ -6,12 +6,11 @@ using GameDevTV.RTS.Commands;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Unity.VisualScripting;
+using System.Linq;
+using UnityEngine.EventSystems;
 
 namespace GameDevTV.RTS.Player
 {
-
-
 // Unit Selection Bus Logic (mermaid)
 // flowchart TD
 //     A[PlayerInput.HandleLeftClick] --> B[AbstractCommandable.Select]
@@ -31,10 +30,12 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] private LayerMask floorLayers;
     [SerializeField] private RectTransform selectionBox;
 
+    private ActionBase activeAction;
     private CinemachineFollow cinemachineFollow;
     private float zoomStartTime;
     private float rotationStartTime;
     private float maxRotationAmount;
+    private bool wasMouseDownOnUI;
     private Vector3 defaultFollowOffset;
     private List<ISelectable> selectedUnits = new(12); // FORCE!!! a size of 12 for efficiency.
     private Vector2 startClickMousePos;
@@ -63,6 +64,7 @@ public class PlayerInput : MonoBehaviour
         Bus<UnitSelectedEvent>.OnEvent += HandleUnitSelected;
         Bus<UnitDeselectedEvent>.OnEvent += HandleUnitDeselected;
         Bus<UnitSpawnEvent>.OnEvent += HandleUnitSpawn;
+        Bus<ActionSelectedEvent>.OnEvent += HandleActionSelected;
     }
 
     private void OnDisable()
@@ -70,6 +72,7 @@ public class PlayerInput : MonoBehaviour
         Bus<UnitSelectedEvent>.OnEvent -= HandleUnitSelected;
         Bus<UnitDeselectedEvent>.OnEvent -= HandleUnitDeselected;
         Bus<UnitSpawnEvent>.OnEvent -= HandleUnitSpawn;
+        Bus<ActionSelectedEvent>.OnEvent -= HandleActionSelected;
     }
     #endregion
 
@@ -183,12 +186,28 @@ public class PlayerInput : MonoBehaviour
         
         Ray ray = camera.ScreenPointToRay(Mouse.current.position.ReadValue());
 
-        if (Mouse.current.leftButton.wasReleasedThisFrame)
-        {
-            if (Physics.Raycast(ray, out RaycastHit hitInfo, float.MaxValue, selectableLayers)){
-                if(hitInfo.collider.TryGetComponent(out ISelectable selectable)){
-                    selectable.Select();
+        if (Mouse.current.leftButton.wasReleasedThisFrame){
+            if (activeAction == null
+                && Physics.Raycast(ray, out RaycastHit hitInfo, float.MaxValue, selectableLayers)
+                && hitInfo.collider.TryGetComponent(out ISelectable selectable))
+            {    
+                selectable.Select();
+            }
+            else if (activeAction != null
+                && !EventSystem.current.IsPointerOverGameObject()
+                && Physics.Raycast(ray, out hitInfo, float.MaxValue, floorLayers))
+            {  
+                List<AbstractUnit> abstractUnits = selectedUnits
+                    .Where((unit) => unit is AbstractUnit)
+                    .Cast<AbstractUnit>()
+                    .ToList();
+
+                for(int i=0; i<abstractUnits.Count; i++)
+                {
+                    CommandContext context = new(abstractUnits[i], hitInfo, i);
+                    activeAction.Handle(context);
                 }
+                activeAction = null;
             }
         }
     }
@@ -237,7 +256,7 @@ public class PlayerInput : MonoBehaviour
             HandleDragSelect_Drag();
         }
         else if (Mouse.current.leftButton.wasReleasedThisFrame){
-            if (!Keyboard.current.shiftKey.isPressed) { DeselectAll(); }
+            if (activeAction == null && !Keyboard.current.shiftKey.isPressed) { DeselectAll(); }
             HandleLeftClick(); // This code is rife, Chris
             HandleDragSelect_Stop();
         }
@@ -247,9 +266,12 @@ public class PlayerInput : MonoBehaviour
         selectionBox.gameObject.SetActive(true);
         startClickMousePos = Mouse.current.position.ReadValue();
         selectionBoxUnits.Clear();
+         
     }
 
     private void HandleDragSelect_Drag(){
+        if (activeAction != null || wasMouseDownOnUI){return;}
+
         Bounds selectionBoxBounds = ResizeSelectionBox();
         foreach (AbstractUnit unit in aliveUnits)
         {
@@ -288,16 +310,12 @@ public class PlayerInput : MonoBehaviour
     }
 
     private void HandleUnitSelected(UnitSelectedEvent evt) => selectedUnits.Add(evt.Unit);
-
     private void HandleUnitDeselected(UnitDeselectedEvent evt) => selectedUnits.Remove(evt.Unit);
-
     private void HandleUnitSpawn(UnitSpawnEvent evt) => aliveUnits.Add(evt.Unit);
-    #endregion
-
-    #region Behaviours
-
+    private void HandleActionSelected(ActionSelectedEvent evt){
+        activeAction = evt.Action;
+    }
     #endregion
 
 }
-
 }
