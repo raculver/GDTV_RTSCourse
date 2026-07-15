@@ -196,23 +196,29 @@ public class PlayerInput : MonoBehaviour
             else if (activeAction != null
                 && !EventSystem.current.IsPointerOverGameObject()
                 && Physics.Raycast(ray, out hitInfo, float.MaxValue, floorLayers))
-            {  
-                List<AbstractUnit> abstractUnits = selectedUnits
-                    .Where((unit) => unit is AbstractUnit)
-                    .Cast<AbstractUnit>()
-                    .ToList();
-
-                for(int i=0; i<abstractUnits.Count; i++)
                 {
-                    CommandContext context = new(abstractUnits[i], hitInfo, i);
-                    activeAction.Handle(context);
+                    ActivateAction(hitInfo);
                 }
-                activeAction = null;
             }
-        }
     }
 
-    private void HandleRightClick()
+        private void ActivateAction(RaycastHit hitInfo)
+        {
+            List<AbstractCommandable> commandables = selectedUnits
+                .Where((unit) => unit is AbstractCommandable)
+                .Cast<AbstractCommandable>()
+                .ToList();
+
+            for (int i = 0; i < commandables.Count; i++)
+            {
+                CommandContext context = new(commandables[i], hitInfo, i);
+                if (activeAction.CanHandle(context)){activeAction.Handle(context);}
+                //Debug.Log($"Activating Action : {activeAction.name}");
+            }
+            activeAction = null;
+        }
+
+        private void HandleRightClick()
     {
         if (camera == null){return; }
         if (selectedUnits.Count == 0){return; }
@@ -312,8 +318,12 @@ public class PlayerInput : MonoBehaviour
     private void HandleUnitSelected(UnitSelectedEvent evt) => selectedUnits.Add(evt.Unit);
     private void HandleUnitDeselected(UnitDeselectedEvent evt) => selectedUnits.Remove(evt.Unit);
     private void HandleUnitSpawn(UnitSpawnEvent evt) => aliveUnits.Add(evt.Unit);
+    
     private void HandleActionSelected(ActionSelectedEvent evt){
         activeAction = evt.Action;
+        if (!activeAction.RequiresClickToActivate){
+            ActivateAction(new RaycastHit()); // use dummy raycast hit
+        }
     }
     #endregion
 
