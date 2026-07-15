@@ -219,7 +219,8 @@ public class PlayerInput : MonoBehaviour
         }
 
         private void HandleRightClick()
-    {
+        {
+
         if (camera == null){return; }
         if (selectedUnits.Count == 0){return; }
         
@@ -262,7 +263,7 @@ public class PlayerInput : MonoBehaviour
             HandleDragSelect_Drag();
         }
         else if (Mouse.current.leftButton.wasReleasedThisFrame){
-            if (activeAction == null && !Keyboard.current.shiftKey.isPressed) { DeselectAll(); }
+            if (!wasMouseDownOnUI && activeAction == null && !Keyboard.current.shiftKey.isPressed) { DeselectAll(); }
             HandleLeftClick(); // This code is rife, Chris
             HandleDragSelect_Stop();
         }
@@ -272,6 +273,7 @@ public class PlayerInput : MonoBehaviour
         selectionBox.gameObject.SetActive(true);
         startClickMousePos = Mouse.current.position.ReadValue();
         selectionBoxUnits.Clear();
+        wasMouseDownOnUI = EventSystem.current.IsPointerOverGameObject();
          
     }
 

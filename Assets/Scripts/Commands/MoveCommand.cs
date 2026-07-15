@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace GameDevTV.RTS.Commands
 {
-[CreateAssetMenu(fileName = "Move Action", menuName = "AI/Actions/Move", order = 100)]
+[CreateAssetMenu(fileName = "Move Action", menuName = "AI/Commands/Move", order = 100)]
 public class MoveCommand : ActionBase
 {
     // ====== Weird Shared Reference Across ALL MoveCommand ====== 
