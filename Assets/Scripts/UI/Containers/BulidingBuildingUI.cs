@@ -15,6 +15,7 @@ namespace GameDevTV.RTS.UI.Containers{
 
         public void EnableFor(BaseBuilding item)
         {
+            progressBar.SetProgress(0);
             building = item;
             gameObject.SetActive(true); // Turn on UI
             building.OnQueueUpdated += HandleQueueUpdated;
@@ -51,6 +52,7 @@ namespace GameDevTV.RTS.UI.Containers{
                 progressBar.SetProgress(building.progress);
                 yield return null;
             }
+            buildCoroutine = null;
         }
 
         private void HandleQueueUpdated(UnitSO[] unitsInQueue){
