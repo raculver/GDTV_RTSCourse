@@ -7,6 +7,7 @@ using GameDevTV.RTS.Units;
 using GameDevTV.RTS.UI.Components;
 using UnityEngine;
 using UnityEngine.Events;
+using Unity.VisualScripting;
 
 namespace GameDevTV.RTS.UI.Containers{
 public class ActionsUI : MonoBehaviour, IUIElement<HashSet<AbstractCommandable>>
@@ -43,7 +44,9 @@ public class ActionsUI : MonoBehaviour, IUIElement<HashSet<AbstractCommandable>>
     }
 
     public void Disable(){
-        foreach(UIActionButton button in actionButtons) button.Disable();
+        foreach(UIActionButton button in actionButtons){
+            if (button != null){ button.Disable();}
+        }
     }
 }
 }

@@ -7,15 +7,18 @@ namespace GameDevTV.RTS.Units{
 
 public class BaseBuilding : AbstractCommandable
 {
-    private Queue<UnitSO> buildingQueue = new(MAX_SIZE_BUILD_QUEUE);
+    private List<UnitSO> buildingQueue = new(MAX_SIZE_BUILD_QUEUE);
     private const int MAX_SIZE_BUILD_QUEUE = 7;
     private float timeBuildStart;
+    private Coroutine buildRoutine;
     
     public float progress{get; private set;} = 0;
     public int QueueSize => buildingQueue.Count;
+    public UnitSO [] Queue => buildingQueue.ToArray(); // give public array (copy) of the Queue
 
     public delegate void QueueUpdateEvent(UnitSO[] unitsInQueue);
     public event QueueUpdateEvent OnQueueUpdated;
+
 
     public void BuildUnit(UnitSO unit){
         if (buildingQueue.Count == MAX_SIZE_BUILD_QUEUE)
@@ -24,9 +27,9 @@ public class BaseBuilding : AbstractCommandable
             return;
         }
 
-        buildingQueue.Enqueue(unit);
+        buildingQueue.Add(unit);
         if (buildingQueue.Count == 1){
-            StartCoroutine(DoBuildUnits());
+            buildRoutine=StartCoroutine(DoBuildUnits());
         }
         else{
             OnQueueUpdated?.Invoke(buildingQueue.ToArray());
@@ -38,19 +41,44 @@ public class BaseBuilding : AbstractCommandable
         while (buildingQueue.Count > 0)
         {
             timeBuildStart = Time.time;
-            UnitSO unit = buildingQueue.Peek();
+            UnitSO unit = buildingQueue[0];
             OnQueueUpdated?.Invoke(buildingQueue.ToArray());
             while (Time.time - timeBuildStart < unit.BuildTime){
                 progress = Mathf.Clamp01((Time.time - timeBuildStart) / unit.BuildTime);
                 yield return null;
             }
-//            yield return new WaitForSeconds(unit.BuildTime);
             Instantiate(unit.Prefab, transform.position, Quaternion.identity);
-            //OnQueue?.Invoke(buildingQueue.ToArray());
-            buildingQueue.Dequeue();
+            buildingQueue.RemoveAt(0);
         }   
         OnQueueUpdated?.Invoke(buildingQueue.ToArray());
     }
-}
 
+    public void CancelBuildingUnit(int index){
+        if (index < 0 || index >= buildingQueue.Count){
+            Debug.LogError("Attemping to cancel a unit outside of build queue length.");
+            return;
+        }
+
+        // if the index is zero, we cancel current item... need to stop coroutine
+        if (index == 0)
+        {
+            buildingQueue.RemoveAt(index);
+            StopAllCoroutines();
+            if (buildingQueue.Count > 0){
+                buildRoutine=StartCoroutine(DoBuildUnits());
+            }
+            else
+            {
+                OnQueueUpdated?.Invoke(buildingQueue.ToArray());        
+            }
+        }
+        // if the index is higher, we just remove item from queue list
+        else
+        {
+            buildingQueue.RemoveAt(index);
+            OnQueueUpdated?.Invoke(buildingQueue.ToArray());
+        }
+
+    }
+}
 } 
