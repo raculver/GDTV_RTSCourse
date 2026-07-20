@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 52980eb873ddd9444a8a9a52abc56b63, type: 3}
-  m_Name: Air Transport
+  m_Name: Infantry School
   m_EditorClassIdentifier: Assembly-CSharp::GameDevTV.RTS.Units.UnitSO
-  <Health>k__BackingField: 200
-  <Prefab>k__BackingField: {fileID: 1076983579694789324, guid: 4d0c2e8c3bd76b64097b86828a286bc6, type: 3}
+  <Health>k__BackingField: 100
+  <Prefab>k__BackingField: {fileID: 5175054564074698786, guid: c3932362a5b6dcf4ab5981f279eb5a71, type: 3}
   <BuildTime>k__BackingField: 5
-  <Icon>k__BackingField: {fileID: 21300000, guid: 4d0944a6c62020d4f955f5b7174bb96f, type: 3}
+  <Icon>k__BackingField: {fileID: 21300000, guid: 9913c672e9ced57439a2369b346459fe, type: 3}
