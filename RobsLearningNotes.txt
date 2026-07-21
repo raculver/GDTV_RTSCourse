@@ -51,3 +51,9 @@ Handling UI
 - apparently wasMouseDownOnUI = EventSystem.current.IsPointerOverGameObject() detects mouse over UI?
 Queues
 - Like lists, but can Enqueue, Dequeue and Peek next value
+Behaviour Trees
+- Control Flow Nodes (how logic flows)
+- Action nodes (defines logic of actions that will be performed)
+- To use on gameObjects, Requires gameObjects have BehaviorAgent
+- Make graphs with right click on project window -> create -> behaviour -> behavior graph
+- Cool creation wizard in the tree editor... generates script skeletons for you
