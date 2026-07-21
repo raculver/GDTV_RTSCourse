@@ -51,6 +51,7 @@ public class BaseBuilding : AbstractCommandable
             buildingQueue.RemoveAt(0);
         }   
         OnQueueUpdated?.Invoke(buildingQueue.ToArray());
+        progress = 0;
     }
 
     public void CancelBuildingUnit(int index){

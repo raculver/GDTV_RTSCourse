@@ -1,4 +1,3 @@
-
 using GameDevTV.RTS.Units;
 using GameDevTV.RTS.UI.Components;
 using UnityEngine;
@@ -15,11 +14,12 @@ namespace GameDevTV.RTS.UI.Containers{
 
         public void EnableFor(BaseBuilding item)
         {
-            progressBar.SetProgress(0);
             building = item;
+            progressBar.SetProgress(building.progress);
             gameObject.SetActive(true); // Turn on UI
             building.OnQueueUpdated += HandleQueueUpdated;
 
+            buildCoroutine = StartCoroutine(UpdateUnitProgress());
             UpdateBuildQueueUI();
         }
 
@@ -35,6 +35,10 @@ namespace GameDevTV.RTS.UI.Containers{
             for (; i < unitButtons.Length; i++)
             {
                 unitButtons[i].Disable();
+            }
+
+            if (building.QueueSize == 0){
+                progressBar.SetProgress(0);
             }
         }
 
