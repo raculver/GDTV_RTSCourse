@@ -4,7 +4,6 @@ using UnityEngine;
 using Action = Unity.Behavior.Action;
 using Unity.Properties;
 using UnityEngine.AI;
-using NUnit.Framework.Interfaces;
 
 namespace GameDevTV.RTS.Behahavior
 {
@@ -19,12 +18,12 @@ public partial class MoveToTargetLocationAction : Action
     private NavMeshAgent navMeshAgent;
 
     protected override Status OnStart()
-    {
+    {       
         if (!Agent.Value.TryGetComponent(out navMeshAgent)){
             return Status.Failure;
         }
 
-        if (Vector3.Distance(navMeshAgent.transform.position, TargetLocation) <= navMeshAgent.stoppingDistance){
+        if (Vector3.Distance(navMeshAgent.transform.position, TargetLocation.Value) <= navMeshAgent.stoppingDistance){
             return Status.Success;
         }
         
@@ -39,10 +38,6 @@ public partial class MoveToTargetLocationAction : Action
         }
         return Status.Running;
     }
-
-    // protected override void OnEnd()
-    // {
-    // }
 }
 
 }

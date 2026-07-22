@@ -1,3 +1,5 @@
+using System;
+using GameDevTV.RTS.Behahavior;
 using GameDevTV.RTS.EventBus;
 using GameDevTV.RTS.Events;
 using Unity.Behavior;
@@ -18,7 +20,7 @@ namespace GameDevTV.RTS.Units
         void Awake(){
             navAgent = GetComponent<NavMeshAgent>();
             graphAgent = GetComponent<BehaviorGraphAgent>();
-            MoveTo(transform.position); // putting this here otherwise the unit runs towards the origin for a split second.
+            graphAgent.SetVariableValue<Enum>(BTVariables.BT_UNIT_COMMAND, UnitCommands.Stop);
         }
 
         protected override void Start(){
@@ -27,7 +29,12 @@ namespace GameDevTV.RTS.Units
         }
 
         public void MoveTo(Vector3 position) {
-            graphAgent.SetVariableValue<Vector3>("TargetLocation", position);
+            graphAgent.SetVariableValue<Vector3>(BTVariables.BT_TARGET_POSITION, position);
+            graphAgent.SetVariableValue<Enum>(BTVariables.BT_UNIT_COMMAND, UnitCommands.Move);
+        }
+
+        public void Stop(){
+            graphAgent.SetVariableValue<Enum>(BTVariables.BT_UNIT_COMMAND, UnitCommands.Stop);
         }
     }
 }

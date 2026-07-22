@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6373942607041070935}
   - component: {fileID: 4998999097916986450}
   - component: {fileID: 6855559672125040481}
+  - component: {fileID: 2115234063178354583}
   m_Layer: 6
   m_Name: Air Transport
   m_TagString: Untagged
@@ -148,8 +149,38 @@ MonoBehaviour:
   <MaximumHealth>k__BackingField: 100
   <AvailableCommands>k__BackingField:
   - {fileID: 11400000, guid: c3584f03caacc6b4b8a955ba12681ce5, type: 2}
+  - {fileID: 11400000, guid: 74556a45a469a6a4fb246f30914e1175, type: 2}
   selectionDecal: {fileID: 6089887971582859820}
   unitSO: {fileID: 11400000, guid: c2d0bc35a166eb545a339aa64f182106, type: 2}
+--- !u!114 &2115234063178354583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1076983579694789324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0038c16c34866b4f9e25c9c0dc0f7e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Behavior::Unity.Behavior.BehaviorGraphAgent
+  m_Graph: {fileID: 7667912501035009127, guid: 317d8403392a02d48bbb9f35150a5019, type: 2}
+  m_BlackboardVariableOverridesList:
+  - rid: 6075706059198825101
+  m_OriginalGraph: {fileID: 0}
+  m_IsInitialised: 0
+  m_IsStarted: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 6075706059198825101
+      type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 1
+          m_Value1: 0
+        Name: Self
+        m_Value: {fileID: 1076983579694789324}
 --- !u!1 &2319348406483867001
 GameObject:
   m_ObjectHideFlags: 0

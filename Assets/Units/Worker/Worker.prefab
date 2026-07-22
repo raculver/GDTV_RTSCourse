@@ -159,6 +159,7 @@ MonoBehaviour:
   <MaximumHealth>k__BackingField: 100
   <AvailableCommands>k__BackingField:
   - {fileID: 11400000, guid: c3584f03caacc6b4b8a955ba12681ce5, type: 2}
+  - {fileID: 11400000, guid: 74556a45a469a6a4fb246f30914e1175, type: 2}
   selectionDecal: {fileID: 1780025588308873654}
   unitSO: {fileID: 11400000, guid: 82e2435211466c34d9b0943d68abf8a5, type: 2}
 --- !u!136 &8762007335747614977
@@ -196,7 +197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0038c16c34866b4f9e25c9c0dc0f7e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Behavior::Unity.Behavior.BehaviorGraphAgent
-  m_Graph: {fileID: 819526599041714933, guid: c95c455f8d2c41d4eb87caf956fdca36, type: 2}
+  m_Graph: {fileID: 7667912501035009127, guid: 317d8403392a02d48bbb9f35150a5019, type: 2}
   m_BlackboardVariableOverridesList:
   - rid: 6075706015232819337
   m_OriginalGraph: {fileID: 0}
