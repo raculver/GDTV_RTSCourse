@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4583745518494351312}
   - component: {fileID: 8177309903621710089}
   - component: {fileID: 5401891404614642427}
+  - component: {fileID: 6608646963440734107}
   m_Layer: 0
   m_Name: Minerals
   m_TagString: Untagged
@@ -71,6 +72,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: -0.5, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &6608646963440734107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2470480825251639189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b37d4a4e509a3d48860fe7e68f071ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameDevTV.RTS.Environment.GatherableSupply
+  <Supply>k__BackingField: {fileID: 11400000, guid: ab850d944ede5d14d96b293d713b7b89, type: 2}
 --- !u!1001 &5343783336325319574
 PrefabInstance:
   m_ObjectHideFlags: 0
