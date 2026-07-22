@@ -6,8 +6,8 @@ namespace GameDevTV.RTS.Environment
     {
         [field: SerializeField] public SupplySO Supply {get; private set;}
         
-        public int AmountRemaining{get; private set;}
-        public bool IsBusy{get; private set;}
+        [field: SerializeField]public int AmountRemaining{get; private set;}
+        [field: SerializeField]public bool IsBusy{get; private set;}
 
         private void Awake(){
             AmountRemaining = Supply.MaxAmount;
