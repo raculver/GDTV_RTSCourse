@@ -24,7 +24,7 @@ public class DebugLogging : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
+    
     public void Message(string message, bool debugCheck)
     {
         if (ENABLE_MESSAGES && debugCheck)

@@ -5,6 +5,7 @@ using Action = Unity.Behavior.Action;
 using Unity.Properties;
 using GameDevTV.RTS.Units;
 using System.Collections.Generic;
+using GameDevTV.RTS.Constants;
 
 namespace GameDevTV.RTS.Behahavior
 {
@@ -20,11 +21,9 @@ public partial class FindClosestCommandPostAction : Action
     
     protected override Status OnStart()
     {
-        LayerMask buildingsMask = LayerMask.GetMask(ProjectConstants.LAYER_BUILDINGS);
-
         Vector3 unitPosition = Unit.Value.transform.position;
 
-        Collider[] colliders = Physics.OverlapSphere(unitPosition, SearchRadius.Value, buildingsMask);
+        Collider[] colliders = Physics.OverlapSphere(unitPosition, SearchRadius.Value, GameLayers.Buildings);
      
         List<BaseBuilding> nearbyCommandPosts = new();
         foreach (Collider col in colliders){
