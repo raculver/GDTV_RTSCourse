@@ -5,7 +5,6 @@ using Action = Unity.Behavior.Action;
 using Unity.Properties;
 using GameDevTV.RTS.Units;
 using System.Collections.Generic;
-using UnityEngine.InputSystem.Interactions;
 
 namespace GameDevTV.RTS.Behahavior
 {
@@ -19,11 +18,9 @@ public partial class FindClosestCommandPostAction : Action
     [SerializeReference] public BlackboardVariable<float> SearchRadius = new(100);
     [SerializeReference] public BlackboardVariable<UnitSO> CommandPostUnitSO;
     
-    private const string BUILDINGS_LAYER_STR = "Buildings"; // TODO: Define project-wide?
-
     protected override Status OnStart()
     {
-        LayerMask buildingsMask = LayerMask.GetMask(BUILDINGS_LAYER_STR);
+        LayerMask buildingsMask = LayerMask.GetMask(ProjectConstants.LAYER_BUILDINGS);
 
         Vector3 unitPosition = Unit.Value.transform.position;
 
