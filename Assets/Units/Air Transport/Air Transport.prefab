@@ -150,8 +150,8 @@ MonoBehaviour:
   <AvailableCommands>k__BackingField:
   - {fileID: 11400000, guid: c3584f03caacc6b4b8a955ba12681ce5, type: 2}
   - {fileID: 11400000, guid: 74556a45a469a6a4fb246f30914e1175, type: 2}
+  <unitSO>k__BackingField: {fileID: 11400000, guid: c2d0bc35a166eb545a339aa64f182106, type: 2}
   selectionDecal: {fileID: 6089887971582859820}
-  unitSO: {fileID: 11400000, guid: c2d0bc35a166eb545a339aa64f182106, type: 2}
 --- !u!114 &2115234063178354583
 MonoBehaviour:
   m_ObjectHideFlags: 0

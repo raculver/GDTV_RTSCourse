@@ -1,3 +1,4 @@
+#define DEBUG_MESSAGE_MOVES_TO_TARGET_POS
 using System;
 using Unity.Behavior;
 using UnityEngine;
@@ -19,12 +20,16 @@ public partial class MoveToTargetLocationAction : Action
 
     protected override Status OnStart()
     {       
+        #if DEBUG_MESSAGE_MOVES_TO_TARGET_POS
+            Debug.Log($"DEBUG_MESSAGE_MOVES_TO_TARGET_POS: {Agent.Value.name} moving to {TargetLocation.Value}");
+        #endif
+
         if (!Agent.Value.TryGetComponent(out navMeshAgent)){
             return Status.Failure;
         }
 
         if (Vector3.Distance(navMeshAgent.transform.position, TargetLocation.Value) <= navMeshAgent.stoppingDistance){
-            return Status.Success;
+            return StatusSuccess();
         }
         
         navMeshAgent.SetDestination(TargetLocation);
@@ -34,9 +39,18 @@ public partial class MoveToTargetLocationAction : Action
     protected override Status OnUpdate()
     {
         if (!navMeshAgent.pathPending && navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance){
-            return Status.Success;
+            return StatusSuccess();
         }
         return Status.Running;
+    }
+
+    private Status StatusSuccess()
+    {
+        #if DEBUG_MESSAGE_MOVES_TO_TARGET_POS
+            Debug.Log($"DEBUG_MESSAGE_MOVES_TO_TARGET_POS: {Agent.Value.name} arrived at {Agent.Value.transform.position}");
+        #endif
+
+        return Status.Success;
     }
 }
 

@@ -74,8 +74,8 @@ MonoBehaviour:
   <AvailableCommands>k__BackingField:
   - {fileID: 11400000, guid: cb38a19b2643b0843b7914dd131a3817, type: 2}
   - {fileID: 11400000, guid: 2763668f6e76d2c43b53311071441ee7, type: 2}
+  <unitSO>k__BackingField: {fileID: 11400000, guid: 2b055f6c028f33a40ad532d7971a62ce, type: 2}
   selectionDecal: {fileID: 2788263148094776442}
-  unitSO: {fileID: 11400000, guid: 2b055f6c028f33a40ad532d7971a62ce, type: 2}
 --- !u!208 &276156866879075234
 NavMeshObstacle:
   m_ObjectHideFlags: 0

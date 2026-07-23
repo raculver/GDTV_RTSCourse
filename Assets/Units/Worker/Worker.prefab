@@ -161,8 +161,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c3584f03caacc6b4b8a955ba12681ce5, type: 2}
   - {fileID: 11400000, guid: 74556a45a469a6a4fb246f30914e1175, type: 2}
   - {fileID: 11400000, guid: b5a13eac2983269449fd89c47665c5ce, type: 2}
+  <unitSO>k__BackingField: {fileID: 11400000, guid: 82e2435211466c34d9b0943d68abf8a5, type: 2}
   selectionDecal: {fileID: 1780025588308873654}
-  unitSO: {fileID: 11400000, guid: 82e2435211466c34d9b0943d68abf8a5, type: 2}
 --- !u!136 &8762007335747614977
 CapsuleCollider:
   m_ObjectHideFlags: 0

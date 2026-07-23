@@ -1,0 +1,45 @@
+using System;
+using Unity.Behavior;
+using UnityEngine;
+using Action = Unity.Behavior.Action;
+using Unity.Properties;
+using UnityEngine.AI;
+
+namespace GameDevTV.RTS.Behahavior
+{
+
+[Serializable, GeneratePropertyBag]
+[NodeDescription(name: "Move to TargetGameObject", story: "[Agent] moves to [TargetGameObject] .", category: "Action/Navigation", id: "38ac85b633b115a29ed04c0a1c5d959e")]
+public partial class MoveToTargetGameObjectAction : Action
+{
+    [SerializeReference] public BlackboardVariable<GameObject> Agent;
+    [SerializeReference] public BlackboardVariable<GameObject> TargetGameObject;
+    
+    private NavMeshAgent navMeshAgent;
+
+    protected override Status OnStart()
+    {      
+        Vector3 targetLocation = TargetGameObject.Value.transform.position;
+
+        if (!Agent.Value.TryGetComponent(out navMeshAgent)){
+            return Status.Failure;
+        }
+
+        if (Vector3.Distance(navMeshAgent.transform.position, targetLocation) <= navMeshAgent.stoppingDistance){
+            return Status.Success;
+        }
+        
+        navMeshAgent.SetDestination(targetLocation);
+        return Status.Running;
+    }
+
+    protected override Status OnUpdate()
+    {
+        if (!navMeshAgent.pathPending && navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance){
+            return Status.Success;
+        }
+        return Status.Running;
+    }
+}
+
+}
