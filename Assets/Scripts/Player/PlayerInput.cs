@@ -1,5 +1,3 @@
-#define DEBUG_MESSAGE_REPORT_CLICKS
-
 using System.Collections.Generic;
 using GameDevTV.RTS.EventBus;
 using GameDevTV.RTS.Events;
@@ -195,9 +193,10 @@ public class PlayerInput : MonoBehaviour
                 && Physics.Raycast(ray, out RaycastHit hitInfo, float.MaxValue, selectableLayers)
                 && hitInfo.collider.TryGetComponent(out ISelectable selectable))
             {
-                #if DEBUG_MESSAGE_REPORT_CLICKS
-                    Debug.Log($"DEBUG_MESSAGE_REPORT_CLICKS: Left click registered: {hitInfo.collider.name}");
-                #endif
+                DebugLogging.Instance.Message(
+                    $"REPORT_CLICKS: Left click registered: {hitInfo.collider.name}",
+                    DebugLogging.Instance.REPORT_CLICKS
+                );
                 selectable.Select();
             }
             else if (activeAction != null
@@ -205,9 +204,10 @@ public class PlayerInput : MonoBehaviour
                 && !EventSystem.current.IsPointerOverGameObject()
                 && Physics.Raycast(ray, out hitInfo, float.MaxValue, floorLayers | interactableLayers))
                 {
-                    #if DEBUG_MESSAGE_REPORT_CLICKS
-                        Debug.Log($"DEBUG_MESSAGE_REPORT_CLICKS: Left click registered: {hitInfo.collider.name}");
-                    #endif
+                    DebugLogging.Instance.Message(
+                        $"REPORT_CLICKS: Left click registered: {hitInfo.collider.name}",
+                        DebugLogging.Instance.REPORT_CLICKS
+                    );
                     ActivateAction(hitInfo);
                 }
             }
@@ -239,10 +239,10 @@ public class PlayerInput : MonoBehaviour
 
         if (Mouse.current.rightButton.wasReleasedThisFrame
             && Physics.Raycast(ray, out RaycastHit hitInfo, float.MaxValue, floorLayers | interactableLayers)){
-
-                #if DEBUG_MESSAGE_REPORT_CLICKS
-                    Debug.Log($"DEBUG_MESSAGE_REPORT_CLICKS: Right click registered: {hitInfo.collider.name}");
-                #endif
+                DebugLogging.Instance.Message(
+                    $"REPORT_CLICKS: Right click registered: {hitInfo.collider.name}",
+                    DebugLogging.Instance.REPORT_CLICKS
+                );
             // Find the appropriate command 
             // issue command to units
 
@@ -335,9 +335,10 @@ public class PlayerInput : MonoBehaviour
     private void HandleUnitSpawn(UnitSpawnEvent evt) => aliveUnits.Add(evt.Unit);
     
     private void HandleActionSelected(ActionSelectedEvent evt){
-        #if DEBUG_MESSAGE_REPORT_CLICKS
-            Debug.Log($"DEBUG_MESSAGE_REPORT_CLICKS: Click registered on {evt.Action.name}");
-        #endif
+        DebugLogging.Instance.Message(
+            $"REPORT_CLICKS Click registered on {evt.Action.name}",
+            DebugLogging.Instance.REPORT_CLICKS
+        );
         activeAction = evt.Action;
         if (!activeAction.RequiresClickToActivate){
             ActivateAction(new RaycastHit()); // use dummy raycast hit

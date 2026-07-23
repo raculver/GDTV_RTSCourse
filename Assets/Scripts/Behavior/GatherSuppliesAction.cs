@@ -1,4 +1,3 @@
-#define DEBUG_MESSAGE_ACTION_GATHER_SUP
 using GameDevTV.RTS.Environment;
 using System;
 using Unity.Behavior;
@@ -30,10 +29,10 @@ public partial class GatherSuppliesAction : Action
     {
     if (GathSup.Value.Supply.BaseGatherTime + enterTime < Time.time)
         {
-            Amount.Value = GathSup.Value.EndGather();
-            #if DEBUG_MESSAGE_ACTION_GATHER_SUP
-                Debug.Log($"DEBUG_MESSAGE_ACTION_GATHER_SUP: {Agent.Value.name} successfully gathered supplies {GathSup.Value.name}");
-            #endif
+            DebugLogging.Instance.Message(
+                $"ACTION_GATHER_SUP: {Agent.Value.name} successfully gathered supplies {GathSup.Value.name}",
+                DebugLogging.Instance.ACTION_GATHER_SUP
+            );
             return Status.Success;
         }
         else

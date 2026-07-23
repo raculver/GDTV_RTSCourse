@@ -1,4 +1,3 @@
-#define DEBUG_MESSAGE_MOVES_TO_TARGET_POS
 using System;
 using Unity.Behavior;
 using UnityEngine;
@@ -19,10 +18,11 @@ public partial class MoveToTargetLocationAction : Action
     private NavMeshAgent navMeshAgent;
 
     protected override Status OnStart()
-    {       
-        #if DEBUG_MESSAGE_MOVES_TO_TARGET_POS
-            Debug.Log($"DEBUG_MESSAGE_MOVES_TO_TARGET_POS: {Agent.Value.name} moving to {TargetLocation.Value}");
-        #endif
+    {
+        DebugLogging.Instance.Message(
+            $"ACTION_MOVE_TO_TARGET_POS: {Agent.Value.name} moving to {TargetLocation.Value}",
+            DebugLogging.Instance.ACTION_MOVE_TO_TARGET_POS
+        );
 
         if (!Agent.Value.TryGetComponent(out navMeshAgent)){
             return Status.Failure;
@@ -46,9 +46,10 @@ public partial class MoveToTargetLocationAction : Action
 
     private Status StatusSuccess()
     {
-        #if DEBUG_MESSAGE_MOVES_TO_TARGET_POS
-            Debug.Log($"DEBUG_MESSAGE_MOVES_TO_TARGET_POS: {Agent.Value.name} arrived at {Agent.Value.transform.position}");
-        #endif
+        DebugLogging.Instance.Message(
+            $"MOVES_TO_TARGET_POS: {Agent.Value.name} arrived at {Agent.Value.transform.position}",
+            DebugLogging.Instance.ACTION_MOVE_TO_TARGET_POS
+        );
 
         return Status.Success;
     }

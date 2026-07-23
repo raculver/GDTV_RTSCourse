@@ -1,4 +1,3 @@
-#define DEBUG_MESSAGE_ACTION_FIND_CP
 using System;
 using Unity.Behavior;
 using UnityEngine;
@@ -38,10 +37,11 @@ public partial class FindClosestCommandPostAction : Action
         }
 
         if (nearbyCommandPosts.Count == 0){
-            #if DEBUG_MESSAGE_ACTION_FIND_CP
-                Debug.Log($"DEBUG_MESSAGE_ACTION_FIND_CP: {Unit.Value.name} not find command post in radius {SearchRadius.Value} from {unitPosition}.");
-                Debug.Log($"DEBUG_MESSAGE_ACTION_FIND_CP: Number of colliders found = {colliders.Length}");                
-            #endif
+            DebugLogging.Instance.Message(
+                $"ACTION_FIND_CP: {Unit.Value.name} not find command post in radius {SearchRadius.Value} from {unitPosition}.\n"+
+                $"ACTION_FIND_CP: Number of colliders found = {colliders.Length}",
+                DebugLogging.Instance.ACTION_FIND_CP
+            );           
             return Status.Failure;
         }
 
