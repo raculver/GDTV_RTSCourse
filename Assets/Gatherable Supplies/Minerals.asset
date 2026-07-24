@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 297a709782225fe4c8710b6f8e4901a7, type: 3}
   m_Name: Minerals
   m_EditorClassIdentifier: Assembly-CSharp::GameDevTV.RTS.Environment.SupplySO
-  <MaxAmount>k__BackingField: 1500
+  <MaxAmount>k__BackingField: 36
   <AmountPerGather>k__BackingField: 8
   <BaseGatherTime>k__BackingField: 1.5

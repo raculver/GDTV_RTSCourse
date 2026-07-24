@@ -57,3 +57,5 @@ Behaviour Trees
 - To use on gameObjects, Requires gameObjects have BehaviorAgent
 - Make graphs with right click on project window -> create -> behaviour -> behavior graph
 - Cool creation wizard in the tree editor... generates script skeletons for you
+Comparators and System.Linq
+- Really cool way to filter and order colliders. Look at ChooseClosestGatherableSupply and ClosestColliderComparer

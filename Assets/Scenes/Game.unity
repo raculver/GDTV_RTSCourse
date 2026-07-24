@@ -4740,6 +4740,7 @@ MonoBehaviour:
   ENABLE_MESSAGES: 1
   <REPORT_CLICKS>k__BackingField: 0
   <ACTION_GATHER_SUP>k__BackingField: 0
+  <ACTION_MOVE_GATHER>k__BackingField: 0
   <ACTION_FIND_CP>k__BackingField: 0
   <ACTION_MOVE_TO_TARGET_POS>k__BackingField: 0
   <ACTION_SET_NAV_AVOIDANCE>k__BackingField: 0
