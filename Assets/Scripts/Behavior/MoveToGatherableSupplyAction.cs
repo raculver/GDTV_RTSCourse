@@ -26,24 +26,47 @@ public partial class MoveToGatherableSupplyAction : Action
     Vector3 targetLocation;
 
     protected override Status OnStart(){
-        targetSO = GathSup.Value.Supply;
+        if (!ValidateAndSetupGatherableSupplyTarget()) return Status.Failure;
+        if (!ValidateAndSetupNavAgent()) return Status.Failure;
+        return Status.Running;
+    }
 
-        if (!Agent.Value.TryGetComponent(out navMeshAgent))
-        {
-            DebugLogging.Instance.Message($"ACTION_MOVE_GATHER: {Agent.Value.name} has no nav agent.", DebugLogging.Instance.ACTION_MOVE_GATHER);
-            return Status.Failure;
+    private bool ValidateAndSetupGatherableSupplyTarget(){
+        if (GathSup.Value != null){
+            targetSO = GathSup.Value.Supply;
+            return true;
         }
+        else if (GathSup.Value == null && targetSO == null){
+            // we don't have a gath sup and we also weren't able to grab the targetSO before it disappeared
+            // give up
+            return false;
+        }
+        else{
+            // find a new target
+            GatherableSupply newGathSup = ChooseClosestGatherableSupply();
+            if (newGathSup == null){
+                return false; // there are no alternative gathsups in the area
+            }
+            GathSup.Value = newGathSup; // we've found a new target
+            return true;
+        }
+    }
 
+    private bool ValidateAndSetupNavAgent(){
+        if (!Agent.Value.TryGetComponent(out navMeshAgent)){
+            DebugLogging.Instance.Message($"ACTION_MOVE_GATHER: {Agent.Value.name} has no nav agent.", DebugLogging.Instance.ACTION_MOVE_GATHER);
+            return false;
+        }
+    
         targetLocation = GetGatherableSupplyLocation(GathSup.Value);
         DebugLogging.Instance.Message($"ACTION_MOVE_GATHER: {Agent.Value.name} setting target nav location to {targetLocation}.", DebugLogging.Instance.ACTION_MOVE_GATHER);
         navMeshAgent.SetDestination(targetLocation);
-
-        return Status.Running;
+        return true;
     }
 
     private Vector3 GetGatherableSupplyLocation(GatherableSupply targetGathSup)
     {
-        if (targetGathSup == null) return targetLocation;
+//        if (targetGathSup == null) return targetLocation;
 
         return targetGathSup.TryGetComponent<Collider>(out Collider collider)
             ? collider.ClosestPoint(navMeshAgent.transform.position)
@@ -58,13 +81,14 @@ public partial class MoveToGatherableSupplyAction : Action
         if (GathSup.Value != null && !GathSup.Value.IsBusy && GathSup.Value.AmountRemaining > 0)
             return Status.Success;  // arrived at resource
 
-        GathSup.Value = ChooseClosestGatherableSupply();
-        if (GathSup.Value == null){
+        GatherableSupply newGathSup = ChooseClosestGatherableSupply();
+        if (newGathSup == null){
             DebugLogging.Instance.Message($"ACTION_MOVE_GATHER: {Agent.Value.name} found no free gatherables", DebugLogging.Instance.ACTION_MOVE_GATHER);
             DebugLogging.Instance.Message("ACTION_MOVE_GATHER: Warning. Deviation from CK's settings. This returns Status.Running.", DebugLogging.Instance.ACTION_MOVE_GATHER);
-            return Status.Running; // Return running... // CK uses Failure here and aborts the entire gather action (currently it will retrigger anyway, through the BT)
+            return Status.Failure; // Return running... // CK uses Failure here and aborts the entire gather action (currently it will retrigger anyway, through the BT)
         }
         else{
+            GathSup.Value = newGathSup;
             DebugLogging.Instance.Message($"ACTION_MOVE_GATHER: {Agent.Value.name} choosing to gather {GathSup.Value.name} instead.", DebugLogging.Instance.ACTION_MOVE_GATHER);
             targetLocation = GetGatherableSupplyLocation(GathSup.Value);
             navMeshAgent.SetDestination(targetLocation);  

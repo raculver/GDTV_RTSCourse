@@ -21,7 +21,7 @@ public partial class MoveToTargetGameObjectAction : Action
     protected override Status OnStart()
     {             
 
-        if (!Agent.Value.TryGetComponent(out navMeshAgent)){
+        if (!Agent.Value.TryGetComponent(out navMeshAgent) || TargetGameObject.Value == null){
             return Status.Failure;
         }
 
