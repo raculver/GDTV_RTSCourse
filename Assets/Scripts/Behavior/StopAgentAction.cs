@@ -3,8 +3,8 @@ using Unity.Behavior;
 using UnityEngine;
 using Action = Unity.Behavior.Action;
 using Unity.Properties;
-using Unity.VisualScripting;
 using UnityEngine.AI;
+using GameDevTV.RTS.Utilities;
 
 
 namespace GameDevTV.RTS.Behahavior
@@ -19,6 +19,10 @@ public partial class StopAgentAction : Action
     private NavMeshAgent navMeshAgent;
 
     protected override Status OnStart(){
+        if (Agent.Value.TryGetComponent<Animator>(out Animator animator)){
+            animator.SetFloat(AnimationConstants.SPEED, 0f);
+        }
+        
         if (Agent.Value.TryGetComponent(out navMeshAgent)){
             navMeshAgent.ResetPath();
             return Status.Success;

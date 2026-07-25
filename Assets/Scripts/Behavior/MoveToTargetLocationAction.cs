@@ -4,6 +4,8 @@ using UnityEngine;
 using Action = Unity.Behavior.Action;
 using Unity.Properties;
 using UnityEngine.AI;
+using GameDevTV.RTS.Utilities;
+using UnityEngine.InputSystem.Interactions;
 
 namespace GameDevTV.RTS.Behahavior
 {
@@ -16,9 +18,12 @@ public partial class MoveToTargetLocationAction : Action
     [SerializeReference] public BlackboardVariable<Vector3> TargetLocation;
 
     private NavMeshAgent navMeshAgent;
+    private Animator animator;
 
     protected override Status OnStart()
     {
+        Agent.Value.TryGetComponent<Animator>(out animator);
+
         DebugLogging.Instance.Message(
             $"ACTION_MOVE_TO_TARGET_POS: {Agent.Value.name} moving to {TargetLocation.Value}",
             DebugLogging.Instance.ACTION_MOVE_TO_TARGET_POS
@@ -38,6 +43,10 @@ public partial class MoveToTargetLocationAction : Action
 
     protected override Status OnUpdate()
     {
+        if (animator != null){
+            animator.SetFloat(AnimationConstants.SPEED, navMeshAgent.velocity.magnitude);
+        }
+
         if (!navMeshAgent.pathPending && navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance){
             return StatusSuccess();
         }
@@ -53,6 +62,11 @@ public partial class MoveToTargetLocationAction : Action
 
         return Status.Success;
     }
-}
 
+    protected override void OnEnd(){
+        if (animator != null){
+            animator.SetFloat(AnimationConstants.SPEED, 0f);
+        }
+    }
+}
 }

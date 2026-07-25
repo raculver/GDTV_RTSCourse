@@ -24,10 +24,12 @@ public partial class MoveToGatherableSupplyAction : Action
     private SupplySO targetSO;
 
     Vector3 targetLocation;
+    Animator animator;
 
     protected override Status OnStart(){
         if (!ValidateAndSetupGatherableSupplyTarget()) return Status.Failure;
         if (!ValidateAndSetupNavAgent()) return Status.Failure;
+        Agent.Value.TryGetComponent(out animator);
         return Status.Running;
     }
 
@@ -75,6 +77,10 @@ public partial class MoveToGatherableSupplyAction : Action
 
     protected override Status OnUpdate()
     {
+        if (animator != null){
+            animator.SetFloat(AnimationConstants.SPEED, navMeshAgent.velocity.magnitude);
+        }
+
         if (navMeshAgent.pathPending || navMeshAgent.remainingDistance >= navMeshAgent.stoppingDistance)
             return Status.Running;  // keep navigating
 
@@ -119,6 +125,12 @@ public partial class MoveToGatherableSupplyAction : Action
 
         return nearbySupplies[0].GetComponent<GatherableSupply>();
     }
-}
 
+    protected override void OnEnd(){
+        if (animator != null){
+            animator.SetFloat(AnimationConstants.SPEED, 0f);
+        }
+    }
+
+}
 }

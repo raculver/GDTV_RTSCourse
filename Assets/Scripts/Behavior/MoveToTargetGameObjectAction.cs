@@ -4,7 +4,7 @@ using UnityEngine;
 using Action = Unity.Behavior.Action;
 using Unity.Properties;
 using UnityEngine.AI;
-using UnityEditor;
+using GameDevTV.RTS.Utilities;
 
 namespace GameDevTV.RTS.Behahavior
 {
@@ -17,9 +17,11 @@ public partial class MoveToTargetGameObjectAction : Action
     [SerializeReference] public BlackboardVariable<GameObject> TargetGameObject;
     
     private NavMeshAgent navMeshAgent;
+    private Animator animator;
 
     protected override Status OnStart()
     {             
+        Agent.Value.TryGetComponent(out animator);
 
         if (!Agent.Value.TryGetComponent(out navMeshAgent) || TargetGameObject.Value == null){
             return Status.Failure;
@@ -45,6 +47,10 @@ public partial class MoveToTargetGameObjectAction : Action
 
     protected override Status OnUpdate()
     {
+        if (animator != null){
+            animator.SetFloat(AnimationConstants.SPEED, navMeshAgent.velocity.magnitude);
+        }
+        
         if (!navMeshAgent.pathPending && navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance){
             return StatusSuccess();
         }
@@ -62,6 +68,10 @@ public partial class MoveToTargetGameObjectAction : Action
     }
 
 
+    protected override void OnEnd(){
+        if (animator != null){
+            animator.SetFloat(AnimationConstants.SPEED, 0f);
+        }
+    }
 }
-
 }
