@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 621011388381258069}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.01232, y: 0.5, z: 1.42722}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -44,5 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29aa3f14c23f5aa4ba78edc880042454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DebugAutoActions
-  worker: {fileID: 0}
+  workers: []
   gathSup: {fileID: 0}

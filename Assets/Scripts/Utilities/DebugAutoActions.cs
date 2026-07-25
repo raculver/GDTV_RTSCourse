@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class DebugAutoActions : MonoBehaviour
 {
-    [SerializeField] Worker worker;
+    [SerializeField] Worker[] workers;
     [SerializeField] GatherableSupply gathSup;
 
     void Start(){
-        worker.Gather(gathSup);
+        foreach (Worker worker in workers) worker.Gather(gathSup);
     }
 }

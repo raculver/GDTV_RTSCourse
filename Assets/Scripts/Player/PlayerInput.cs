@@ -9,8 +9,6 @@ using UnityEngine.InputSystem;
 using System.Linq;
 using UnityEngine.EventSystems;
 
-
-
 namespace GameDevTV.RTS.Player
 {
 // Unit Selection Bus Logic (mermaid)
@@ -345,6 +343,7 @@ public class PlayerInput : MonoBehaviour
             ActivateAction(new RaycastHit()); // use dummy raycast hit
         }        
     }
+
     #endregion
 
 }
