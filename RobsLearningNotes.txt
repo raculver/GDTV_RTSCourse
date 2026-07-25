@@ -57,7 +57,8 @@ Behaviour Trees
 - To use on gameObjects, Requires gameObjects have BehaviorAgent
 - Make graphs with right click on project window -> create -> behaviour -> behavior graph
 - Cool creation wizard in the tree editor... generates script skeletons for you
-- Dont forget the OnEnd feature. Useful for handling aborts.
+- Dont forget the OnEnd feature. Useful for handling aborts and other stuff.
+- Behaviour Events / Event Channel Type (delegates)
 Comparators and System.Linq
 - Really cool way to filter and order colliders. Look at ChooseClosestGatherableSupply and ClosestColliderComparer
 For performance, Avoid using Update()

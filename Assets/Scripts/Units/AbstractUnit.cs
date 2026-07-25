@@ -2,6 +2,7 @@ using System;
 using GameDevTV.RTS.Behahavior;
 using GameDevTV.RTS.EventBus;
 using GameDevTV.RTS.Events;
+using GameDevTV.RTS.Utilities;
 using Unity.Behavior;
 using UnityEngine;
 using UnityEngine.AI;
@@ -29,7 +30,7 @@ namespace GameDevTV.RTS.Units
         }
 
         public void MoveTo(Vector3 position) {
-            graphAgent.SetVariableValue<Vector3>(BTVariables.BT_TARGET_POSITION, position);
+            graphAgent.SetVariableValue<Vector3>(BTVariables.BT_UNIT_TGT_POSITION, position);
             graphAgent.SetVariableValue<Enum>(BTVariables.BT_UNIT_COMMAND, UnitCommands.Move);
         }
 

@@ -1,18 +1,33 @@
 using System;
 using GameDevTV.RTS.Behahavior;
 using GameDevTV.RTS.Environment;
-using Unity.VisualScripting;
+using GameDevTV.RTS.EventBus;
+using GameDevTV.RTS.Events;
+using GameDevTV.RTS.Utilities;
+using Unity.Behavior;
 using UnityEngine;
 
 namespace GameDevTV.RTS.Units{
 
 public class Worker : AbstractUnit
 {
+    protected override void Start(){
+        base.Start();
+        if (graphAgent.GetVariable(BTVariables.BT_UNIT_GATHSUP_EVT_CH, out BlackboardVariable<GatherSuppliesEventChannel> evtChannelVariable))
+        {
+            evtChannelVariable.Value.Event += HandleGatherSupplies;
+        }
+    }
+
     public void Gather(GatherableSupply supply)
     {
-        graphAgent.SetVariableValue<GameObject>(BTVariables.BT_TARGET_GAME_OBJECT, supply.gameObject);
-        graphAgent.SetVariableValue<GatherableSupply>(BTVariables.BT_UNIT_GATHERABLE_SUPPLY, supply);
+        graphAgent.SetVariableValue<GameObject>(BTVariables.BT_UNIT_TGT_GAME_OBJECT, supply.gameObject);
+        graphAgent.SetVariableValue<GatherableSupply>(BTVariables.BT_UNIT_TGT_GATHSUP, supply);
         graphAgent.SetVariableValue<Enum>(BTVariables.BT_UNIT_COMMAND, UnitCommands.Gather);
+    }   
+
+    private void HandleGatherSupplies(GameObject agent, int amount, SupplySO gathSupSO){
+        Bus<SupplyEvent>.Raise( new(amount, gathSupSO));
     }
 }
 

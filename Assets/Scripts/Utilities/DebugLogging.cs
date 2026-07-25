@@ -1,10 +1,11 @@
+using System;
+using GameDevTV.RTS.EventBus;
+using GameDevTV.RTS.Events;
 using UnityEngine;
 
 public class DebugLogging : MonoBehaviour
 {
-    [Header("=== Debug Toggles ===")]
-
-
+    [Header("Debug Message Toggles")]
     [SerializeField] private bool ENABLE_MESSAGES = true;
     [field:SerializeField] public bool REPORT_CLICKS {get; private set;} = false;
     [field:SerializeField] public bool ACTION_GATHER_SUP {get; private set;} = false;
@@ -27,9 +28,23 @@ public class DebugLogging : MonoBehaviour
         }
     }
 
+    private void OnEnable(){
+        //Bus<SupplyEvent>.OnEvent += HandleBusEvent;
+    }
+
+    private void OnDisable(){
+        //Bus<SupplyEvent>.OnEvent -= HandleBusEvent;
+    }
+
     public void Message(string message, bool debugCheck)
     {
         if (ENABLE_MESSAGES && debugCheck)
             Debug.Log($"Debug Message: {message}");
+    }
+
+    private void HandleBusEvent<T>(T args)
+    {
+        if (!ENABLE_MESSAGES) return;
+        Debug.Log($"BusEvent raised with args: {args}");
     }
 }
