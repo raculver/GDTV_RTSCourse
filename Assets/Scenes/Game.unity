@@ -22741,10 +22741,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8538387421283765161, guid: 883b9682b823cb84cac42e4ad43d41d2, type: 3}
-      propertyPath: m_StoppingDistance
-      value: 0.75
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

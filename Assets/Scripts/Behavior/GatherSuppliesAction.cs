@@ -18,8 +18,9 @@ public partial class GatherSuppliesAction : Action
 
     private float enterTime;
 
-    protected override Status OnStart()
-    {
+    protected override Status OnStart(){
+        if (GathSup == null) return Status.Failure;
+        
         enterTime = Time.time;
 
         GathSup.Value.BeginGather();
@@ -28,13 +29,22 @@ public partial class GatherSuppliesAction : Action
 
     protected override Status OnUpdate()
     {
-        if (GathSup.Value.Supply.BaseGatherTime + enterTime <= Time.time)
-        {
-            Amount.Value = GathSup.Value.EndGather();
+        if (GathSup.Value.Supply.BaseGatherTime + enterTime <= Time.time){
             return Status.Success;
         }
 
         return Status.Running;
+    }
+
+    protected override void OnEnd(){
+        if (GathSup == null) return;
+
+        if (CurrentStatus == Status.Success){
+            Amount.Value = GathSup.Value.EndGather();
+        }
+        else{
+            GathSup.Value.AbortGather();
+        }
     }
 }
 // [Serializable, GeneratePropertyBag]

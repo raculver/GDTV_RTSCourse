@@ -14,16 +14,14 @@ namespace GameDevTV.RTS.Environment
             IsBusy = false;
         }
 
-        public bool BeginGather()
-        {
+        public bool BeginGather(){
             if (IsBusy) return false;
 
             IsBusy = true;
             return true;
         }
 
-        public int EndGather()
-        {
+        public int EndGather(){
             IsBusy = false;
             int amountGathered = Mathf.Min(Supply.AmountPerGather, AmountRemaining);
             AmountRemaining -= amountGathered;
@@ -31,6 +29,10 @@ namespace GameDevTV.RTS.Environment
                 Destroy(gameObject);
             }
             return amountGathered;
+        }
+
+        public void AbortGather(){
+            IsBusy = false;
         }
     }
 

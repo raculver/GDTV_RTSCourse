@@ -24,9 +24,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
-     inkscape:zoom="1.4878904"
-     inkscape:cx="656.6344"
-     inkscape:cy="2779.4387"
+     inkscape:zoom="2.1041947"
+     inkscape:cx="633.97174"
+     inkscape:cy="2767.5671"
      inkscape:window-width="3840"
      inkscape:window-height="2066"
      inkscape:window-x="2869"
@@ -2170,15 +2170,15 @@
        y="0"><tspan
          x="87.612305"
          y="120.83984"
-         id="tspan17"><tspan
+         id="tspan19"><tspan
            style="text-align:center;text-anchor:middle"
-           id="tspan16">IUIElement
+           id="tspan18">IUIElement
 </tspan></tspan><tspan
          x="71.378906"
          y="135.83984"
-         id="tspan19"><tspan
+         id="tspan22"><tspan
            style="text-align:center;text-anchor:middle"
-           id="tspan18">&lt;BaseBuilding&gt;</tspan></tspan></text><rect
+           id="tspan21">&lt;BaseBuilding&gt;</tspan></tspan></text><rect
        style="fill:#9ae3fa;fill-opacity:1;stroke-width:0.264999"
        id="rect1-2-4-4"
        width="45"
@@ -2193,15 +2193,15 @@
        y="0"><tspan
          x="87.612305"
          y="120.83984"
-         id="tspan22"><tspan
+         id="tspan24"><tspan
            style="text-align:center;text-anchor:middle"
-           id="tspan21">IUIElement
+           id="tspan23">IUIElement
 </tspan></tspan><tspan
          x="51.213867"
          y="135.83984"
-         id="tspan24"><tspan
+         id="tspan26"><tspan
            style="text-align:center;text-anchor:middle"
-           id="tspan23">&lt;UnitSO, UnityAction&gt;</tspan></tspan></text><rect
+           id="tspan25">&lt;UnitSO, UnityAction&gt;</tspan></tspan></text><rect
        style="fill:#c3fa9a;fill-opacity:1;stroke-width:0.264999"
        id="rect1-0-74"
        width="45"
@@ -2216,7 +2216,7 @@
        y="0"><tspan
          x="62.270508"
          y="120.83984"
-         id="tspan25">BuildUnitCommand</tspan></text><rect
+         id="tspan27">BuildUnitCommand</tspan></text><rect
        style="fill:#c3fa9a;fill-opacity:1;stroke-width:0.264999"
        id="rect1-0-9"
        width="45"
@@ -2237,7 +2237,7 @@
        y="0"><tspan
          x="104.59863"
          y="120.83984"
-         id="tspan26">Class</tspan></text><text
+         id="tspan28">Class</tspan></text><text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,5.5306292,112.90371)"
        id="text1-2-71"
@@ -2246,7 +2246,7 @@
        y="0"><tspan
          x="73.456055"
          y="120.83984"
-         id="tspan27">MoveCommand</tspan></text><rect
+         id="tspan29">MoveCommand</tspan></text><rect
        style="fill:#c3fa9a;fill-opacity:1;stroke-width:0.264999"
        id="rect1-0-9-0"
        width="45"
@@ -2261,7 +2261,7 @@
        y="0"><tspan
          x="73.456055"
          y="120.83984"
-         id="tspan28">MoveCommand</tspan></text><rect
+         id="tspan30">MoveCommand</tspan></text><rect
        style="fill:#c3fa9a;fill-opacity:1;stroke-width:0.264999"
        id="rect1-0-9-0-8"
        width="45"
@@ -2276,7 +2276,7 @@
        y="0"><tspan
          x="75.905273"
          y="120.83984"
-         id="tspan29">StopCommand</tspan></text><rect
+         id="tspan31">StopCommand</tspan></text><rect
        style="fill:#c3fa9a;fill-opacity:1;stroke-width:0.264999"
        id="rect1-0-9-0-8-2"
        width="45"
@@ -2291,7 +2291,7 @@
        y="0"><tspan
          x="75.905273"
          y="120.83984"
-         id="tspan30">StopCommand</tspan></text><text
+         id="tspan32">StopCommand</tspan></text><text
        xml:space="preserve"
        transform="scale(0.26458333)"
        id="text2"
@@ -2310,7 +2310,7 @@
        y="0"><tspan
          x="81.433594"
          y="120.83984"
-         id="tspan31">BaseBuilding</tspan></text><rect
+         id="tspan33">BaseBuilding</tspan></text><rect
        style="fill:#fabe9a;fill-opacity:1;stroke:#000000;stroke-width:0.264999;stroke-opacity:1"
        id="rect1-4-4-0"
        width="45"
@@ -2325,7 +2325,7 @@
        y="0"><tspan
          x="99.246094"
          y="120.83984"
-         id="tspan32">Worker</tspan></text><rect
+         id="tspan34">Worker</tspan></text><rect
        style="fill:#fabe9a;fill-opacity:1;stroke:#000000;stroke-width:0.264999;stroke-opacity:1"
        id="rect1-4-6"
        width="45"
@@ -2340,7 +2340,7 @@
        y="0"><tspan
          x="75.272461"
          y="120.83984"
-         id="tspan33">BaseBuildingUI</tspan></text><rect
+         id="tspan35">BaseBuildingUI</tspan></text><rect
        style="fill:#fabe9a;fill-opacity:1;stroke:#010101;stroke-width:0.264999;stroke-opacity:1"
        id="rect1-4-6-9"
        width="45"
@@ -2355,7 +2355,7 @@
        y="0"><tspan
          x="59.352539"
          y="120.83984"
-         id="tspan34">UIBuildQueueButton</tspan></text><rect
+         id="tspan36">UIBuildQueueButton</tspan></text><rect
        style="fill:#9ae3fa;fill-opacity:1;stroke-width:0.264999"
        id="rect1-2-4-4-9"
        width="45"
@@ -2370,15 +2370,15 @@
        y="0"><tspan
          x="87.612305"
          y="120.83984"
-         id="tspan36"><tspan
+         id="tspan38"><tspan
            style="text-align:center;text-anchor:middle"
-           id="tspan35">IUIElement
+           id="tspan37">IUIElement
 </tspan></tspan><tspan
          x="38.557617"
          y="135.83984"
-         id="tspan38"><tspan
+         id="tspan40"><tspan
            style="text-align:center;text-anchor:middle"
-           id="tspan37">&lt;ActionBase, UnityAction&gt;</tspan></tspan></text><rect
+           id="tspan39">&lt;ActionBase, UnityAction&gt;</tspan></tspan></text><rect
        style="fill:#fabe9a;fill-opacity:1;stroke:#010101;stroke-width:0.264999;stroke-opacity:1"
        id="rect1-4-6-9-8"
        width="45"
@@ -2393,7 +2393,7 @@
        y="0"><tspan
          x="84.518555"
          y="120.83984"
-         id="tspan39">ProgressBar</tspan></text><rect
+         id="tspan41">ProgressBar</tspan></text><rect
        style="fill:#fabe9a;fill-opacity:1;stroke:#010101;stroke-width:0.264999;stroke-opacity:1"
        id="rect1-4-6-2"
        width="45"
@@ -2408,7 +2408,7 @@
        y="0"><tspan
          x="89.162109"
          y="120.83984"
-         id="tspan40">RuntimeUI</tspan></text><rect
+         id="tspan42">RuntimeUI</tspan></text><rect
        style="fill:#fabe9a;fill-opacity:1;stroke:#010101;stroke-width:0.264999;stroke-dasharray:0.264999, 0.264999;stroke-dashoffset:0;stroke-opacity:1"
        id="rect1-4-6-4"
        width="45"
@@ -2423,7 +2423,7 @@
        y="0"><tspan
          x="51.515625"
          y="120.83984"
-         id="tspan41">AbstractCommandable</tspan></text><rect
+         id="tspan43">AbstractCommandable</tspan></text><rect
        style="fill:#fabe9a;fill-opacity:1;stroke:#010101;stroke-width:0.264999;stroke-dasharray:0.264999, 0.264999;stroke-dashoffset:0;stroke-opacity:1"
        id="rect1-4-6-4-4-1"
        width="45"
@@ -2438,7 +2438,7 @@
        y="0"><tspan
          x="82.983398"
          y="120.83984"
-         id="tspan42">AbstractUnit</tspan></text><rect
+         id="tspan44">AbstractUnit</tspan></text><rect
        style="fill:#9ae3fa;fill-opacity:1;stroke-width:0.264999"
        id="rect1-2-7"
        width="45"
@@ -2459,7 +2459,7 @@
        y="0"><tspan
          x="93.521484"
          y="120.83984"
-         id="tspan43">Interface</tspan></text><text
+         id="tspan45">Interface</tspan></text><text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,525.57711,9.2114411)"
        id="text1-4-4-5"
@@ -2468,7 +2468,7 @@
        y="0"><tspan
          x="70.59668"
          y="120.83984"
-         id="tspan44">ScriptableObject</tspan></text><rect
+         id="tspan46">ScriptableObject</tspan></text><rect
        style="fill:#c3fa9a;fill-opacity:1;stroke:#010101;stroke-width:0.264999;stroke-dasharray:0.264999, 0.264999;stroke-dashoffset:0;stroke-opacity:1"
        id="rect1-2-7-9-0"
        width="45"
@@ -2483,7 +2483,7 @@
        y="0"><tspan
          x="86.982422"
          y="120.83984"
-         id="tspan45">ActionBase</tspan></text><rect
+         id="tspan47">ActionBase</tspan></text><rect
        style="fill:#c3fa9a;fill-opacity:1;stroke:none;stroke-width:0.264999;stroke-dasharray:0.264999, 0.264999;stroke-dashoffset:0;stroke-opacity:1"
        id="rect1-2-7-9-0-5"
        width="45"
@@ -2498,7 +2498,7 @@
        y="0"><tspan
          x="99.638672"
          y="120.83984"
-         id="tspan46">UnitSO</tspan></text><rect
+         id="tspan48">UnitSO</tspan></text><rect
        style="fill:#c3fa9a;fill-opacity:1;stroke:none;stroke-width:0.264999;stroke-dasharray:0.264999, 0.264999;stroke-dashoffset:0;stroke-opacity:1"
        id="rect1-2-7-9-0-5-9"
        width="45"
@@ -2513,7 +2513,7 @@
        y="0"><tspan
          x="99.638672"
          y="120.83984"
-         id="tspan47">UnitSO</tspan></text><rect
+         id="tspan49">UnitSO</tspan></text><rect
        style="fill:#c3fa9a;fill-opacity:1;stroke:none;stroke-width:0.264999;stroke-dasharray:0.264999, 0.264999;stroke-dashoffset:0;stroke-opacity:1"
        id="rect1-2-7-9-0-5-2"
        width="45"
@@ -2528,7 +2528,7 @@
        y="0"><tspan
          x="99.638672"
          y="120.83984"
-         id="tspan48">UnitSO</tspan></text><rect
+         id="tspan50">UnitSO</tspan></text><rect
        style="fill:#9ae3fa;fill-opacity:1;stroke-width:0.264999"
        id="rect1-2-7-4"
        width="45"
@@ -2543,7 +2543,7 @@
        y="0"><tspan
          x="87.260742"
          y="120.83984"
-         id="tspan49">ISelectable</tspan></text><rect
+         id="tspan51">ISelectable</tspan></text><rect
        style="fill:#9ae3fa;fill-opacity:1;stroke-width:0.264999"
        id="rect1-2-7-4-4"
        width="45"
@@ -2558,7 +2558,7 @@
        y="0"><tspan
          x="87.776367"
          y="120.83984"
-         id="tspan50">ICommand</tspan></text><rect
+         id="tspan53">ICommand</tspan></text><rect
        style="fill:#9ae3fa;fill-opacity:1;stroke-width:0.264999"
        id="rect1-2-7-4-4-1"
        width="45"
@@ -2573,7 +2573,7 @@
        y="0"><tspan
          x="85.130859"
          y="120.83984"
-         id="tspan51">IGatherable</tspan></text><rect
+         id="tspan54">IGatherable</tspan></text><rect
        style="fill:#c3fa9a;fill-opacity:1;stroke:#010101;stroke-width:0.264999;stroke-dasharray:0.264999, 0.264999;stroke-dashoffset:0;stroke-opacity:1"
        id="rect1-2-7-9-0-9-6-4-1"
        width="45"
@@ -2588,7 +2588,7 @@
        y="0"><tspan
          x="86.982422"
          y="120.83984"
-         id="tspan53">ActionBase</tspan></text><rect
+         id="tspan55">ActionBase</tspan></text><rect
        style="fill:#9ae3fa;fill-opacity:1;stroke-width:0.264999"
        id="rect1-2-7-4-4-4-9-9-8"
        width="45"
@@ -2603,7 +2603,7 @@
        y="0"><tspan
          x="87.776367"
          y="120.83984"
-         id="tspan54">ICommand</tspan></text><rect
+         id="tspan56">ICommand</tspan></text><rect
        style="fill:#9ae3fa;fill-opacity:1;stroke-width:0.264999"
        id="rect1-2-7-4-6"
        width="45"
@@ -2618,7 +2618,7 @@
        y="0"><tspan
          x="89.680664"
          y="120.83984"
-         id="tspan55">IMoveable</tspan></text><rect
+         id="tspan57">IMoveable</tspan></text><rect
        style="fill:#9ae3fa;fill-opacity:1;stroke-width:0.264999"
        id="rect1-2-7-4-6-0"
        width="45"
@@ -2633,7 +2633,7 @@
        y="0"><tspan
          x="89.680664"
          y="120.83984"
-         id="tspan56">IMoveable</tspan></text><rect
+         id="tspan58">IMoveable</tspan></text><rect
        style="fill:#fabe9a;fill-opacity:1;stroke:#000000;stroke-width:0.264999;stroke-opacity:1"
        id="rect1-0-9-2-3"
        width="45"
@@ -2648,7 +2648,7 @@
        y="0"><tspan
          x="73.617188"
          y="120.83984"
-         id="tspan57">MonoBehaviour</tspan></text><rect
+         id="tspan59">MonoBehaviour</tspan></text><rect
        style="fill:#fabe9a;fill-opacity:1;stroke:#010101;stroke-width:0.265;stroke-dasharray:0.265, 0.265;stroke-dashoffset:0;stroke-opacity:1"
        id="rect1-0-9-2-3-9"
        width="45"
@@ -2663,7 +2663,7 @@
        y="0"><tspan
          x="79.412109"
          y="120.83984"
-         id="tspan58">AbstractClass</tspan></text><image
+         id="tspan60">AbstractClass</tspan></text><image
        width="65.479378"
        height="50.43959"
        preserveAspectRatio="none"
@@ -2691,7 +2691,7 @@
        y="0"><tspan
          x="93.711914"
          y="120.83984"
-         id="tspan59">Bus &lt;T&gt;</tspan></text><text
+         id="tspan61">Bus &lt;T&gt;</tspan></text><text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,525.89377,68.982836)"
        id="text1-2-71-5-3-5"
@@ -2700,7 +2700,7 @@
        y="0"><tspan
          x="57.94043"
          y="120.83984"
-         id="tspan60">Behaviour Tree Logic</tspan></text><text
+         id="tspan62">Behaviour Tree Logic</tspan></text><text
        xml:space="preserve"
        style="font-size:3.175px;text-align:center;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:#010101;stroke-width:0.264999;stroke-dasharray:0.264999, 0.264999;stroke-dashoffset:0;stroke-opacity:1"
        x="82.332733"
@@ -2735,7 +2735,7 @@
        y="0"><tspan
          x="62.270508"
          y="120.83984"
-         id="tspan61">BuildUnitCommand</tspan></text><rect
+         id="tspan63">BuildUnitCommand</tspan></text><rect
        style="fill:#c3fa9a;fill-opacity:1;stroke-width:0.264999"
        id="rect1-0-74-3-8"
        width="45"
@@ -2750,7 +2750,7 @@
        y="0"><tspan
          x="62.270508"
          y="120.83984"
-         id="tspan62">BuildUnitCommand</tspan></text><rect
+         id="tspan64">BuildUnitCommand</tspan></text><rect
        style="fill:#fabe9a;fill-opacity:1;stroke:#000000;stroke-width:0.264999;stroke-opacity:1"
        id="rect1-4-6-28-5"
        width="45"
@@ -2765,7 +2765,7 @@
        y="0"><tspan
          x="92.305664"
          y="120.83984"
-         id="tspan63">ActionsUI</tspan></text><rect
+         id="tspan65">ActionsUI</tspan></text><rect
        style="fill:#9ae3fa;fill-opacity:1;stroke-width:0.264999"
        id="rect1-2-4-4-9-0"
        width="45"
@@ -2780,15 +2780,15 @@
        y="0"><tspan
          x="87.612305"
          y="120.83984"
-         id="tspan65"><tspan
+         id="tspan67"><tspan
            style="text-align:center;text-anchor:middle"
-           id="tspan64">IUIElement
+           id="tspan66">IUIElement
 </tspan></tspan><tspan
          x="38.557617"
          y="135.83984"
-         id="tspan67"><tspan
+         id="tspan69"><tspan
            style="text-align:center;text-anchor:middle"
-           id="tspan66">&lt;ActionBase, UnityAction&gt;</tspan></tspan></text><rect
+           id="tspan68">&lt;ActionBase, UnityAction&gt;</tspan></tspan></text><rect
        style="fill:#fabe9a;fill-opacity:1;stroke:#010101;stroke-width:0.264999;stroke-opacity:1"
        id="rect1-4-6-9-7-9"
        width="45"
@@ -2803,7 +2803,7 @@
        y="0"><tspan
          x="75.333984"
          y="120.83984"
-         id="tspan68">UIActionButton</tspan></text><rect
+         id="tspan70">UIActionButton</tspan></text><rect
        style="fill:#c3fa9a;fill-opacity:1;stroke:#010101;stroke-width:0.264999;stroke-dasharray:0.264999, 0.264999;stroke-dashoffset:0;stroke-opacity:1"
        id="rect1-2-7-9-0-9-6"
        width="45"
@@ -2818,7 +2818,7 @@
        y="0"><tspan
          x="86.982422"
          y="120.83984"
-         id="tspan69">ActionBase</tspan></text><rect
+         id="tspan71">ActionBase</tspan></text><rect
        style="fill:#9ae3fa;fill-opacity:1;stroke-width:0.264999"
        id="rect1-2-7-4-4-4-9"
        width="45"
@@ -2833,7 +2833,7 @@
        y="0"><tspan
          x="87.776367"
          y="120.83984"
-         id="tspan70">ICommand</tspan></text><path
+         id="tspan72">ICommand</tspan></text><path
        style="fill:#ffffff;fill-opacity:1;stroke:#010101;stroke-width:0.365001;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker27)"
        d="m 64.8675,214.86751 h -5"
        id="path17-6" /><path
@@ -2883,7 +2883,7 @@
        y="0"><tspan
          x="99.246094"
          y="120.83984"
-         id="tspan71">Worker</tspan></text><path
+         id="tspan73">Worker</tspan></text><path
        style="fill:#ffffff;fill-opacity:1;stroke:#010101;stroke-width:0.365001;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker18-1-8-1-4-8-7)"
        d="m 84.999236,770 -8.999949,-4e-5"
        id="path17-6-18-0-6-81-0"
@@ -2922,7 +2922,7 @@
        y="0"><tspan
          x="51.515625"
          y="120.83984"
-         id="tspan72">AbstractCommandable</tspan></text><rect
+         id="tspan74">AbstractCommandable</tspan></text><rect
        style="fill:#c3fa9a;fill-opacity:1;stroke:none;stroke-width:0.264999;stroke-dasharray:0.264999, 0.264999;stroke-dashoffset:0;stroke-opacity:1"
        id="rect1-2-7-9-0-5-9-2"
        width="45"
@@ -2937,7 +2937,7 @@
        y="0"><tspan
          x="99.638672"
          y="120.83984"
-         id="tspan73">UnitSO</tspan></text><rect
+         id="tspan75">UnitSO</tspan></text><rect
        style="fill:#9ae3fa;fill-opacity:1;stroke-width:0.264999"
        id="rect1-2-7-4-8"
        width="45"
@@ -2952,7 +2952,7 @@
        y="0"><tspan
          x="87.260742"
          y="120.83984"
-         id="tspan74">ISelectable</tspan></text><path
+         id="tspan76">ISelectable</tspan></text><path
        style="fill:#ffffff;fill-opacity:1;stroke:#010101;stroke-width:0.365001;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker18-1-8-1-4-1-5)"
        d="M 65,50.000004 H 63 V 42.000006 H 60"
        id="path17-6-18-0-6-8-5"
@@ -2993,7 +2993,7 @@
        y="0"><tspan
          x="84.269531"
          y="120.83984"
-         id="tspan75">Player Input</tspan></text><rect
+         id="tspan77">Player Input</tspan></text><rect
        style="fill:#9ae3fa;fill-opacity:1;stroke-width:0.264999"
        id="rect1-2-4"
        width="45"
@@ -3008,15 +3008,15 @@
        y="0"><tspan
          x="87.612305"
          y="120.83984"
-         id="tspan77"><tspan
+         id="tspan79"><tspan
            style="text-align:center;text-anchor:middle"
-           id="tspan76">IUIElement
+           id="tspan78">IUIElement
 </tspan></tspan><tspan
          x="40.456055"
          y="135.83984"
-         id="tspan79"><tspan
+         id="tspan81"><tspan
            style="text-align:center;text-anchor:middle"
-           id="tspan78">&lt;HashSet&lt;Abst.Comm&gt;&gt;</tspan></tspan></text><rect
+           id="tspan80">&lt;HashSet&lt;Abst.Comm&gt;&gt;</tspan></tspan></text><rect
        style="fill:#fabe9a;fill-opacity:1;stroke:#010101;stroke-width:0.264999;stroke-opacity:1"
        id="rect1-4-6-2-3"
        width="45"
@@ -3031,7 +3031,7 @@
        y="0"><tspan
          x="89.162109"
          y="120.83984"
-         id="tspan80">RuntimeUI</tspan></text><rect
+         id="tspan82">RuntimeUI</tspan></text><rect
        style="fill:#fabe9a;fill-opacity:1;stroke:#010101;stroke-width:0.264999;stroke-opacity:1"
        id="rect1-4-6-2-4"
        width="45"
@@ -3046,7 +3046,7 @@
        y="0"><tspan
          x="92.305664"
          y="120.83984"
-         id="tspan81">ActionsUI</tspan></text><rect
+         id="tspan83">ActionsUI</tspan></text><rect
        style="fill:#fabe9a;fill-opacity:1;stroke:#010101;stroke-width:0.165217;stroke-dasharray:0.165217, 0.165217;stroke-dashoffset:0;stroke-opacity:1"
        id="rect1-4-6-4-41"
        width="28.056526"
@@ -3061,7 +3061,7 @@
        y="0"><tspan
          x="51.515625"
          y="120.83984"
-         id="tspan82">AbstractCommandable</tspan></text><rect
+         id="tspan84">AbstractCommandable</tspan></text><rect
        style="fill:#c3fa9a;fill-opacity:1;stroke:none;stroke-width:0.264999;stroke-dasharray:0.264999, 0.264999;stroke-dashoffset:0;stroke-opacity:1"
        id="rect1-2-7-9-0-5-5"
        width="45"
@@ -3076,7 +3076,7 @@
        y="0"><tspan
          x="99.638672"
          y="120.83984"
-         id="tspan83">UnitSO</tspan></text><rect
+         id="tspan85">UnitSO</tspan></text><rect
        style="fill:#9ae3fa;fill-opacity:1;stroke-width:0.264999"
        id="rect1-2-7-4-1"
        width="45"
@@ -3097,7 +3097,7 @@
        y="0"><tspan
          x="87.260742"
          y="120.83984"
-         id="tspan84">ISelectable</tspan></text><text
+         id="tspan86">ISelectable</tspan></text><text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,105.70964,317.17615)"
        id="text1-4-4-2-17-7"
@@ -3106,7 +3106,7 @@
        y="0"><tspan
          x="97.192383"
          y="120.83984"
-         id="tspan85">Select()</tspan></text><rect
+         id="tspan87">Select()</tspan></text><rect
        style="fill:#d29afa;fill-opacity:1;stroke-width:0.264999"
        id="rect1-0-9-0-2-1"
        width="45"
@@ -3127,7 +3127,7 @@
        y="0"><tspan
          x="41.964844"
          y="120.83984"
-         id="tspan86">Bus &lt;UnitSelectedEvent&gt;</tspan></text><rect
+         id="tspan88">Bus &lt;UnitSelectedEvent&gt;</tspan></text><rect
        style="fill:#fcdbc7;fill-opacity:1;stroke:#010101;stroke-width:0.264999;stroke-opacity:1"
        id="rect1-9-6"
        width="44.999996"
@@ -3148,7 +3148,7 @@
        y="0"><tspan
          x="46.725586"
          y="120.83984"
-         id="tspan87">HandleUnitSelected(evt)</tspan></text><rect
+         id="tspan89">HandleUnitSelected(evt)</tspan></text><rect
        style="fill:#fcdbc7;fill-opacity:1;stroke:#010101;stroke-width:0.264999;stroke-opacity:1"
        id="rect1-9-6-15"
        width="44.999996"
@@ -3169,7 +3169,7 @@
        y="0"><tspan
          x="46.725586"
          y="120.83984"
-         id="tspan88">HandleUnitSelected(evt)</tspan></text><text
+         id="tspan90">HandleUnitSelected(evt)</tspan></text><text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,65.769328,354.17615)"
        id="text1-5-5-6"
@@ -3178,7 +3178,7 @@
        y="0"><tspan
          x="47.013697"
          y="118.48047"
-         id="tspan89">List&lt;ISelectable&gt;selectedUnits</tspan></text><rect
+         id="tspan91">List&lt;ISelectable&gt;selectedUnits</tspan></text><rect
        style="fill:#fcdbc7;fill-opacity:1;stroke:#010101;stroke-width:0.264999;stroke-opacity:1"
        id="rect1-9-6-6-0"
        width="44.999996"
@@ -3193,7 +3193,7 @@
        y="0"><tspan
          x="63.260436"
          y="118.48047"
-         id="tspan90">EnableFor(BaseBuilding)</tspan></text><rect
+         id="tspan92">EnableFor(BaseBuilding)</tspan></text><rect
        style="fill:#fcdbc7;fill-opacity:1;stroke:#010101;stroke-width:0.264999;stroke-opacity:1"
        id="rect1-9-6-6-0-7"
        width="44.999996"
@@ -3208,7 +3208,7 @@
        y="0"><tspan
          x="48.394556"
          y="118.48047"
-         id="tspan91">EnableFor(UnitSo, UnityAction)</tspan></text><rect
+         id="tspan93">EnableFor(UnitSo, UnityAction)</tspan></text><rect
        style="fill:#fcdbc7;fill-opacity:1;stroke:#010101;stroke-width:0.264999;stroke-opacity:1"
        id="rect1-9-6-6-0-40"
        width="44.999996"
@@ -3223,7 +3223,7 @@
        y="0"><tspan
          x="68.004575"
          y="118.48047"
-         id="tspan92">UpdateBuildQueueUI()</tspan></text><rect
+         id="tspan94">UpdateBuildQueueUI()</tspan></text><rect
        style="fill:#fcdbc7;fill-opacity:1;stroke:#010101;stroke-width:0.264999;stroke-opacity:1"
        id="rect1-9-6-6-0-40-4"
        width="44.999996"
@@ -3238,7 +3238,7 @@
        y="0"><tspan
          x="40.6859"
          y="118.48047"
-         id="tspan93">UIBuildQueueButton[] uintButtons</tspan></text><rect
+         id="tspan95">UIBuildQueueButton[] uintButtons</tspan></text><rect
        style="fill:#fcdbc7;fill-opacity:1;stroke:#010101;stroke-width:0.264999;stroke-opacity:1"
        id="rect1-9-6-6-0-4"
        width="44.999996"
@@ -3253,7 +3253,7 @@
        y="0"><tspan
          x="39.209338"
          y="118.48047"
-         id="tspan94">EnableFor(HashSet&lt;Abst.Comm&gt;)</tspan></text><rect
+         id="tspan96">EnableFor(HashSet&lt;Abst.Comm&gt;)</tspan></text><rect
        style="fill:#fcdbc7;fill-opacity:1;stroke:#010101;stroke-width:0.264999;stroke-opacity:1"
        id="rect1-9-6-6-0-4-1"
        width="44.999996"
@@ -3268,7 +3268,7 @@
        y="0"><tspan
          x="49.540039"
          y="117.30078"
-         id="tspan95">EnableFor(ActionBase, UnityAction)</tspan></text><rect
+         id="tspan97">EnableFor(ActionBase, UnityAction)</tspan></text><rect
        style="fill:#fcdbc7;fill-opacity:1;stroke:#010101;stroke-width:0.264999;stroke-opacity:1"
        id="rect1-9-6-6-0-4-2"
        width="44.999996"
@@ -3289,7 +3289,7 @@
        y="0"><tspan
          x="45.963241"
          y="118.48047"
-         id="tspan96">RefreshButtons(HashSet&lt;A.C&gt;)</tspan></text><text
+         id="tspan98">RefreshButtons(HashSet&lt;A.C&gt;)</tspan></text><text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,175.76931,444.3282)"
        id="text1-5-5-6-46-0-8-8"
@@ -3298,7 +3298,7 @@
        y="0"><tspan
          x="47.395473"
          y="116.1211"
-         id="tspan97">HashSet&lt;ActionBase&gt; availableCommands</tspan></text><rect
+         id="tspan99">HashSet&lt;ActionBase&gt; availableCommands</tspan></text><rect
        style="fill:#fcdbc7;fill-opacity:1;stroke:#010101;stroke-width:0.264999;stroke-opacity:1"
        id="rect1-9-6-1"
        width="44.999996"
@@ -3313,7 +3313,7 @@
        y="0"><tspan
          x="68.958984"
          y="120.83984"
-         id="tspan98">HandleLeftClick()</tspan></text><path
+         id="tspan100">HandleLeftClick()</tspan></text><path
        style="fill:none;fill-opacity:1;stroke:#010101;stroke-width:0.665;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#ArrowWide)"
        d="m 120.1325,372.9647 18,2e-5 c 0,-33.65558 0,-12.66667 0,-22"
        id="path13"
@@ -3521,7 +3521,7 @@
        y="0"><tspan
          x="81.433594"
          y="120.83984"
-         id="tspan99">BaseBuilding</tspan></text><text
+         id="tspan101">BaseBuilding</tspan></text><text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,65.451098,393.58179)"
        id="text1-5-5-6-4"
@@ -3530,7 +3530,7 @@
        y="0"><tspan
          x="38.876655"
          y="118.48047"
-         id="tspan100">HashSet&lt;Absr.Com.&gt;curr.Selected</tspan></text><rect
+         id="tspan102">HashSet&lt;Absr.Com.&gt;curr.Selected</tspan></text><rect
        style="fill:none;fill-opacity:1;stroke:#010101;stroke-width:0.065;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="rect10"
        width="38.000004"
@@ -3586,15 +3586,15 @@
        y="0"><tspan
          x="87.612305"
          y="120.83984"
-         id="tspan102"><tspan
+         id="tspan104"><tspan
            style="text-align:center;text-anchor:middle"
-           id="tspan101">IUIElement
+           id="tspan103">IUIElement
 </tspan></tspan><tspan
          x="71.378906"
          y="135.83984"
-         id="tspan104"><tspan
+         id="tspan106"><tspan
            style="text-align:center;text-anchor:middle"
-           id="tspan103">&lt;BaseBuilding&gt;</tspan></tspan></text><rect
+           id="tspan105">&lt;BaseBuilding&gt;</tspan></tspan></text><rect
        style="fill:#fabe9a;fill-opacity:1;stroke:#000000;stroke-width:0.264999;stroke-opacity:1"
        id="rect1-4-6-74"
        width="45"
@@ -3609,7 +3609,7 @@
        y="0"><tspan
          x="75.272461"
          y="120.83984"
-         id="tspan105">BaseBuildingUI</tspan></text><path
+         id="tspan107">BaseBuildingUI</tspan></text><path
        style="fill:#ffffff;fill-opacity:1;stroke:#010101;stroke-width:0.365;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#ColoredTriangle)"
        d="m 172.1325,415.96472 0.0283,3.06642"
        id="path21"
@@ -3648,15 +3648,15 @@
        y="0"><tspan
          x="87.612305"
          y="120.83984"
-         id="tspan107"><tspan
+         id="tspan109"><tspan
            style="text-align:center;text-anchor:middle"
-           id="tspan106">IUIElement
+           id="tspan108">IUIElement
 </tspan></tspan><tspan
          x="51.213867"
          y="135.83984"
-         id="tspan109"><tspan
+         id="tspan111"><tspan
            style="text-align:center;text-anchor:middle"
-           id="tspan108">&lt;UnitSO, UnityAction&gt;</tspan></tspan></text><rect
+           id="tspan110">&lt;UnitSO, UnityAction&gt;</tspan></tspan></text><rect
        style="fill:#fabe9a;fill-opacity:1;stroke:#010101;stroke-width:0.264999;stroke-opacity:1"
        id="rect1-4-6-9-5"
        width="45"
@@ -3671,7 +3671,7 @@
        y="0"><tspan
          x="59.352539"
          y="120.83984"
-         id="tspan110">UIBuildQueueButton</tspan></text><rect
+         id="tspan112">UIBuildQueueButton</tspan></text><rect
        style="fill:#fabe9a;fill-opacity:1;stroke:#010101;stroke-width:0.264999;stroke-opacity:1"
        id="rect1-4-6-9-8-4"
        width="45"
@@ -3686,7 +3686,7 @@
        y="0"><tspan
          x="84.518555"
          y="120.83984"
-         id="tspan111">ProgressBar</tspan></text><path
+         id="tspan113">ProgressBar</tspan></text><path
        style="fill:none;fill-opacity:1;stroke:#010101;stroke-width:0.665;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#ArrowWide)"
        d="m 315.13248,412.96474 h 5 v -58.00001 h 5"
        id="path22" /><path
@@ -3714,7 +3714,7 @@
        y="0"><tspan
          x="81.433594"
          y="120.83984"
-         id="tspan112">BaseBuilding</tspan></text><rect
+         id="tspan114">BaseBuilding</tspan></text><rect
        style="fill:#fabe9a;fill-opacity:1;stroke:#010101;stroke-width:0.264999;stroke-dasharray:0.264999, 0.264999;stroke-dashoffset:0;stroke-opacity:1"
        id="rect1-4-6-4-2-1"
        width="45"
@@ -3729,7 +3729,7 @@
        y="0"><tspan
          x="51.515625"
          y="120.83984"
-         id="tspan113">AbstractCommandable</tspan></text><text
+         id="tspan115">AbstractCommandable</tspan></text><text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,231.47751,346.94754)"
        id="text1-7-7-7-4-5-7"
@@ -3738,7 +3738,7 @@
        y="0"><tspan
          x="41.740912"
          y="118.48047"
-         id="tspan114">ActionBase[] AvailableCommands</tspan></text><rect
+         id="tspan116">ActionBase[] AvailableCommands</tspan></text><rect
        style="fill:#fcdbc7;fill-opacity:1;stroke:#010101;stroke-width:0.264999;stroke-opacity:1"
        id="rect1-9-6-15-2-2-7-4"
        width="44.999996"
@@ -3759,7 +3759,7 @@
        y="0"><tspan
          x="81.361992"
          y="118.48047"
-         id="tspan115">UnitsSO[] Queue</tspan></text><text
+         id="tspan117">UnitsSO[] Queue</tspan></text><text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,181.28095,353.14593)"
        id="text1-7-7-7-4-5-7-4-0"
@@ -3768,7 +3768,7 @@
        y="0"><tspan
          x="78.559259"
          y="118.48047"
-         id="tspan116">OnQueueUpdated</tspan></text><path
+         id="tspan118">OnQueueUpdated</tspan></text><path
        style="fill:#ffffff;fill-opacity:1;stroke:#010101;stroke-width:0.365001;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker18-5)"
        d="m 240.13248,369.9647 h -5"
        id="path17-5" /><path
@@ -3807,7 +3807,7 @@
        y="0"><tspan
          x="58.550477"
          y="118.48047"
-         id="tspan117">BaseBuilding baseBuilding</tspan></text><path
+         id="tspan119">BaseBuilding baseBuilding</tspan></text><path
        style="fill:#ffffff;fill-opacity:1;stroke:#010101;stroke-width:0.365;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#ColoredTriangle-8-9)"
        d="m 360.07418,442.96469 -10.00001,10e-6 -10e-6,-19.99999 h 9"
        id="path14-7-8"
@@ -3853,7 +3853,7 @@
        y="0"><tspan
          x="75.333984"
          y="120.83984"
-         id="tspan118">UIActionButton</tspan></text><rect
+         id="tspan120">UIActionButton</tspan></text><rect
        style="fill:#c3fa9a;fill-opacity:1;stroke-width:0.264999"
        id="rect1-0-74-3-6"
        width="45"
@@ -3868,7 +3868,7 @@
        y="0"><tspan
          x="62.270508"
          y="120.83984"
-         id="tspan119">BuildUnitCommand</tspan></text><rect
+         id="tspan121">BuildUnitCommand</tspan></text><rect
        style="fill:#c3fa9a;fill-opacity:1;stroke:#010101;stroke-width:0.264999;stroke-dasharray:0.264999, 0.264999;stroke-dashoffset:0;stroke-opacity:1"
        id="rect1-2-7-9-0-9-6-2"
        width="45"
@@ -3883,7 +3883,7 @@
        y="0"><tspan
          x="86.982422"
          y="120.83984"
-         id="tspan120">ActionBase</tspan></text><path
+         id="tspan122">ActionBase</tspan></text><path
        style="fill:#ffffff;fill-opacity:1;stroke:#010101;stroke-width:0.365001;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker18-1-8-1-6)"
        d="m 465.13249,494.96471 h -5"
        id="path17-6-18-0-2" /><rect
@@ -3901,7 +3901,7 @@
        y="0"><tspan
          x="73.456055"
          y="120.83984"
-         id="tspan121">MoveCommand</tspan></text><path
+         id="tspan123">MoveCommand</tspan></text><path
        style="fill:#ffffff;fill-opacity:1;stroke:#010101;stroke-width:0.365001;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker18-1-8-1-6-1)"
        d="m 465.13249,497.96472 h -3 v 10 h -2"
        id="path17-6-18-0-2-0"
@@ -3993,7 +3993,7 @@
        y="0"><tspan
          x="66.454102"
          y="120.83984"
-         id="tspan122">GatherableSupply</tspan></text><text
+         id="tspan124">GatherableSupply</tspan></text><text
        xml:space="preserve"
        style="font-size:7.05556px;text-align:end;text-anchor:end;fill:none;fill-opacity:1;stroke:#010101;stroke-width:0.264999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        x="509.6214"
@@ -4044,7 +4044,7 @@
        y="0"><tspan
          x="62.270508"
          y="120.83984"
-         id="tspan123">BuildUnitCommand</tspan></text><rect
+         id="tspan125">BuildUnitCommand</tspan></text><rect
        style="fill:#c3fa9a;fill-opacity:1;stroke:#010101;stroke-width:0.264999;stroke-dasharray:0.264999, 0.264999;stroke-dashoffset:0;stroke-opacity:1"
        id="rect1-2-7-9-0-9-6-4-4"
        width="45"
@@ -4059,7 +4059,7 @@
        y="0"><tspan
          x="86.982422"
          y="120.83984"
-         id="tspan124">ActionBase</tspan></text><rect
+         id="tspan126">ActionBase</tspan></text><rect
        style="fill:#9ae3fa;fill-opacity:1;stroke-width:0.264999"
        id="rect1-2-7-4-4-4-9-9-5"
        width="45"
@@ -4074,7 +4074,7 @@
        y="0"><tspan
          x="87.776367"
          y="120.83984"
-         id="tspan125">ICommand</tspan></text><rect
+         id="tspan127">ICommand</tspan></text><rect
        style="fill:#9ae3fa;fill-opacity:1;stroke-width:0.264999"
        id="rect1-2-4-4-3"
        width="45"
@@ -4089,15 +4089,15 @@
        y="0"><tspan
          x="87.612305"
          y="120.83984"
-         id="tspan127"><tspan
+         id="tspan129"><tspan
            style="text-align:center;text-anchor:middle"
-           id="tspan126">IUIElement
+           id="tspan128">IUIElement
 </tspan></tspan><tspan
          x="51.213867"
          y="135.83984"
-         id="tspan129"><tspan
+         id="tspan131"><tspan
            style="text-align:center;text-anchor:middle"
-           id="tspan128">&lt;UnitSO, UnityAction&gt;</tspan></tspan></text><rect
+           id="tspan130">&lt;UnitSO, UnityAction&gt;</tspan></tspan></text><rect
        style="fill:#fabe9a;fill-opacity:1;stroke:#000000;stroke-width:0.264999;stroke-opacity:1"
        id="rect1-4-6-6"
        width="45"
@@ -4112,7 +4112,7 @@
        y="0"><tspan
          x="75.272461"
          y="120.83984"
-         id="tspan130">BaseBuildingUI</tspan></text><rect
+         id="tspan132">BaseBuildingUI</tspan></text><rect
        style="fill:#fabe9a;fill-opacity:1;stroke:#010101;stroke-width:0.264999;stroke-opacity:1"
        id="rect1-4-6-9-3"
        width="45"
@@ -4127,7 +4127,7 @@
        y="0"><tspan
          x="59.352539"
          y="120.83984"
-         id="tspan131">UIBuildQueueButton</tspan></text><rect
+         id="tspan133">UIBuildQueueButton</tspan></text><rect
        style="fill:#c3fa9a;fill-opacity:1;stroke:none;stroke-width:0.264999;stroke-dasharray:0.264999, 0.264999;stroke-dashoffset:0;stroke-opacity:1"
        id="rect1-2-7-9-0-5-2-8"
        width="45"
@@ -4142,7 +4142,7 @@
        y="0"><tspan
          x="99.638672"
          y="120.83984"
-         id="tspan132">UnitSO</tspan></text><path
+         id="tspan134">UnitSO</tspan></text><path
        style="fill:#ffffff;fill-opacity:1;stroke:#010101;stroke-width:0.365001;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker27-2-6)"
        d="m 65.132497,539.96475 h -5"
        id="path17-6-7-6" /><path
@@ -4169,7 +4169,7 @@
        y="0"><tspan
          x="92.305664"
          y="120.83984"
-         id="tspan133">ActionsUI</tspan></text><rect
+         id="tspan135">ActionsUI</tspan></text><rect
        style="fill:#9ae3fa;fill-opacity:1;stroke-width:0.264999"
        id="rect1-2-4-4-9-0-6"
        width="45"
@@ -4184,15 +4184,15 @@
        y="0"><tspan
          x="87.612305"
          y="120.83984"
-         id="tspan135"><tspan
+         id="tspan137"><tspan
            style="text-align:center;text-anchor:middle"
-           id="tspan134">IUIElement
+           id="tspan136">IUIElement
 </tspan></tspan><tspan
          x="38.557617"
          y="135.83984"
-         id="tspan137"><tspan
+         id="tspan139"><tspan
            style="text-align:center;text-anchor:middle"
-           id="tspan136">&lt;ActionBase, UnityAction&gt;</tspan></tspan></text><rect
+           id="tspan138">&lt;ActionBase, UnityAction&gt;</tspan></tspan></text><rect
        style="fill:#fabe9a;fill-opacity:1;stroke:#010101;stroke-width:0.264999;stroke-opacity:1"
        id="rect1-4-6-9-7-9-41"
        width="45"
@@ -4207,7 +4207,7 @@
        y="0"><tspan
          x="75.333984"
          y="120.83984"
-         id="tspan138">UIActionButton</tspan></text><path
+         id="tspan140">UIActionButton</tspan></text><path
        style="fill:#ffffff;fill-opacity:1;stroke:#010101;stroke-width:0.365001;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker27-5)"
        d="m 65.264998,595.09728 h -5"
        id="path17-6-8" /><path
@@ -4244,7 +4244,7 @@
        y="0"><tspan
          x="81.433594"
          y="120.83984"
-         id="tspan139">BaseBuilding</tspan></text><rect
+         id="tspan141">BaseBuilding</tspan></text><rect
        style="fill:#fabe9a;fill-opacity:1;stroke:#010101;stroke-width:0.264999;stroke-dasharray:0.264999, 0.264999;stroke-dashoffset:0;stroke-opacity:1"
        id="rect1-4-6-4-2"
        width="45"
@@ -4259,7 +4259,7 @@
        y="0"><tspan
          x="51.515625"
          y="120.83984"
-         id="tspan140">AbstractCommandable</tspan></text><text
+         id="tspan142">AbstractCommandable</tspan></text><text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,106.47752,541.9476)"
        id="text1-7-7-7-4-5"
@@ -4268,7 +4268,7 @@
        y="0"><tspan
          x="41.740912"
          y="118.48047"
-         id="tspan141">ActionBase[] AvailableCommands</tspan></text><rect
+         id="tspan143">ActionBase[] AvailableCommands</tspan></text><rect
        style="fill:#fcdbc7;fill-opacity:1;stroke:#010101;stroke-width:0.264999;stroke-opacity:1"
        id="rect1-9-6-15-2-2-9"
        width="44.999996"
@@ -4289,7 +4289,7 @@
        y="0"><tspan
          x="41.740912"
          y="118.48047"
-         id="tspan142">ActionBase[] AvailableCommands</tspan></text><text
+         id="tspan144">ActionBase[] AvailableCommands</tspan></text><text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,21.01595,638.51955)"
        id="text1-7-7-7-4-5-4-8"
@@ -4298,7 +4298,7 @@
        y="0"><tspan
          x="61.296244"
          y="118.48047"
-         id="tspan143">NavMeshAgent navAgent</tspan></text><path
+         id="tspan145">NavMeshAgent navAgent</tspan></text><path
        style="fill:#ffffff;fill-opacity:1;stroke:#010101;stroke-width:0.365001;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker18)"
        d="m 115.13249,564.96476 h -5"
        id="path17" /><path
@@ -4320,7 +4320,7 @@
        y="0"><tspan
          x="91.40625"
          y="120.83984"
-         id="tspan144">SupplySO</tspan></text><path
+         id="tspan146">SupplySO</tspan></text><path
        style="fill:#ffffff;fill-opacity:1;stroke:#010101;stroke-width:0.365001;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker18-1-8-1-4-8-3)"
        d="m 444.99999,205.00001 h -4"
        id="path17-6-18-0-6-81-1"
@@ -4339,7 +4339,7 @@
        y="0"><tspan
          x="85.130859"
          y="120.83984"
-         id="tspan145">IGatherable</tspan></text><path
+         id="tspan147">IGatherable</tspan></text><path
        style="fill:#ffffff;fill-opacity:1;stroke:#010101;stroke-width:0.365001;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker27-54-6)"
        d="m 114.86749,284.8675 h -5"
        id="path17-6-18-0-6-8-8-8-0-18-9"
@@ -4358,7 +4358,7 @@
        y="0"><tspan
          x="66.454102"
          y="120.83984"
-         id="tspan146">GatherableSupply</tspan></text><rect
+         id="tspan148">GatherableSupply</tspan></text><rect
        style="fill:#c3fa9a;fill-opacity:1;stroke:none;stroke-width:0.264999;stroke-dasharray:0.264999, 0.264999;stroke-dashoffset:0;stroke-opacity:1"
        id="rect1-2-7-9-0-5-4-5"
        width="45"
@@ -4373,7 +4373,7 @@
        y="0"><tspan
          x="91.40625"
          y="120.83984"
-         id="tspan147">SupplySO</tspan></text><path
+         id="tspan149">SupplySO</tspan></text><path
        style="fill:#ffffff;fill-opacity:1;stroke:#010101;stroke-width:0.365001;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker18-1-8-1-4-8-3-9)"
        d="m 64.86749,284.8675 h -4"
        id="path17-6-18-0-6-81-1-9"
@@ -4392,7 +4392,7 @@
        y="0"><tspan
          x="82.983398"
          y="120.83984"
-         id="tspan148">AbstractUnit</tspan></text><rect
+         id="tspan150">AbstractUnit</tspan></text><rect
        style="fill:#9ae3fa;fill-opacity:1;stroke-width:0.264999"
        id="rect1-2-7-4-6-0-0"
        width="45"
@@ -4413,7 +4413,7 @@
        y="0"><tspan
          x="89.680664"
          y="120.83984"
-         id="tspan149">IMoveable</tspan></text><text
+         id="tspan151">IMoveable</tspan></text><text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,70.444635,621.79218)"
        id="text1-4-4-2-8-7-1-1"
@@ -4422,7 +4422,7 @@
        y="0"><tspan
          x="97.977539"
          y="120.83984"
-         id="tspan150">MoveTo</tspan></text><rect
+         id="tspan152">MoveTo</tspan></text><rect
        style="fill:#e7f9fd;fill-opacity:1;stroke:#010101;stroke-width:0.264999;stroke-opacity:1"
        id="rect1-2-7-4-6-0-0-0-0"
        width="44.999992"
@@ -4437,7 +4437,7 @@
        y="0"><tspan
          x="106.74316"
          y="120.83984"
-         id="tspan151">Stop</tspan></text><path
+         id="tspan153">Stop</tspan></text><path
        style="fill:#ffffff;fill-opacity:1;stroke:#010101;stroke-width:0.365001;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker18-1-8-1-4-1-2-7)"
        d="m 79.867495,644.86752 h -2 v 8 h -3"
        id="path17-6-18-0-6-8-8-0"
@@ -4456,7 +4456,7 @@
        y="0"><tspan
          x="73.456055"
          y="120.83984"
-         id="tspan152">MoveCommand</tspan></text><rect
+         id="tspan154">MoveCommand</tspan></text><rect
        style="fill:#c3fa9a;fill-opacity:1;stroke-width:0.264999"
        id="rect1-0-9-0-8-2-6"
        width="45"
@@ -4471,7 +4471,7 @@
        y="0"><tspan
          x="75.905273"
          y="120.83984"
-         id="tspan153">StopCommand</tspan></text><rect
+         id="tspan155">StopCommand</tspan></text><rect
        style="fill:#c3fa9a;fill-opacity:1;stroke:#010101;stroke-width:0.264999;stroke-dasharray:0.264999, 0.264999;stroke-dashoffset:0;stroke-opacity:1"
        id="rect1-2-7-9-0-9-6-4-1-5"
        width="45"
@@ -4486,7 +4486,7 @@
        y="0"><tspan
          x="86.982422"
          y="120.83984"
-         id="tspan154">ActionBase</tspan></text><rect
+         id="tspan156">ActionBase</tspan></text><rect
        style="fill:#9ae3fa;fill-opacity:1;stroke-width:0.264999"
        id="rect1-2-7-4-4-4-9-9-8-3"
        width="45"
@@ -4501,7 +4501,7 @@
        y="0"><tspan
          x="87.776367"
          y="120.83984"
-         id="tspan155">ICommand</tspan></text><path
+         id="tspan157">ICommand</tspan></text><path
        style="fill:#ffffff;fill-opacity:1;stroke:#010101;stroke-width:0.365001;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker18-1-8-1-4-4-6)"
        d="m 236.00004,677.00014 -2.00001,10e-6 v 12 l -3,-0.0741"
        id="path17-6-18-0-6-88-4"
@@ -4542,7 +4542,7 @@
        y="0"><tspan
          x="89.557617"
          y="120.83984"
-         id="tspan156">Worker BT</tspan></text><rect
+         id="tspan158">Worker BT</tspan></text><rect
        style="fill:#ffc9c9;fill-opacity:1;stroke:#010101;stroke-width:0.264999;stroke-opacity:1"
        id="rect1-0-9-0-2-4-8"
        width="45"
@@ -4557,7 +4557,7 @@
        y="0"><tspan
          x="53.566406"
          y="120.83984"
-         id="tspan157">Switch: UnitCommand</tspan></text><rect
+         id="tspan159">Switch: UnitCommand</tspan></text><rect
        style="fill:#ffc9c9;fill-opacity:1;stroke:#010101;stroke-width:0.264999;stroke-opacity:1"
        id="rect1-0-9-0-2-4-8-2"
        width="44.999992"
@@ -4572,7 +4572,7 @@
        y="0"><tspan
          x="78.459961"
          y="120.83984"
-         id="tspan158">TargetPosition</tspan></text><path
+         id="tspan160">TargetPosition</tspan></text><path
        style="fill:none;fill-opacity:1;stroke:#010101;stroke-width:0.665001;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#ArrowWide-7)"
        d="m 125.00005,651.15931 9.8675,0.004 v -32.06246 h 5"
        id="path6"
@@ -4598,25 +4598,35 @@
          x="47.823418"
          y="720.5719">Sets Behaviour</tspan></text><text
        xml:space="preserve"
-       style="font-size:3.175px;text-align:center;text-anchor:middle;fill:none;fill-opacity:1;stroke:#010101;stroke-width:0.264999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       x="102.80646"
-       y="799.84143"
-       id="text7-4-2-6-6-4-5-3-2"><tspan
-         sodipodi:role="line"
-         id="tspan7-81-6-9-2-4-6-3-6"
-         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.265"
-         x="102.80646"
-         y="799.84143">Passes GatherableSupply through PlayerInput</tspan></text><text
-       xml:space="preserve"
-       style="font-size:3.175px;text-align:center;text-anchor:middle;fill:none;fill-opacity:1;stroke:#010101;stroke-width:0.264999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       x="148.15718"
-       y="697.09723"
+       style="font-size:3.175px;text-align:start;text-anchor:start;fill:none;fill-opacity:1;stroke:#010101;stroke-width:0.264999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       x="76.133957"
+       y="693.19128"
        id="text7-4-2-6-6-4-5-3-2-9"><tspan
          sodipodi:role="line"
-         id="tspan7-81-6-9-2-4-6-3-6-1"
-         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.265"
-         x="148.15718"
-         y="697.09723">Pass target position through player unput</tspan></text><text
+         style="text-align:start;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.265"
+         x="76.133957"
+         y="693.19128"
+         id="tspan16">PlayerInput: Take first valid action in action list and pass command</tspan><tspan
+         sodipodi:role="line"
+         style="text-align:start;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.265"
+         x="76.133957"
+         y="697.16003"
+         id="tspan17">and pass targetPosition to MoveTo</tspan></text><text
+       xml:space="preserve"
+       style="font-size:3.175px;text-align:start;text-anchor:start;fill:none;fill-opacity:1;stroke:#010101;stroke-width:0.264999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       x="81.39267"
+       y="798.51215"
+       id="text7-4-2-6-6-4-5-3-2-9-3"><tspan
+         sodipodi:role="line"
+         style="text-align:start;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.265"
+         x="81.39267"
+         y="798.51215"
+         id="tspan16-6">PlayerInput: Take first valid action in action list and pass command</tspan><tspan
+         sodipodi:role="line"
+         style="text-align:start;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.265"
+         x="81.39267"
+         y="802.4809"
+         id="tspan17-3">and pass gatherableSupply to gather</tspan></text><text
        xml:space="preserve"
        style="font-size:3.175px;text-align:start;text-anchor:start;fill:none;fill-opacity:1;stroke:#010101;stroke-width:0.264999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        x="190.6884"
@@ -4693,7 +4703,7 @@
        y="0"><tspan
          x="41.740912"
          y="118.48047"
-         id="tspan159">ActionBase[] AvailableCommands</tspan></text><text
+         id="tspan161">ActionBase[] AvailableCommands</tspan></text><text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,76.015247,753.51955)"
        id="text1-7-7-7-4-5-4-8-7"
@@ -4702,7 +4712,7 @@
        y="0"><tspan
          x="61.296244"
          y="118.48047"
-         id="tspan160">NavMeshAgent navAgent</tspan></text><rect
+         id="tspan162">NavMeshAgent navAgent</tspan></text><rect
        style="fill:#fcdbc7;fill-opacity:1;stroke:#010101;stroke-width:0.264999;stroke-opacity:1"
        id="rect1-9-6-15-2-2-9-9-3-3"
        width="44.8675"
@@ -4717,7 +4727,7 @@
        y="0"><tspan
          x="100.68946"
          y="118.48047"
-         id="tspan161">Gather()</tspan></text><rect
+         id="tspan163">Gather()</tspan></text><rect
        style="fill:#fabe9a;fill-opacity:1;stroke:#010101;stroke-width:0.264999;stroke-dasharray:0.264999, 0.264999;stroke-dashoffset:0;stroke-opacity:1"
        id="rect1-4-6-4-4-1-5-7"
        width="45"
@@ -4732,7 +4742,7 @@
        y="0"><tspan
          x="82.983398"
          y="120.83984"
-         id="tspan162">AbstractUnit</tspan></text><rect
+         id="tspan164">AbstractUnit</tspan></text><rect
        style="fill:#c3fa9a;fill-opacity:1;stroke-width:0.264999"
        id="rect1-0-9-09-3"
        width="45"
@@ -4747,7 +4757,7 @@
        y="0"><tspan
          x="68.90625"
          y="120.83984"
-         id="tspan163">GatherCommand</tspan></text><rect
+         id="tspan165">GatherCommand</tspan></text><rect
        style="fill:#c3fa9a;fill-opacity:1;stroke:#010101;stroke-width:0.264999;stroke-dasharray:0.264999, 0.264999;stroke-dashoffset:0;stroke-opacity:1"
        id="rect1-2-7-9-0-9-6-4-1-5-8"
        width="45"
@@ -4762,7 +4772,7 @@
        y="0"><tspan
          x="86.982422"
          y="120.83984"
-         id="tspan164">ActionBase</tspan></text><rect
+         id="tspan166">ActionBase</tspan></text><rect
        style="fill:#9ae3fa;fill-opacity:1;stroke-width:0.264999"
        id="rect1-2-7-4-4-4-9-9-8-3-0"
        width="45"
@@ -4777,7 +4787,7 @@
        y="0"><tspan
          x="87.776367"
          y="120.83984"
-         id="tspan165">ICommand</tspan></text><path
+         id="tspan167">ICommand</tspan></text><path
        style="fill:#ffffff;fill-opacity:1;stroke:#010101;stroke-width:0.365001;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker18-1-8-1-97-7-6)"
        d="m 239.13171,780.13261 h -5"
        id="path17-6-18-0-3-1-5" /><path
@@ -4802,7 +4812,7 @@
        y="0"><tspan
          x="89.557617"
          y="120.83984"
-         id="tspan166">Worker BT</tspan></text><rect
+         id="tspan168">Worker BT</tspan></text><rect
        style="fill:#ffc9c9;fill-opacity:1;stroke:#010101;stroke-width:0.264999;stroke-opacity:1"
        id="rect1-0-9-0-2-4-8-1"
        width="45"
@@ -4817,7 +4827,7 @@
        y="0"><tspan
          x="53.566406"
          y="120.83984"
-         id="tspan167">Switch: UnitCommand</tspan></text><rect
+         id="tspan169">Switch: UnitCommand</tspan></text><rect
        style="fill:#ffc9c9;fill-opacity:1;stroke:#010101;stroke-width:0.264999;stroke-opacity:1"
        id="rect1-0-9-0-2-4-8-2-1"
        width="44.999992"
@@ -4832,7 +4842,7 @@
        y="0"><tspan
          x="64.417969"
          y="120.83984"
-         id="tspan168">TargetGameObject</tspan></text><rect
+         id="tspan170">TargetGameObject</tspan></text><rect
        style="fill:#ffc9c9;fill-opacity:1;stroke:#010101;stroke-width:0.264999;stroke-opacity:1"
        id="rect1-0-9-0-2-4-8-2-1-7"
        width="44.999992"
@@ -4847,7 +4857,7 @@
        y="0"><tspan
          x="94.482422"
          y="120.83984"
-         id="tspan169">GathSup</tspan></text><path
+         id="tspan171">GathSup</tspan></text><path
        style="fill:none;fill-opacity:1;stroke:#010101;stroke-width:0.665001;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#ArrowWide-7)"
        d="m 142.999,716.98697 -117.999415,0.013 -0.007,61.06627 5.24422,-0.0663"
        id="path6-6"

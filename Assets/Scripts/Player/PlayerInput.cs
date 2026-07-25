@@ -230,6 +230,7 @@ public class PlayerInput : MonoBehaviour
 
         private void HandleRightClick()
         {
+        // handle right click will take FIRST valid command in command list that can be handled
 
         if (camera == null){return; }
         if (selectedUnits.Count == 0){return; }
@@ -259,7 +260,7 @@ public class PlayerInput : MonoBehaviour
                     if (command.CanHandle(cxt)){
                          command.Handle(cxt);
                          unitCtr +=1;
-                         break; // only issue one cmd per unit
+                         break; // only issue one cmd per unit, and if any, chose first.
                     }
                 }
             }

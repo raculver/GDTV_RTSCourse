@@ -7,5 +7,6 @@ public interface IGatherable{
 
     public bool BeginGather(); // returns true if we're able to gather
     public int EndGather(); // gives amount gathered (might not be equal to SupplySO.AmountPerGather)
+    public void AbortGather();
 }
 }
