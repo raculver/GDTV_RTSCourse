@@ -65,3 +65,5 @@ For performance, Avoid using Update()
 - In complex games with lots of game objects, try not to use MonoBehaviour.Update()
 - Try to use the built in components... much more optimised
 - Can also use Entity Component System (ECS) 
+Font Issue: uncontrolled changes.
+- Chaning Atlas Population mode to dynamic on font will help stop uncontrolled changes. I was uncontrollably spamming the repo with 2 mb changes.
