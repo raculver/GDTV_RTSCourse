@@ -11967,17 +11967,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4078631732461238711, guid: 883b9682b823cb84cac42e4ad43d41d2, type: 3}
   m_PrefabInstance: {fileID: 2085458237}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &894887000 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 655776966410934580, guid: 883b9682b823cb84cac42e4ad43d41d2, type: 3}
-  m_PrefabInstance: {fileID: 2085458237}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e81385d7416cc174dac6e9b9b5986a4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GameDevTV.RTS.Units.Worker
 --- !u!1001 &896313459
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27419,7 +27408,7 @@ PrefabInstance:
       objectReference: {fileID: 751068218}
     - target: {fileID: 3668225559268658679, guid: 1bd4712f5a7e6cc419dfc334a187bfb6, type: 3}
       propertyPath: workers.Array.size
-      value: 32
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3668225559268658679, guid: 1bd4712f5a7e6cc419dfc334a187bfb6, type: 3}
       propertyPath: 'workers.Array.data[0]'
@@ -27544,7 +27533,7 @@ PrefabInstance:
     - target: {fileID: 3668225559268658679, guid: 1bd4712f5a7e6cc419dfc334a187bfb6, type: 3}
       propertyPath: 'workers.Array.data[30]'
       value: 
-      objectReference: {fileID: 894887000}
+      objectReference: {fileID: 0}
     - target: {fileID: 3668225559268658679, guid: 1bd4712f5a7e6cc419dfc334a187bfb6, type: 3}
       propertyPath: 'workers.Array.data[31]'
       value: 
