@@ -7,7 +7,7 @@ namespace GameDevTV.RTS.Units{
 public class BaseBuilding : AbstractCommandable
 {
     private List<UnitSO> buildingQueue = new(MAX_SIZE_BUILD_QUEUE);
-    private const int MAX_SIZE_BUILD_QUEUE = 7;
+    private const int MAX_SIZE_BUILD_QUEUE = 5; // 5 is hard coded into GUI
     private float timeBuildStart;
     private Coroutine buildRoutine;
     
@@ -20,10 +20,10 @@ public class BaseBuilding : AbstractCommandable
 
 
     public void BuildUnit(UnitSO unit){
-        if (buildingQueue.Count == MAX_SIZE_BUILD_QUEUE)
-        {
-            Debug.LogError("BuildUnit called after max capacity");
+        if (buildingQueue.Count == MAX_SIZE_BUILD_QUEUE){
             return;
+            // Debug.LogError("BuildUnit called after max capacity");
+            // return;
         }
 
         buildingQueue.Add(unit);
