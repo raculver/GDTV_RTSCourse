@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace GameDevTV.RTS.Commands
 {
-[CreateAssetMenu(fileName = "Gather Action", menuName = "AI/Commands/Gather", order = 105)]
+[CreateAssetMenu(fileName = "Gather Action", menuName = "Units/Commands/Gather", order = 105)]
 public class GatherCommand : ActionBase
 {
     [SerializeField] private UnitSO commandPostSO;
@@ -20,9 +20,11 @@ public class GatherCommand : ActionBase
     public override void Handle(CommandContext cxt){
         Worker worker = (Worker)cxt.Commandable;
         if (cxt.Hit.collider.TryGetComponent<GatherableSupply>(out GatherableSupply supply)){
+            // Gather supply
             worker.Gather(supply);
         }
         else if (ColliderIsCommandPost(cxt.Hit.collider) && worker.HasSupplies){
+            // if player right clicks on a command post and has supplies, ReturnSupplies to CP
             worker.ReturnSupplies(cxt.Hit.collider.gameObject);
         }
         else{
