@@ -70,6 +70,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7fb0367e86e7b5d418447ea73f34500f, type: 2}
   <unitSO>k__BackingField: {fileID: 11400000, guid: 2a7d318e7105e4148aa59effb5f5418e, type: 2}
   selectionDecal: {fileID: 3327284589662084769}
+  mainRenderer: {fileID: 4728886198864161701}
 --- !u!136 &6434984907571895342
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -231,6 +232,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 981dc53f9c78ccd4eb6a545f083bc814, type: 3}
+--- !u!23 &4728886198864161701 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 981dc53f9c78ccd4eb6a545f083bc814, type: 3}
+  m_PrefabInstance: {fileID: 6224525886635980577}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5902895496490668234 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 981dc53f9c78ccd4eb6a545f083bc814, type: 3}

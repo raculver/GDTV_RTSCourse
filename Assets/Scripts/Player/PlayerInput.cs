@@ -41,6 +41,7 @@ public class PlayerInput : MonoBehaviour
     private Vector2 startClickMousePos;
     private HashSet<AbstractUnit> aliveUnits = new(100); // arb numbers being used here :/
     private HashSet<AbstractUnit> selectionBoxUnits = new(24); // arb numbers being used here :/
+    private GameObject ghostInstance;
 
     #region Unity Lifecycle
     private void Awake(){
@@ -57,6 +58,7 @@ public class PlayerInput : MonoBehaviour
         HandleRotation();
         HandleRightClick();
         HandleDragSelect();
+        HandleGhost();
     }
 
     private void OnEnable()
@@ -223,6 +225,13 @@ public class PlayerInput : MonoBehaviour
                 CommandContext context = new(commandables[i], hitInfo, i);
                 if (activeAction.CanHandle(context)){activeAction.Handle(context);}
             }
+
+            if (ghostInstance != null)
+            {
+                Destroy(ghostInstance);
+                ghostInstance = null;
+            }
+
             activeAction = null;
         }
 
@@ -344,7 +353,25 @@ public class PlayerInput : MonoBehaviour
         activeAction = evt.Action;
         if (!activeAction.RequiresClickToActivate){
             ActivateAction(new RaycastHit()); // use dummy raycast hit
-        }        
+        }
+        else if (activeAction.GhostPrefab != null){
+            ghostInstance =  Instantiate(activeAction.GhostPrefab);
+        }
+    }
+
+    private void HandleGhost(){
+        if (ghostInstance == null) return;
+        if (Keyboard.current.escapeKey.wasReleasedThisFrame){
+            Destroy(ghostInstance);
+            ghostInstance = null;
+            activeAction = null;
+            return;
+        }
+
+        Ray ray = camera.ScreenPointToRay(Mouse.current.position.ReadValue());
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, float.MaxValue, floorLayers)){
+            ghostInstance.transform.position = hitInfo.point;   
+        }
     }
 
     #endregion

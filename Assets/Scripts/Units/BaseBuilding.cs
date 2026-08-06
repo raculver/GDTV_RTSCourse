@@ -15,9 +15,17 @@ public class BaseBuilding : AbstractCommandable
     public int QueueSize => buildingQueue.Count;
     public AbstractUnitSO [] Queue => buildingQueue.ToArray(); // give public array (copy) of the Queue
 
+    [SerializeField] private MeshRenderer mainRenderer;
+
+    private BuildingSO buildingSO;
+
     public delegate void QueueUpdateEvent(AbstractUnitSO[] unitsInQueue);
     public event QueueUpdateEvent OnQueueUpdated;
 
+
+    private void Awake(){
+        buildingSO =  unitSO as BuildingSO;
+    }
 
     public void BuildUnit(AbstractUnitSO unit){
         if (buildingQueue.Count == MAX_SIZE_BUILD_QUEUE){
@@ -79,6 +87,10 @@ public class BaseBuilding : AbstractCommandable
             OnQueueUpdated?.Invoke(buildingQueue.ToArray());
         }
 
+    }
+
+    public void ShowGhostVisuals(){
+        mainRenderer.material = buildingSO.PlacementMaterial;
     }
 }
 } 

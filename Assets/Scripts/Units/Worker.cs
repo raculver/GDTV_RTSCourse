@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace GameDevTV.RTS.Units{
 
-public class Worker : AbstractUnit
+public class Worker : AbstractUnit, IBuildingBuilder
 {
     public bool HasSupplies{
         get{
@@ -42,6 +42,25 @@ public class Worker : AbstractUnit
     public void ReturnSupplies(GameObject targetCommandPost){
         graphAgent.SetVariableValue<GameObject>(BTVariables.BT_UNIT_TGT_CMD_POST, targetCommandPost);
         graphAgent.SetVariableValue<Enum>(BTVariables.BT_UNIT_COMMAND, UnitCommands.ReturnSupplies);
+    }
+
+    public GameObject Build(BuildingSO building, Vector3 targetLocation)
+    {
+        GameObject instance = Instantiate(building.Prefab, targetLocation, Quaternion.identity);
+        
+        if (instance.TryGetComponent(out BaseBuilding baseBuilding)){
+            baseBuilding.ShowGhostVisuals();
+        }
+        else
+        {
+            Debug.LogError($"Missing BaseBuilding on Prefab for BildingSO {building.name}");
+        }
+
+        // setup blackboard variables
+        // ...
+        // ...
+
+        return instance;
     }
 }
 
