@@ -59,7 +59,7 @@ namespace GameDevTV.RTS.UI.Containers{
             buildCoroutine = null;
         }
 
-        private void HandleQueueUpdated(UnitSO[] unitsInQueue){
+        private void HandleQueueUpdated(AbstractUnitSO[] unitsInQueue){
             if (unitsInQueue.Length == 1 && buildCoroutine == null)
             {
                 buildCoroutine = StartCoroutine(UpdateUnitProgress());

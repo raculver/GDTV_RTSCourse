@@ -15,4 +15,4 @@ MonoBehaviour:
   <Icon>k__BackingField: {fileID: 21300000, guid: fbd5ca5720bbbf344ac1b24c7e42072a, type: 3}
   <Slot>k__BackingField: 5
   <RequiresClickToActivate>k__BackingField: 1
-  commandPostSO: {fileID: 11400000, guid: 4594659b89427f24db74e1c0081ddef1, type: 2}
+  commandPostSO: {fileID: 11400000, guid: 2a7d318e7105e4148aa59effb5f5418e, type: 2}

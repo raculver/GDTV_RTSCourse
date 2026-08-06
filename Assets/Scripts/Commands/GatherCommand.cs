@@ -7,7 +7,7 @@ namespace GameDevTV.RTS.Commands
 [CreateAssetMenu(fileName = "Gather Action", menuName = "Units/Commands/Gather", order = 105)]
 public class GatherCommand : ActionBase
 {
-    [SerializeField] private UnitSO commandPostSO;
+    [SerializeField] private AbstractUnitSO commandPostSO;
 
     public override bool CanHandle(CommandContext cxt){
         bool canHandle = cxt.Commandable is Worker

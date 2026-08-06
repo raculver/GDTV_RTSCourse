@@ -109,14 +109,12 @@ public class RuntimeUI:MonoBehaviour{
 
     private void HandleUnitSelected(UnitSelectedEvent evt)
     {
-        if (evt.Unit is AbstractCommandable commandable)
-        {
+        if (evt.Unit is AbstractCommandable commandable){
             currentlySelected.Add(commandable);
             actionsUI.EnableFor(currentlySelected);
         }
 
-        if (currentlySelected.Count == 1 && evt.Unit is BaseBuilding building)
-        {
+        if (currentlySelected.Count == 1 && evt.Unit is BaseBuilding building){
             buildingBuildingUI.EnableFor(building);
         }
     }

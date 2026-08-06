@@ -6,20 +6,20 @@ namespace GameDevTV.RTS.Units{
 
 public class BaseBuilding : AbstractCommandable
 {
-    private List<UnitSO> buildingQueue = new(MAX_SIZE_BUILD_QUEUE);
+    private List<AbstractUnitSO> buildingQueue = new(MAX_SIZE_BUILD_QUEUE);
     private const int MAX_SIZE_BUILD_QUEUE = 5; // 5 is hard coded into GUI
     private float timeBuildStart;
     private Coroutine buildRoutine;
     
     public float progress{get; private set;} = 0;
     public int QueueSize => buildingQueue.Count;
-    public UnitSO [] Queue => buildingQueue.ToArray(); // give public array (copy) of the Queue
+    public AbstractUnitSO [] Queue => buildingQueue.ToArray(); // give public array (copy) of the Queue
 
-    public delegate void QueueUpdateEvent(UnitSO[] unitsInQueue);
+    public delegate void QueueUpdateEvent(AbstractUnitSO[] unitsInQueue);
     public event QueueUpdateEvent OnQueueUpdated;
 
 
-    public void BuildUnit(UnitSO unit){
+    public void BuildUnit(AbstractUnitSO unit){
         if (buildingQueue.Count == MAX_SIZE_BUILD_QUEUE){
             return;
             // Debug.LogError("BuildUnit called after max capacity");
@@ -40,7 +40,7 @@ public class BaseBuilding : AbstractCommandable
         while (buildingQueue.Count > 0)
         {
             timeBuildStart = Time.time;
-            UnitSO unit = buildingQueue[0];
+            AbstractUnitSO unit = buildingQueue[0];
             OnQueueUpdated?.Invoke(buildingQueue.ToArray());
             while (Time.time - timeBuildStart < unit.BuildTime){
                 progress = Mathf.Clamp01((Time.time - timeBuildStart) / unit.BuildTime);

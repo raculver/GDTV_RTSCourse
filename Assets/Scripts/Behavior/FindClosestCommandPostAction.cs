@@ -17,7 +17,7 @@ public partial class FindClosestCommandPostAction : Action
     [SerializeReference] public BlackboardVariable<GameObject> Unit;
     [SerializeReference] public BlackboardVariable<GameObject> CommandPost;
     [SerializeReference] public BlackboardVariable<float> SearchRadius = new(100);
-    [SerializeReference] public BlackboardVariable<UnitSO> CommandPostUnitSO;
+    [SerializeReference] public BlackboardVariable<BuildingSO> CommandPostUnitSO;
     
     protected override Status OnStart()
     {

@@ -108,7 +108,7 @@ flowchart TD
     linkStyle 14,15 stroke:#e942f5,stroke-width:2.5px
 */
 
-    [field:SerializeField] public UnitSO UnitToBuild{get; private set;}
+    [field:SerializeField] public AbstractUnitSO UnitToBuild{get; private set;}
     
     public override bool CanHandle(CommandContext cxt){
         bool CanYouHandleIt = cxt.Commandable is BaseBuilding;

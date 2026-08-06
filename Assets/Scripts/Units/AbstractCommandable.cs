@@ -11,7 +11,7 @@ namespace GameDevTV.RTS.Units
         [field: SerializeField] public int CurrentHealth{get; private set;}
         [field: SerializeField] public int MaximumHealth{get; private set;}
         [field: SerializeField] public ActionBase [] AvailableCommands{get; private set;}
-        [field: SerializeField] public UnitSO unitSO{get; private set;}
+        [field: SerializeField] public AbstractUnitSO unitSO{get; private set;}
         [SerializeField] private DecalProjector selectionDecal;
 
         private ActionBase[] initialCmmands;

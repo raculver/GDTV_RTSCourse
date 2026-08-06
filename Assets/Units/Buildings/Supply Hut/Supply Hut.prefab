@@ -149,7 +149,7 @@ MonoBehaviour:
   <CurrentHealth>k__BackingField: 0
   <MaximumHealth>k__BackingField: 0
   <AvailableCommands>k__BackingField: []
-  <unitSO>k__BackingField: {fileID: 11400000, guid: da5e9b1b59da1e34e81de3667c0a8674, type: 2}
+  <unitSO>k__BackingField: {fileID: 11400000, guid: 1066a99ee47d43d49844402d96830e0a, type: 2}
   selectionDecal: {fileID: 4100993355984301950}
 --- !u!1001 &4498428509526723367
 PrefabInstance:
