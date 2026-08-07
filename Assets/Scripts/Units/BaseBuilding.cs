@@ -35,13 +35,13 @@ public class BaseBuilding : AbstractCommandable
         }
 
         buildingQueue.Add(unit);
-        if (buildingQueue.Count == 1){
+        DebugLogging.Instance.Message($"{this.name} adding {unit.name} to build queue.", DebugLogging.Instance.BUILDING_BASEBUILDING);
+        if (buildingQueue.Count == 1){            
             buildRoutine=StartCoroutine(DoBuildUnits());
         }
         else{
             OnQueueUpdated?.Invoke(buildingQueue.ToArray());
         }
-        
     }
 
     private IEnumerator DoBuildUnits(){
@@ -56,6 +56,7 @@ public class BaseBuilding : AbstractCommandable
             }
             Instantiate(unit.Prefab, transform.position, Quaternion.identity);
             buildingQueue.RemoveAt(0);
+            DebugLogging.Instance.Message($"{this.name} completed building {unit.name}.", DebugLogging.Instance.BUILDING_BASEBUILDING);
         }   
         OnQueueUpdated?.Invoke(buildingQueue.ToArray());
         progress = 0;

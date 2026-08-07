@@ -112,10 +112,12 @@ public class RuntimeUI:MonoBehaviour{
         if (evt.Unit is AbstractCommandable commandable){
             currentlySelected.Add(commandable);
             actionsUI.EnableFor(currentlySelected);
+            DebugLogging.Instance.Message($"Running Enablefor commandable {commandable}.", DebugLogging.Instance.REPORT_SELECTION);
         }
 
         if (currentlySelected.Count == 1 && evt.Unit is BaseBuilding building){
             buildingBuildingUI.EnableFor(building);
+            DebugLogging.Instance.Message($"Running Enablefor building {building}.", DebugLogging.Instance.REPORT_SELECTION);
         }
     }
 

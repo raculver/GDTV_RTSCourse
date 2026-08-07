@@ -193,10 +193,8 @@ public class PlayerInput : MonoBehaviour
                 && Physics.Raycast(ray, out RaycastHit hitInfo, float.MaxValue, selectableLayers)
                 && hitInfo.collider.TryGetComponent(out ISelectable selectable))
             {
-                DebugLogging.Instance.Message(
-                    $"REPORT_CLICKS: Left click registered: {hitInfo.collider.name}",
-                    DebugLogging.Instance.REPORT_CLICKS
-                );
+                DebugLogging.Instance.Message($"REPORT_CLICKS: Left click registered: {hitInfo.collider.name}",DebugLogging.Instance.REPORT_CLICKS);
+                DebugLogging.Instance.Message($"REPORT_SELECTION: Selection from HandleLeftClick: {hitInfo.collider.name}",DebugLogging.Instance.REPORT_SELECTION);
                 selectable.Select();
             }
             else if (activeAction != null
@@ -315,7 +313,8 @@ public class PlayerInput : MonoBehaviour
         selectionBox.gameObject.SetActive(false);
         selectionBox.sizeDelta = Vector2.zero;
         foreach (AbstractUnit unit in selectionBoxUnits) {
-        unit.Select();        
+            unit.Select();
+            DebugLogging.Instance.Message($"REPORT_SELECTION: Selection from HandleDragSelect_Stop: {unit.name}",DebugLogging.Instance.REPORT_SELECTION);
         }
     }
 

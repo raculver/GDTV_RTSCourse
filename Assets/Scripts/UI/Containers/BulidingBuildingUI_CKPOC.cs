@@ -4,7 +4,8 @@ using UnityEngine;
 using System.Collections;
 
 namespace GameDevTV.RTS.UI.Containers{
-    public class BuildingBuildingUI : MonoBehaviour, IUIElement<BaseBuilding>
+    // BuildingBuildingUI Chris Kurham's pile of crap.
+    public class BuildingBuildingUI_CKPOC : MonoBehaviour, IUIElement<BaseBuilding>
     {
         [SerializeField] private UIBuildQueueButton[] unitButtons;
         [SerializeField] private ProgressBar progressBar;
@@ -18,7 +19,6 @@ namespace GameDevTV.RTS.UI.Containers{
             progressBar.SetProgress(building.progress);
             gameObject.SetActive(true); // Turn on UI
             building.OnQueueUpdated += HandleQueueUpdated;
-            DebugLogging.Instance.Message($"Build Queue Subscribing to {building}.OnQueueUpdated", DebugLogging.Instance.BUILDING_BASEBUILDING);
 
             buildCoroutine = StartCoroutine(UpdateUnitProgress());
             UpdateBuildQueueUI();
@@ -26,17 +26,20 @@ namespace GameDevTV.RTS.UI.Containers{
 
         private void UpdateBuildQueueUI()
         {
-            for (int i=0; i < building.QueueSize; i++)
+            // RIFE.
+            int i = 0;
+            for (; i < building.QueueSize; i++)
             {
-                // first buttons cancel the build
                 int ldiifl = i; // locally defined index in for loop... meaning of inline function will elvolve with i otherwise.
-//                unitButtons[i].EnableFor(building.Queue[i], () => building.CancelBuildingUnit(ldiifl));
-                unitButtons[i].EnableFor(building.Queue[i], () => building.CancelBuildingUnit((int)i));
+                unitButtons[i].EnableFor(building.Queue[i], () => building.CancelBuildingUnit(ldiifl));
             }
-            for (int i=building.QueueSize; i < unitButtons.Length; i++)
+            for (; i < unitButtons.Length; i++)
             {
-                // remaining buttons are turned off
                 unitButtons[i].Disable();
+            }
+
+            if (building.QueueSize == 0){
+                progressBar.SetProgress(0);
             }
         }
 
@@ -44,11 +47,9 @@ namespace GameDevTV.RTS.UI.Containers{
             gameObject.SetActive(false); // Turn off UI
             if (building != null){
                 building.OnQueueUpdated -= HandleQueueUpdated;    
-                DebugLogging.Instance.Message($"Build Queue Unsubscribing to {building}.OnQueueUpdated", DebugLogging.Instance.BUILDING_BASEBUILDING);
             }
             buildCoroutine = null;
             building = null;
-            DebugLogging.Instance.Message("Build UI disabled", DebugLogging.Instance.BUILDING_BASEBUILDING);
         }
 
         private IEnumerator UpdateUnitProgress() {
@@ -57,7 +58,6 @@ namespace GameDevTV.RTS.UI.Containers{
                 yield return null;
             }
             buildCoroutine = null;
-            progressBar.SetProgress(0);
         }
 
         private void HandleQueueUpdated(AbstractUnitSO[] unitsInQueue){

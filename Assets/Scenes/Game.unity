@@ -4590,6 +4590,8 @@ MonoBehaviour:
   <ACTION_FIND_CP>k__BackingField: 0
   <ACTION_MOVE_TO_TARGET_POS>k__BackingField: 0
   <ACTION_SET_NAV_AVOIDANCE>k__BackingField: 0
+  <BUILDING_BASEBUILDING>k__BackingField: 0
+  <REPORT_SELECTION>k__BackingField: 0
 --- !u!1001 &332197402
 PrefabInstance:
   m_ObjectHideFlags: 0

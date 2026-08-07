@@ -14,13 +14,13 @@ namespace GameDevTV.RTS.Units
         [field: SerializeField] public AbstractUnitSO unitSO{get; private set;}
         [SerializeField] private DecalProjector selectionDecal;
 
-        private ActionBase[] initialCmmands;
+        private ActionBase[] initialCommands;
         
         // "virtual means the child classes can override if they need to".
         protected virtual void Start(){
             CurrentHealth = unitSO.Health;
             MaximumHealth = unitSO.Health;
-            initialCmmands = AvailableCommands;
+            initialCommands = AvailableCommands;
         }
 
         public void Select() {
@@ -29,6 +29,7 @@ namespace GameDevTV.RTS.Units
             }
             
             Bus<UnitSelectedEvent>.Raise(new UnitSelectedEvent(this));
+            DebugLogging.Instance.Message($"{this.name} Selected.", DebugLogging.Instance.REPORT_SELECTION);
         }
 
         public void Deselect() {
@@ -37,11 +38,17 @@ namespace GameDevTV.RTS.Units
             }
             SetCommandsOverride(null);
             Bus<UnitDeselectedEvent>.Raise(new UnitDeselectedEvent(this));
+            DebugLogging.Instance.Message($"{this.name} Deselected.", DebugLogging.Instance.REPORT_SELECTION);
         }
-
         public void SetCommandsOverride(ActionBase[] commands){
-            AvailableCommands = (commands == null || commands.Length == 0) ? initialCmmands : commands;            
-            Bus<UnitSelectedEvent>.Raise(new UnitSelectedEvent(this)); // Subscribed by RuntimeUI
+            bool noCommands = commands == null || commands.Length == 0;
+            if (noCommands){
+                AvailableCommands = initialCommands;
+            }
+            else{
+                AvailableCommands = commands;
+                Bus<UnitSelectedEvent>.Raise(new UnitSelectedEvent(this)); // Subscribed by RuntimeUI <---=? Why is this even here?
+            }
         }
 
     }
