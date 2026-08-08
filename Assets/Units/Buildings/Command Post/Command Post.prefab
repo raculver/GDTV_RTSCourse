@@ -70,7 +70,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7fb0367e86e7b5d418447ea73f34500f, type: 2}
   <unitSO>k__BackingField: {fileID: 11400000, guid: 2a7d318e7105e4148aa59effb5f5418e, type: 2}
   selectionDecal: {fileID: 3327284589662084769}
-  mainRenderer: {fileID: 4728886198864161701}
+  <MainRenderer>k__BackingField: {fileID: 4728886198864161701}
+  navMeshObstacle: {fileID: 1709008756298395481}
 --- !u!136 &6434984907571895342
 CapsuleCollider:
   m_ObjectHideFlags: 0

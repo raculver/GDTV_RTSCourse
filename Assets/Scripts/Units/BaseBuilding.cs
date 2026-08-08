@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace GameDevTV.RTS.Units{
 
@@ -15,7 +16,8 @@ public class BaseBuilding : AbstractCommandable
     public int QueueSize => buildingQueue.Count;
     public AbstractUnitSO [] Queue => buildingQueue.ToArray(); // give public array (copy) of the Queue
 
-    [SerializeField] private MeshRenderer mainRenderer;
+    [field: SerializeField] public MeshRenderer MainRenderer {get; private set;}
+    [SerializeField] private NavMeshObstacle navMeshObstacle;
 
     private BuildingSO buildingSO;
 
@@ -25,6 +27,11 @@ public class BaseBuilding : AbstractCommandable
 
     private void Awake(){
         buildingSO =  unitSO as BuildingSO;
+    }
+
+    protected override void Start(){
+        base.Start();
+        if (navMeshObstacle != null) navMeshObstacle.enabled = true;
     }
 
     public void BuildUnit(AbstractUnitSO unit){
@@ -91,7 +98,7 @@ public class BaseBuilding : AbstractCommandable
     }
 
     public void ShowGhostVisuals(){
-        mainRenderer.material = buildingSO.PlacementMaterial;
+        MainRenderer.material = buildingSO.PlacementMaterial;
     }
 }
 } 

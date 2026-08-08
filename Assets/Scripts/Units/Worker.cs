@@ -46,9 +46,9 @@ public class Worker : AbstractUnit, IBuildingBuilder
 
     public GameObject Build(BuildingSO building, Vector3 targetLocation)
     {
-        GameObject instance = Instantiate(building.Prefab, targetLocation, Quaternion.identity);
+        GameObject tempGhostInstance = Instantiate(building.Prefab, targetLocation, Quaternion.identity);
         
-        if (instance.TryGetComponent(out BaseBuilding baseBuilding)){
+        if (tempGhostInstance.TryGetComponent(out BaseBuilding baseBuilding)){
             baseBuilding.ShowGhostVisuals();
         }
         else
@@ -60,7 +60,12 @@ public class Worker : AbstractUnit, IBuildingBuilder
         // ...
         // ...
 
-        return instance;
+        graphAgent.SetVariableValue<Vector3>(BTVariables.BT_UNIT_TGT_POSITION, targetLocation);
+        graphAgent.SetVariableValue<BuildingSO>(BTVariables.BT_UNIT_BUILDING_TYPE, building);
+        graphAgent.SetVariableValue<GameObject>(BTVariables.BT_UNIT_BUILDING_GHOST, tempGhostInstance);
+        graphAgent.SetVariableValue<UnitCommands>(BTVariables.BT_UNIT_COMMAND, UnitCommands.BuildBuilding);
+
+        return tempGhostInstance;
     }
 }
 

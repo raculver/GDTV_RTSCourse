@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 82338726b783aae4b96c26124c36fa0f, type: 3}
-  m_Name: Worker
+  m_Name: Gatherer
   m_EditorClassIdentifier: Assembly-CSharp::GameDevTV.RTS.Units.UnitSO
   <Health>k__BackingField: 100
   <Prefab>k__BackingField: {fileID: 6510919576379171628, guid: 883b9682b823cb84cac42e4ad43d41d2, type: 3}
