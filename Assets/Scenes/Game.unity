@@ -607,6 +607,33 @@ MonoBehaviour:
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 80d1aaabd16e5e94ebb7ead63982bee9, type: 2}
   m_BuildHeightMesh: 0
+--- !u!1 &26683701 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 621011388381258069, guid: 1bd4712f5a7e6cc419dfc334a187bfb6, type: 3}
+  m_PrefabInstance: {fileID: 1886520208}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &26683704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 26683701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fd4ebf17d148c24295795aa6f35f82f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DebugLogging
+  ENABLE_MESSAGES: 1
+  <REPORT_CLICKS>k__BackingField: 0
+  <ACTION_GATHER_SUP>k__BackingField: 0
+  <ACTION_MOVE_GATHER>k__BackingField: 0
+  <ACTION_BUILD_BUILDING>k__BackingField: 0
+  <ACTION_FIND_CP>k__BackingField: 0
+  <ACTION_MOVE_TO_TARGET_POS>k__BackingField: 0
+  <ACTION_SET_NAV_AVOIDANCE>k__BackingField: 0
+  <BUILDING_BASEBUILDING>k__BackingField: 0
+  <REPORT_SELECTION>k__BackingField: 0
 --- !u!1 &34265727
 GameObject:
   m_ObjectHideFlags: 0
@@ -4257,7 +4284,6 @@ GameObject:
   - component: {fileID: 330585547}
   - component: {fileID: 330585548}
   - component: {fileID: 330585549}
-  - component: {fileID: 330585550}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -4449,28 +4475,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   selectionBox: {fileID: 1240475946}
---- !u!114 &330585550
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 330585543}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fd4ebf17d148c24295795aa6f35f82f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DebugLogging
-  ENABLE_MESSAGES: 1
-  <REPORT_CLICKS>k__BackingField: 0
-  <ACTION_GATHER_SUP>k__BackingField: 0
-  <ACTION_MOVE_GATHER>k__BackingField: 0
-  <ACTION_BUILD_BUILDING>k__BackingField: 0
-  <ACTION_FIND_CP>k__BackingField: 0
-  <ACTION_MOVE_TO_TARGET_POS>k__BackingField: 0
-  <ACTION_SET_NAV_AVOIDANCE>k__BackingField: 0
-  <BUILDING_BASEBUILDING>k__BackingField: 0
-  <REPORT_SELECTION>k__BackingField: 0
 --- !u!1001 &332197402
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24904,7 +24908,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 621011388381258069, guid: 1bd4712f5a7e6cc419dfc334a187bfb6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 26683704}
   m_SourcePrefab: {fileID: 100100000, guid: 1bd4712f5a7e6cc419dfc334a187bfb6, type: 3}
 --- !u!224 &1886773324 stripped
 RectTransform:

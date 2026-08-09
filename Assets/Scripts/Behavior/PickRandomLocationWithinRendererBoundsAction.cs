@@ -19,7 +19,7 @@ public partial class PickRandomLocationWithinRendererBoundsAction : Action
         if (BuildingUnderConstruction.Value == null ||
             BuildingUnderConstruction.Value.MainRenderer == null)
         {
-            DebugLogging.Instance.Message("ACTION_BUILD_BUILDING: BuildingUnderConstruction is null", DebugLogging.Instance.ACTION_BUILD_BUILDING);
+            DebugLogging.Instance.Message("ACTION_BUILD_BUILDING BuildingUnderConstruction is null", DebugLogging.Instance.ACTION_BUILD_BUILDING);
             return Status.Failure;
         }
 
@@ -31,6 +31,7 @@ public partial class PickRandomLocationWithinRendererBoundsAction : Action
             TargetLocation.Value.y,
             UnityEngine.Random.Range(bounds.min.z, bounds.max.z)
         );
+        DebugLogging.Instance.Message("ACTION_BUILD_BUILDING Updated TargetLocation", DebugLogging.Instance.ACTION_BUILD_BUILDING);
 
         return Status.Success;
     }

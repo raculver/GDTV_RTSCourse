@@ -29,9 +29,13 @@ public class BaseBuilding : AbstractCommandable
         buildingSO =  unitSO as BuildingSO;
     }
 
-    protected override void Start(){
-        base.Start();
-        if (navMeshObstacle != null) navMeshObstacle.enabled = true;
+    // protected override void Start(){
+    //     base.Start();
+    //     if (navMeshObstacle != null) navMeshObstacle.enabled = true;
+    // }
+
+    public void SetNavMeshObstacleEnabled(bool enabled){
+        if (navMeshObstacle != null) navMeshObstacle.enabled = enabled;
     }
 
     public void BuildUnit(AbstractUnitSO unit){

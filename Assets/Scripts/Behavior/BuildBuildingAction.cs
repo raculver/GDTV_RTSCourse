@@ -20,11 +20,14 @@ public partial class BuildBuildingAction : Action
     private float invTotalBuildTime;
     private BaseBuilding completedBuilding;
     private Vector3 startingBuildingTransform;
+    private Vector3 finishedBuildingTransform;
 
     protected override Status OnStart()
     {
+        DebugLogging.Instance.Message("ACTION_BUILD_BUILDING Build action start", DebugLogging.Instance.ACTION_BUILD_BUILDING);
+
         if (!HasValidInputs()){
-            DebugLogging.Instance.Message("Build action has invalid inputs", DebugLogging.Instance.ACTION_BUILD_BUILDING);
+            DebugLogging.Instance.Message("ACTION_BUILD_BUILDING Build action has invalid inputs", DebugLogging.Instance.ACTION_BUILD_BUILDING);
             return Status.Failure;
         }
         startBuildTime = Time.time;
@@ -41,6 +44,7 @@ public partial class BuildBuildingAction : Action
         Renderer ren = completedBuilding.MainRenderer;
         
         startingBuildingTransform = TargetLocation.Value - Vector3.up*ren.bounds.size.y;
+        finishedBuildingTransform = TargetLocation.Value;
         completedBuilding.transform.position = startingBuildingTransform;
 
         return Status.Running;
@@ -49,16 +53,20 @@ public partial class BuildBuildingAction : Action
     protected override Status OnUpdate()
     {
         float normalisedTime = (Time.time - startBuildTime) * invTotalBuildTime;
-        completedBuilding.transform.position = Vector3.Lerp(startingBuildingTransform, TargetLocation.Value, normalisedTime);
+        completedBuilding.transform.position = Vector3.Lerp(startingBuildingTransform, finishedBuildingTransform, normalisedTime);
         return normalisedTime >= 1 ? Status.Success : Status.Running;
     }
 
     protected override void OnEnd(){
         if (CurrentStatus == Status.Success){
             completedBuilding.enabled = true;
+            completedBuilding.SetNavMeshObstacleEnabled(true);
+            DebugLogging.Instance.Message("ACTION_BUILD_BUILDING Completed", DebugLogging.Instance.ACTION_BUILD_BUILDING);
+        }
+        else{
+            DebugLogging.Instance.Message("ACTION_BUILD_BUILDING Ended prematureley", DebugLogging.Instance.ACTION_BUILD_BUILDING);
         }
     }
-
 
     private bool HasValidInputs(){
         return Self.Value != null
