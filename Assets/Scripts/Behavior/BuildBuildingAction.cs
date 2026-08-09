@@ -4,6 +4,7 @@ using Unity.Behavior;
 using UnityEngine;
 using Action = Unity.Behavior.Action;
 using Unity.Properties;
+using Unity.VisualScripting;
 
 namespace GameDevTV.RTS.Behahavior{
 [Serializable, GeneratePropertyBag]
@@ -13,6 +14,7 @@ public partial class BuildBuildingAction : Action
     [SerializeReference] public BlackboardVariable<GameObject> Self;
     [SerializeReference] public BlackboardVariable<BuildingSO> BuildingType;
     [SerializeReference] public BlackboardVariable<Vector3> TargetLocation;
+    [SerializeReference] public BlackboardVariable<BaseBuilding> BuildingUnderContsruction;
 
     private float startBuildTime;
     private float invTotalBuildTime;
@@ -29,7 +31,13 @@ public partial class BuildBuildingAction : Action
         invTotalBuildTime = 1.0f /BuildingType.Value.BuildTime;
 
         GameObject building = GameObject.Instantiate(BuildingType.Value.Prefab);
-        completedBuilding = building.GetComponent<BaseBuilding>();
+        
+        if (!building.TryGetComponent(out completedBuilding) 
+            || completedBuilding.MainRenderer == null){
+            DebugLogging.Instance.Message("Build action has invalid inputs", DebugLogging.Instance.ACTION_BUILD_BUILDING);
+            return Status.Failure;
+        }
+        BuildingUnderContsruction.Value = completedBuilding;
         Renderer ren = completedBuilding.MainRenderer;
         
         startingBuildingTransform = TargetLocation.Value - Vector3.up*ren.bounds.size.y;
