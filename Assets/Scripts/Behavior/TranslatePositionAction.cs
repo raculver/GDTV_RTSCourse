@@ -4,6 +4,9 @@ using UnityEngine;
 using Action = Unity.Behavior.Action;
 using Unity.Properties;
 using Unity.VisualScripting;
+using UnityEngine.AI;
+using GameDevTV.RTS.Utilities;
+using System.Data.Common;
 
 namespace GameDevTV.RTS.Behahavior{
 
@@ -15,40 +18,44 @@ public partial class TranslatePositionAction : Action
     [SerializeReference] public BlackboardVariable<Vector3> TargetLocation;
     [SerializeReference] public BlackboardVariable<float> Speed;
 
+    private Animator animator;
+    private NavMeshAgent navMeshAgent;
+
     Vector3 startingPosition;
-    float travelTime;
-    float startTime;
+    float endTime;
+    private Vector3 direction;
+    private Transform selfTransform;
 
-    protected override Status OnStart()
-    {
-        DebugLogging.Instance.Message("ACTION_BUILD_BUILDING Translating Position", DebugLogging.Instance.ACTION_BUILD_BUILDING);
-        startingPosition = Self.Value.transform.position;
-        float distance = (startingPosition - TargetLocation.Value).magnitude;
-        travelTime = distance / Speed;
-        startTime = Time.time;
+    protected override Status OnStart(){
+        if (Self.Value == null) return Status.Failure;
+        if (Self.Value.TryGetComponent(out navMeshAgent)){
+            navMeshAgent.enabled = false;
+        }
+        Self.Value.TryGetComponent(out animator);
+        
+        selfTransform = Self.Value.transform;
+        float distance = Vector3.Distance(selfTransform.position, TargetLocation.Value);
+        direction = (TargetLocation.Value - selfTransform.position).normalized;
+        endTime = Time.time + distance / Speed;
 
+        // turn Annie Mater
+        selfTransform.forward = direction;
         return Status.Running;
     }
 
-    protected override Status OnUpdate()
-    {
-        float currentTime = Time.time;
-        float fraction = (currentTime - startTime) / travelTime;
-        if (fraction < 1){
-            Self.Value.transform.position = Vector3.Lerp(startingPosition, TargetLocation, fraction);
-            return Status.Running;
-        }
-        else {
-            DebugLogging.Instance.Message("ACTION_BUILD_BUILDING Translated position reached", DebugLogging.Instance.ACTION_BUILD_BUILDING);
-            return Status.Success;
-        }
+    protected override Status OnUpdate(){
+        if (Time.time > endTime) return Status.Success;
+
+        if (animator != null) animator.SetFloat(AnimationConstants.SPEED, Speed);
         
+        selfTransform.position += Speed * Time.deltaTime * direction;
+        return Status.Running;
     }
 
-    protected override void OnEnd()
-    {
-        DebugLogging.Instance.Message($"ACTION_BUILD_BUILDING Translation ended with status {CurrentStatus}", DebugLogging.Instance.ACTION_BUILD_BUILDING);
+    protected override void OnEnd(){
+        if (navMeshAgent != null) navMeshAgent.enabled = true;
+        if (animator != null) animator.SetFloat(AnimationConstants.SPEED, 0);
     }
+
 }
-
 }
