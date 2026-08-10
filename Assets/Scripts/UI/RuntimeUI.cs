@@ -100,15 +100,29 @@ public class RuntimeUI:MonoBehaviour{
     void OnEnable(){
         Bus<UnitSelectedEvent>.OnEvent += HandleUnitSelected;
         Bus<UnitDeselectedEvent>.OnEvent += HandleUnitDeselected;
+        Bus<ActionsUIUpdateEvent>.OnEvent += HandleActionsUIUpdate;
     }
 
     void OnDisable(){
         Bus<UnitSelectedEvent>.OnEvent -= HandleUnitSelected;
         Bus<UnitDeselectedEvent>.OnEvent -= HandleUnitDeselected;
+        Bus<ActionsUIUpdateEvent>.OnEvent -= HandleActionsUIUpdate;
+    }
+
+    private void HandleActionsUIUpdate(ActionsUIUpdateEvent evt){
+        if (evt.Unit is AbstractCommandable commandable){
+            actionsUI.EnableFor(currentlySelected);
+            DebugLogging.Instance.Message($"Running Enablefor commandable {commandable}.", DebugLogging.Instance.REPORT_SELECTION);
+        }
+
+        if (currentlySelected.Count == 1 && evt.Unit is BaseBuilding building){
+            Debug.LogWarning("No implementy for actions UI");
+        }
     }
 
     private void HandleUnitSelected(UnitSelectedEvent evt)
     {
+        // enable 
         if (evt.Unit is AbstractCommandable commandable){
             currentlySelected.Add(commandable);
             actionsUI.EnableFor(currentlySelected);

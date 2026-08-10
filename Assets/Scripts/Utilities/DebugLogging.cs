@@ -16,6 +16,7 @@ public class DebugLogging : MonoBehaviour
     [field:SerializeField] public bool ACTION_SET_NAV_AVOIDANCE {get; private set;} = false;
     [field:SerializeField] public bool BUILDING_BASEBUILDING {get; private set;} = false;
     [field:SerializeField] public bool REPORT_SELECTION {get; private set;} = false;
+    [field:SerializeField] public bool REPORT_COMMANDS {get; private set;} = true;
 
     // Singleton-style access (easy to get from anywhere)
     public static DebugLogging Instance { get; private set; }
