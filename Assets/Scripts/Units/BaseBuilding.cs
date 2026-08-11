@@ -17,6 +17,7 @@ public class BaseBuilding : AbstractCommandable
     public AbstractUnitSO [] Queue => buildingQueue.ToArray(); // give public array (copy) of the Queue
 
     [field: SerializeField] public MeshRenderer MainRenderer {get; private set;}
+    [SerializeField] private Material primaryMaterial;
     [SerializeField] private NavMeshObstacle navMeshObstacle;
 
     private BuildingSO buildingSO;
@@ -29,13 +30,15 @@ public class BaseBuilding : AbstractCommandable
         buildingSO =  unitSO as BuildingSO;
     }
 
-    // protected override void Start(){
-    //     base.Start();
-    //     if (navMeshObstacle != null) navMeshObstacle.enabled = true;
-    // }
+    protected override void Start(){
+        base.Start();
+        // if (navMeshObstacle != null) navMeshObstacle.enabled = true;
+        if (MainRenderer != null) MainRenderer.material = primaryMaterial;
+    }
 
     public void SetNavMeshObstacleEnabled(bool enabled){
         if (navMeshObstacle != null) navMeshObstacle.enabled = enabled;
+
     }
 
     public void BuildUnit(AbstractUnitSO unit){

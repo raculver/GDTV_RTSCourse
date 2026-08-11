@@ -21,6 +21,7 @@ public partial class BuildBuildingAction : Action
     private BaseBuilding completedBuilding;
     private Vector3 startingBuildingTransform;
     private Vector3 finishedBuildingTransform;
+    private Renderer buildingRenderer;
 
     protected override Status OnStart()
     {
@@ -33,7 +34,7 @@ public partial class BuildBuildingAction : Action
         startBuildTime = Time.time;
         invTotalBuildTime = 1.0f /BuildingType.Value.BuildTime;
 
-        GameObject building = GameObject.Instantiate(BuildingType.Value.Prefab);
+        GameObject building = GameObject.Instantiate(BuildingType.Value.Prefab, TargetLocation, Quaternion.identity);
         
         if (!building.TryGetComponent(out completedBuilding) 
             || completedBuilding.MainRenderer == null){
@@ -41,11 +42,11 @@ public partial class BuildBuildingAction : Action
             return Status.Failure;
         }
         BuildingUnderContsruction.Value = completedBuilding;
-        Renderer ren = completedBuilding.MainRenderer;
+        buildingRenderer = completedBuilding.MainRenderer;
         
-        startingBuildingTransform = TargetLocation.Value - Vector3.up*ren.bounds.size.y;
+        startingBuildingTransform = TargetLocation.Value - Vector3.up*buildingRenderer.bounds.size.y;
         finishedBuildingTransform = TargetLocation.Value;
-        completedBuilding.transform.position = startingBuildingTransform;
+        buildingRenderer.transform.position = startingBuildingTransform;
 
         return Status.Running;
     }
@@ -53,14 +54,14 @@ public partial class BuildBuildingAction : Action
     protected override Status OnUpdate()
     {
         float normalisedTime = (Time.time - startBuildTime) * invTotalBuildTime;
-        completedBuilding.transform.position = Vector3.Lerp(startingBuildingTransform, finishedBuildingTransform, normalisedTime);
+        buildingRenderer.transform.position = Vector3.Lerp(startingBuildingTransform, finishedBuildingTransform, normalisedTime);
         return normalisedTime >= 1 ? Status.Success : Status.Running;
     }
 
     protected override void OnEnd(){
         if (CurrentStatus == Status.Success){
             completedBuilding.enabled = true;
-            completedBuilding.SetNavMeshObstacleEnabled(true);
+            //completedBuilding.SetNavMeshObstacleEnabled(true);?
             DebugLogging.Instance.Message("ACTION_BUILD_BUILDING Completed", DebugLogging.Instance.ACTION_BUILD_BUILDING);
         }
         else{

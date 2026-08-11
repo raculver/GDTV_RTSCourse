@@ -19,7 +19,6 @@ public partial class TranslatePositionAction : Action
     [SerializeReference] public BlackboardVariable<float> Speed;
 
     private Animator animator;
-    private NavMeshAgent navMeshAgent;
 
     Vector3 startingPosition;
     float endTime;
@@ -28,9 +27,6 @@ public partial class TranslatePositionAction : Action
 
     protected override Status OnStart(){
         if (Self.Value == null) return Status.Failure;
-        if (Self.Value.TryGetComponent(out navMeshAgent)){
-            navMeshAgent.enabled = false;
-        }
         Self.Value.TryGetComponent(out animator);
         
         selfTransform = Self.Value.transform;
@@ -53,7 +49,6 @@ public partial class TranslatePositionAction : Action
     }
 
     protected override void OnEnd(){
-        if (navMeshAgent != null) navMeshAgent.enabled = true;
         if (animator != null) animator.SetFloat(AnimationConstants.SPEED, 0);
     }
 
