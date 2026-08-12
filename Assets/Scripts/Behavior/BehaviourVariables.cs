@@ -12,5 +12,6 @@ public static class BTVariables
     public const string BT_UNIT_GATHSUP_EVT_CH = "GathSupEvtChannel";
     public const string BT_UNIT_BUILDING_TYPE = "BuildBuildingSO";
     public const string BT_UNIT_BUILDING_GHOST = "GhostBuilding";
+    public const string BT_UNIT_BUILDING_CONSTR = "BuildingUnderContsr";
 }
 }
