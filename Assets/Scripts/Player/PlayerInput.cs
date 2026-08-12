@@ -66,6 +66,7 @@ public class PlayerInput : MonoBehaviour
         Bus<UnitSelectedEvent>.OnEvent += HandleUnitSelected;
         Bus<UnitDeselectedEvent>.OnEvent += HandleUnitDeselected;
         Bus<UnitSpawnEvent>.OnEvent += HandleUnitSpawn;
+        Bus<UnitDeathEvent>.OnEvent += HandleUnitDeath;
         Bus<ActionSelectedEvent>.OnEvent += HandleActionSelected;
     }
 
@@ -74,8 +75,10 @@ public class PlayerInput : MonoBehaviour
         Bus<UnitSelectedEvent>.OnEvent -= HandleUnitSelected;
         Bus<UnitDeselectedEvent>.OnEvent -= HandleUnitDeselected;
         Bus<UnitSpawnEvent>.OnEvent -= HandleUnitSpawn;
+        Bus<UnitDeathEvent>.OnEvent -= HandleUnitDeath;
         Bus<ActionSelectedEvent>.OnEvent -= HandleActionSelected;
     }
+
     #endregion
 
     #region Screen Movement
@@ -344,6 +347,11 @@ public class PlayerInput : MonoBehaviour
     private void HandleUnitDeselected(UnitDeselectedEvent evt) => selectedUnits.Remove(evt.Unit);
     private void HandleUnitSpawn(UnitSpawnEvent evt) => aliveUnits.Add(evt.Unit);
     
+    private void HandleUnitDeath(UnitDeathEvent evt){
+        selectedUnits.Remove(evt.Unit);
+        aliveUnits.Remove(evt.Unit);
+    }
+
     private void HandleActionSelected(ActionSelectedEvent evt){
         DebugLogging.Instance.Message(
             $"REPORT_CLICKS Click registered on {evt.Action.name}",
@@ -372,7 +380,6 @@ public class PlayerInput : MonoBehaviour
             ghostInstance.transform.position = hitInfo.point;   
         }
     }
-
     #endregion
 
 }

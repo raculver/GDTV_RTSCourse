@@ -100,12 +100,14 @@ public class RuntimeUI:MonoBehaviour{
     void OnEnable(){
         Bus<UnitSelectedEvent>.OnEvent += HandleUnitSelected;
         Bus<UnitDeselectedEvent>.OnEvent += HandleUnitDeselected;
+        Bus<UnitDeathEvent>.OnEvent += HandleUnitDeath;
         Bus<ActionsUIUpdateEvent>.OnEvent += HandleActionsUIUpdate;
     }
 
     void OnDisable(){
         Bus<UnitSelectedEvent>.OnEvent -= HandleUnitSelected;
         Bus<UnitDeselectedEvent>.OnEvent -= HandleUnitDeselected;
+        Bus<UnitDeathEvent>.OnEvent -= HandleUnitDeath;
         Bus<ActionsUIUpdateEvent>.OnEvent -= HandleActionsUIUpdate;
     }
 
@@ -137,35 +139,41 @@ public class RuntimeUI:MonoBehaviour{
 
     private void HandleUnitDeselected(UnitDeselectedEvent evt)
     {
-        if (evt.Unit is AbstractCommandable commandable)
-        {
+        if (evt.Unit is AbstractCommandable commandable){
             currentlySelected.Remove(commandable);
-
-            if (currentlySelected.Count > 0)
-            {
-                actionsUI.EnableFor(currentlySelected);
-
-                if (currentlySelected.Count == 1 && currentlySelected.First() is BaseBuilding building)
-                {
-                    buildingBuildingUI.EnableFor(building);
-                }
-                else
-                {
-                    buildingBuildingUI.Disable();
-                }
-            }
-            else
-            {
-                DisableAll();
-            }
+            RefreshUI();
         }
     }
 
-
-    private void DisableAll()
+    private void RefreshUI()
     {
+        if (currentlySelected.Count > 0)
+        {
+            actionsUI.EnableFor(currentlySelected);
+
+            if (currentlySelected.Count == 1 && currentlySelected.First() is BaseBuilding building)
+            {
+                buildingBuildingUI.EnableFor(building);
+            }
+            else
+            {
+                buildingBuildingUI.Disable();
+            }
+        }
+        else
+        {
+            DisableAll();
+        }
+    }
+
+    private void DisableAll(){
         actionsUI.Disable();
         buildingBuildingUI.Disable();
+    }
+
+    private void HandleUnitDeath(UnitDeathEvent evt){
+        currentlySelected.Remove(evt.Unit);
+        RefreshUI();
     }
 }
 }

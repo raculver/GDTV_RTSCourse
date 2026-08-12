@@ -37,5 +37,9 @@ namespace GameDevTV.RTS.Units
         public void Stop(){
             graphAgent.SetVariableValue<Enum>(BTVariables.BT_UNIT_COMMAND, UnitCommands.Stop);
         }
+
+        public void OnDestroy(){
+            Bus<UnitDeathEvent>.Raise(new UnitDeathEvent(this));
+        }
     }
 }
