@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using GameDevTV.RTS.EventBus;
+using GameDevTV.RTS.Events;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -7,11 +9,6 @@ namespace GameDevTV.RTS.Units{
 
 public class BaseBuilding : AbstractCommandable
 {
-    private List<AbstractUnitSO> buildingQueue = new(MAX_SIZE_BUILD_QUEUE);
-    private const int MAX_SIZE_BUILD_QUEUE = 5; // 5 is hard coded into GUI
-    private float timeBuildStart;
-    private Coroutine buildRoutine;
-    
     public float progress{get; private set;} = 0;
     public int QueueSize => buildingQueue.Count;
     public AbstractUnitSO [] Queue => buildingQueue.ToArray(); // give public array (copy) of the Queue
@@ -19,12 +16,16 @@ public class BaseBuilding : AbstractCommandable
     [field: SerializeField] public MeshRenderer MainRenderer {get; private set;}
     [SerializeField] private Material primaryMaterial;
     [SerializeField] private NavMeshObstacle navMeshObstacle;
+    [field: SerializeField] public BuildingProgress BuildStatus {get; private set;} = new BuildingProgress(BuildingProgress.BuildingState.Completed, 0, 0);
 
     private BuildingSO buildingSO;
-
     public delegate void QueueUpdateEvent(AbstractUnitSO[] unitsInQueue);
     public event QueueUpdateEvent OnQueueUpdated;
-
+    private List<AbstractUnitSO> buildingQueue = new(MAX_SIZE_BUILD_QUEUE);
+    private const int MAX_SIZE_BUILD_QUEUE = 5; // 5 is hard coded into GUI
+    private float timeBuildStart;
+    private Coroutine buildRoutine;
+    private IBuildingBuilder unitBuildingThis;
 
     private void Awake(){
         buildingSO =  unitSO as BuildingSO;
@@ -34,6 +35,16 @@ public class BaseBuilding : AbstractCommandable
         base.Start();
         // if (navMeshObstacle != null) navMeshObstacle.enabled = true;
         if (MainRenderer != null) MainRenderer.material = primaryMaterial;
+        BuildStatus = new BuildingProgress(
+            BuildingProgress.BuildingState.Bulding,
+            Time.time - buildingSO.BuildTime*BuildStatus.Progress,
+            BuildStatus.Progress
+        );
+        
+        // Set the building state to complenticated
+        BuildStatus = new BuildingProgress(BuildingProgress.BuildingState.Completed,0,1);
+        unitBuildingThis = null;
+        Bus<UnitDeathEvent>.OnEvent -= HandleUnitDeath;       
     }
 
     public void SetNavMeshObstacleEnabled(bool enabled){
@@ -104,8 +115,36 @@ public class BaseBuilding : AbstractCommandable
 
     }
 
-    public void ShowGhostVisuals(){
+    public void StartBuilding(IBuildingBuilder buildingBuilder){
+        unitBuildingThis = buildingBuilder;
         MainRenderer.material = buildingSO.PlacementMaterial;
+
+        BuildStatus = new BuildingProgress(
+            BuildingProgress.BuildingState.Bulding,
+            Time.time - buildingSO.BuildTime*BuildStatus.Progress,
+            BuildStatus.Progress
+        );
+        
+        // nice one Chris
+        Bus<UnitDeathEvent>.OnEvent -= HandleUnitDeath;
+        Bus<UnitDeathEvent>.OnEvent += HandleUnitDeath;
+    }
+
+    private void HandleUnitDeath(UnitDeathEvent evt){
+        if (evt.Unit.TryGetComponent(out IBuildingBuilder buildingBuilder) && buildingBuilder == unitBuildingThis){
+            BuildStatus = new BuildingProgress(
+                BuildingProgress.BuildingState.Paused,
+                BuildStatus.StartTime,
+                (Time.time - BuildStatus.StartTime) / buildingSO.BuildTime 
+            );
+            // if I had £1 for every time we unsubscribe from the unit death event...
+            Bus<UnitDeathEvent>.OnEvent -= HandleUnitDeath;
+        }        
+    }
+
+    private void OnDestroy()
+    {
+        Bus<UnitDeathEvent>.OnEvent -= HandleUnitDeath;
     }
 }
 } 

@@ -54,7 +54,7 @@ public class Worker : AbstractUnit, IBuildingBuilder
         GameObject tempGhostInstance = Instantiate(building.Prefab, targetLocation, Quaternion.identity);
         
         if (tempGhostInstance.TryGetComponent(out BaseBuilding baseBuilding)){
-            baseBuilding.ShowGhostVisuals();
+            baseBuilding.StartBuilding(this);
         }
         else
         {
