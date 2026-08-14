@@ -53,11 +53,7 @@ public class Worker : AbstractUnit, IBuildingBuilder
     {
         GameObject tempGhostInstance = Instantiate(building.Prefab, targetLocation, Quaternion.identity);
         
-        if (tempGhostInstance.TryGetComponent(out BaseBuilding baseBuilding)){
-            baseBuilding.StartBuilding(this);
-        }
-        else
-        {
+        if (!tempGhostInstance.TryGetComponent(out BaseBuilding _)){
             Debug.LogError($"Missing BaseBuilding on Prefab for BildingSO {building.name}");
         }
 
@@ -71,6 +67,18 @@ public class Worker : AbstractUnit, IBuildingBuilder
         Bus<ActionsUIUpdateEvent>.Raise(new ActionsUIUpdateEvent(this));
 
         return tempGhostInstance;
+    }
+
+    public void ResumeBuilding(BaseBuilding building)
+    {
+        graphAgent.SetVariableValue<Vector3>(BTVariables.BT_UNIT_TGT_POSITION, building.transform.position);
+        graphAgent.SetVariableValue(BTVariables.BT_UNIT_BUILDING_CONSTR, building);
+        graphAgent.SetVariableValue<BuildingSO>(BTVariables.BT_UNIT_BUILDING_TYPE, building.buildingSO);
+        graphAgent.SetVariableValue<GameObject>(BTVariables.BT_UNIT_BUILDING_GHOST, null);
+        graphAgent.SetVariableValue<UnitCommands>(BTVariables.BT_UNIT_COMMAND, UnitCommands.BuildBuilding);
+        
+        SetCommandsOverride(new ActionBase[] {cancelBuildingCmd});
+        Bus<ActionsUIUpdateEvent>.Raise(new ActionsUIUpdateEvent(this));
     }
 
     public void CancelBuilding(){

@@ -31,16 +31,24 @@ public partial class BuildBuildingAction : Action
             DebugLogging.Instance.Message("ACTION_BUILD_BUILDING Build action has invalid inputs", DebugLogging.Instance.ACTION_BUILD_BUILDING);
             return Status.Failure;
         }
-        startBuildTime = Time.time;
-        invTotalBuildTime = 1.0f /BuildingType.Value.BuildTime;
 
-        GameObject building = GameObject.Instantiate(BuildingType.Value.Prefab, TargetLocation, Quaternion.identity);
-        
-        if (!building.TryGetComponent(out completedBuilding) 
-            || completedBuilding.MainRenderer == null){
-            DebugLogging.Instance.Message("Build action has invalid inputs", DebugLogging.Instance.ACTION_BUILD_BUILDING);
-            return Status.Failure;
+        if (BuildingUnderContsruction.Value == null){
+            GameObject building = GameObject.Instantiate(BuildingType.Value.Prefab, TargetLocation, Quaternion.identity);
+            if (!building.TryGetComponent(out completedBuilding) 
+                || completedBuilding.MainRenderer == null)
+            {
+                DebugLogging.Instance.Message("Build action has invalid inputs", DebugLogging.Instance.ACTION_BUILD_BUILDING);
+                return Status.Failure;
+            }
         }
+        else{
+            completedBuilding = BuildingUnderContsruction.Value;
+        }
+
+        completedBuilding.StartBuilding(Self.Value.GetComponent<IBuildingBuilder>());
+        startBuildTime = completedBuilding.BuildStatus.StartTime;
+        
+        invTotalBuildTime = 1.0f /BuildingType.Value.BuildTime;
         BuildingUnderContsruction.Value = completedBuilding;
         buildingRenderer = completedBuilding.MainRenderer;
         
@@ -48,7 +56,7 @@ public partial class BuildBuildingAction : Action
         finishedBuildingTransform = TargetLocation.Value;
         buildingRenderer.transform.position = startingBuildingTransform;
 
-        return Status.Running;
+        return OnUpdate();
     }
     
     protected override Status OnUpdate()

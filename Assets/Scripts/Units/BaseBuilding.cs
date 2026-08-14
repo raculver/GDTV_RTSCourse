@@ -12,13 +12,13 @@ public class BaseBuilding : AbstractCommandable
     public float progress{get; private set;} = 0;
     public int QueueSize => buildingQueue.Count;
     public AbstractUnitSO [] Queue => buildingQueue.ToArray(); // give public array (copy) of the Queue
-
+    
+    [field: SerializeField] public BuildingSO buildingSO {get; private set;}
     [field: SerializeField] public MeshRenderer MainRenderer {get; private set;}
     [SerializeField] private Material primaryMaterial;
     [SerializeField] private NavMeshObstacle navMeshObstacle;
     [field: SerializeField] public BuildingProgress BuildStatus {get; private set;} = new BuildingProgress(BuildingProgress.BuildingState.Completed, 0, 0);
 
-    private BuildingSO buildingSO;
     public delegate void QueueUpdateEvent(AbstractUnitSO[] unitsInQueue);
     public event QueueUpdateEvent OnQueueUpdated;
     private List<AbstractUnitSO> buildingQueue = new(MAX_SIZE_BUILD_QUEUE);

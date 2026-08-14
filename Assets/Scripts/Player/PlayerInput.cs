@@ -8,6 +8,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Linq;
 using UnityEngine.EventSystems;
+using NUnit.Framework;
+using System;
 
 namespace GameDevTV.RTS.Player
 {
@@ -224,7 +226,10 @@ public class PlayerInput : MonoBehaviour
             for (int i = 0; i < commandables.Count; i++)
             {
                 CommandContext context = new(commandables[i], hitInfo, i);
-                if (activeAction.CanHandle(context)){activeAction.Handle(context);}
+                // Chris Kurhan's version broke, so he had to remove this... so we have to remove as well. Cheers Chris.
+                //if (activeAction.CanHandle(context)){
+                    activeAction.Handle(context);
+                //}
             }
 
             if (ghostInstance != null)
@@ -263,7 +268,7 @@ public class PlayerInput : MonoBehaviour
 
             int unitCtr = 0;
             foreach (AbstractUnit unit in abstractUnits){
-                foreach (ICommand command in unit.AvailableCommands){
+                foreach (ICommand command in GetAvailableCommands(unit)){
                     CommandContext cxt = new CommandContext(unit, hitInfo, unitCtr);
                     if (command.CanHandle(cxt)){
                          command.Handle(cxt);
@@ -273,6 +278,37 @@ public class PlayerInput : MonoBehaviour
                 }
             }
         }
+    }
+
+    private List<ActionBase> GetAvailableCommands(AbstractCommandable unit){
+        // this is horrendously dynamic
+        List<ActionBase> availableCommands = new();
+        
+        // WARNING: we want the priority to depend on order...
+        // for this reason, we're currently reading out override commands first for the sake of 
+        // the resume building command...
+
+        // Step 1, Add all commands in override menu (except reset O.R.C. command, which is itself an O.R.C. command)
+        // Step 1.1 get commands which are only OverrideCommandsCommand's
+        OverrideCommandsCommand[] overrideCommandsCommands = unit.AvailableCommands
+            .Where(command => command is OverrideCommandsCommand)
+            .Cast<OverrideCommandsCommand>()
+            .ToArray();
+        // Step 1.2 go into overrides command and add all non-ORC commands
+        foreach (OverrideCommandsCommand overridesCommandCommand in overrideCommandsCommands){
+            availableCommands.AddRange(
+                overridesCommandCommand.newCommands
+                .Where(command => command is not OverrideCommandsCommand)
+            );
+        }
+
+        // Step 2. Add commands from unit first menu actions
+        availableCommands.AddRange(
+            unit.AvailableCommands
+            .Where(command => command is not OverrideCommandsCommand)
+        );
+
+        return availableCommands;
     }
 
     private void HandleDragSelect(){
