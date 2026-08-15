@@ -1,6 +1,5 @@
+using System.Linq;
 using GameDevTV.RTS.Units;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
 
 namespace GameDevTV.RTS.Commands
@@ -8,6 +7,7 @@ namespace GameDevTV.RTS.Commands
     [CreateAssetMenu(fileName = "Build Building", menuName = "Units/Commands/Build Building")]
     public class BuildBuildingCommand : ActionBase{
         [field: SerializeField]  public BuildingSO BuildingType {get; private set;}
+        [field: SerializeField]  public BuildingRestrictionSO[] Restrictions {get; private set;}
 
         public override bool CanHandle(CommandContext cxt){            
             if (cxt.Commandable is not IBuildingBuilder) return false;
@@ -20,7 +20,7 @@ namespace GameDevTV.RTS.Commands
                 );
             }
             
-            return true;
+            return AllRestrictionsPass(cxt.Hit.point);
         }
 
         public override void Handle(CommandContext cxt){
@@ -29,10 +29,14 @@ namespace GameDevTV.RTS.Commands
                 // this was a right click action
                 builder.ResumeBuilding(building);
             }
-            else{
+            else if (AllRestrictionsPass(cxt.Hit.point)){
                 // this was an action to start building 
                 builder.Build(BuildingType, cxt.Hit.point);
             }
         }
+
+        private bool AllRestrictionsPass(Vector3 position){
+            return Restrictions.Length == 0 || Restrictions.All(restriction => restriction.CanPlace(position));
+        }
     }
-} 
+}
