@@ -15,13 +15,14 @@ namespace GameDevTV.RTS.Commands
             if (cxt.Commandable is not IBuildingBuilder) return false;
 
             // we're resuming something we've already paid for
-            if (cxt.Hit.collider != null){
-                DebugLogging.Instance.Message("ACTION_BUILD_BUILDING: Attemping resume build", DebugLogging.Instance.ACTION_BUILD_BUILDING);
-                return cxt.Hit.collider.TryGetComponent(out BaseBuilding building)
+            if (cxt.Hit.collider != null){                
+                bool resumeBuild = cxt.Hit.collider.TryGetComponent(out BaseBuilding building)
                     && BuildingType == building.buildingSO
                     && (building.BuildStatus.State == BuildingProgress.BuildingState.Paused
                         || building.BuildStatus.State == BuildingProgress.BuildingState.Destroyed
                 );
+                DebugLogging.Instance.Message($"ACTION_BUILD_BUILDING: Attemping resume build. Success = {resumeBuild}.", DebugLogging.Instance.ACTION_BUILD_BUILDING);
+                return resumeBuild;
             }
             
             DebugLogging.Instance.Message("ACTION_BUILD_BUILDING: New build", DebugLogging.Instance.ACTION_BUILD_BUILDING);

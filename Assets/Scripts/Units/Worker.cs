@@ -90,15 +90,17 @@ public class Worker : AbstractUnit, IBuildingBuilder
         if ( graphAgent.GetVariable(BTVariables.BT_UNIT_BUILDING_GHOST, out BlackboardVariable<GameObject> ghostVariable)
              && ghostVariable.Value != null )
         {
+            DebugLogging.Instance.Message("ACTION_BUILD_BUILDING: Building cancellation part 1", DebugLogging.Instance.ACTION_BUILD_BUILDING);
             Destroy(ghostVariable.Value);
         }
         if ( graphAgent.GetVariable(BTVariables.BT_UNIT_BUILDING_CONSTR, out BlackboardVariable<BaseBuilding> buildingVariable)
              && buildingVariable.Value != null)
         {
-            Destroy(buildingVariable.Value.gameObject);
+            DebugLogging.Instance.Message("ACTION_BUILD_BUILDING: Building cancellation part 2", DebugLogging.Instance.ACTION_BUILD_BUILDING);
+            //Destroy(buildingVariable.Value.gameObject);
         }
         SetCommandsOverride(Array.Empty<ActionBase>());
-        //Bus<ActionsUIUpdateEvent>.Raise(new ActionsUIUpdateEvent(this));
+        Bus<ActionsUIUpdateEvent>.Raise(new ActionsUIUpdateEvent(this));
         Stop();
     }
     }
