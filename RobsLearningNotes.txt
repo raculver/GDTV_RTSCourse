@@ -69,3 +69,7 @@ Font Issue: uncontrolled changes.
 - Chaning Atlas Population mode to dynamic on font will help stop uncontrolled changes. I was uncontrollably spamming the repo with 2 mb changes.
 Object initialisers
 - Example in BuildingRestrictionSO.cs
+Performative physics checking
+- note "non alloc" versions of physics sphere overlap and the like. Example in BuildingRestrictionSO.CanPlace
+Neat switch approach using structs.
+- Example in BuildingRestrictionSO.CanPlace
