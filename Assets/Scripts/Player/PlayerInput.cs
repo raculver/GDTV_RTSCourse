@@ -8,8 +8,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Linq;
 using UnityEngine.EventSystems;
-using NUnit.Framework;
-using System;
 
 namespace GameDevTV.RTS.Player
 {
@@ -32,6 +30,12 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] private LayerMask floorLayers;
     [SerializeField] private RectTransform selectionBox;
 
+    [Header("UI Colours")]
+    [SerializeField] [ColorUsage(showAlpha:true, hdr:true)] private Color errorColorTint = Color.red;
+    [SerializeField] [ColorUsage(showAlpha:true, hdr:true)] private Color errorColorFresnel = new(4, 1.7f, 0, 2);
+    [SerializeField] [ColorUsage(showAlpha:true, hdr:true)] private Color availableToPlaceColorTint = new(0.2f, 0.65f, 1, 2); 
+    [SerializeField] [ColorUsage(showAlpha:true, hdr:true)] private Color availableToPlaceColorFresnel = new(4, 1.7f, 0, 2);
+
     private ActionBase activeAction;
     private CinemachineFollow cinemachineFollow;
     private float zoomStartTime;
@@ -43,7 +47,13 @@ public class PlayerInput : MonoBehaviour
     private Vector2 startClickMousePos;
     private HashSet<AbstractUnit> aliveUnits = new(100); // arb numbers being used here :/
     private HashSet<AbstractUnit> selectionBoxUnits = new(24); // arb numbers being used here :/
+
     private GameObject ghostInstance;
+    private MeshRenderer ghostRenderer;
+
+    // Get hashes of "references" in shadergraph
+    private static readonly int TINT = Shader.PropertyToID("_Tint");
+    private static readonly int FRESNEL = Shader.PropertyToID("_FresnelColor");
 
     #region Unity Lifecycle
     private void Awake(){
@@ -398,12 +408,14 @@ public class PlayerInput : MonoBehaviour
             ActivateAction(new RaycastHit()); // use dummy raycast hit
         }
         else if (activeAction.GhostPrefab != null){
+            // we're placing the ghost
             ghostInstance =  Instantiate(activeAction.GhostPrefab);
+            ghostRenderer = ghostInstance.GetComponentInChildren<MeshRenderer>();
         }
     }
 
     private void HandleGhost(){
-        if (ghostInstance == null) return;
+        if (activeAction == null || ghostInstance == null) return;
         if (Keyboard.current.escapeKey.wasReleasedThisFrame){
             Destroy(ghostInstance);
             ghostInstance = null;
@@ -413,7 +425,11 @@ public class PlayerInput : MonoBehaviour
 
         Ray ray = camera.ScreenPointToRay(Mouse.current.position.ReadValue());
         if (Physics.Raycast(ray, out RaycastHit hitInfo, float.MaxValue, floorLayers)){
-            ghostInstance.transform.position = hitInfo.point;   
+            ghostInstance.transform.position = hitInfo.point;
+
+            bool restrictionsPass =activeAction.AllRestrictionsPass(hitInfo.point);
+            ghostRenderer.material.SetColor(TINT, restrictionsPass? availableToPlaceColorTint : errorColorTint);
+            ghostRenderer.material.SetColor(FRESNEL, restrictionsPass? availableToPlaceColorFresnel : errorColorFresnel);
         }
     }
     #endregion

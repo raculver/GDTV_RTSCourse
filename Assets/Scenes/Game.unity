@@ -4480,6 +4480,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   selectionBox: {fileID: 1240475946}
+  errorColorTint: {r: 1, g: 0, b: 0, a: 1}
+  errorColorFresnel: {r: 5.088412, g: 2.276312, b: 2.1361728, a: 2}
+  availableToPlaceColorTint: {r: 0.2, g: 0.65, b: 1, a: 2}
+  availableToPlaceColorFresnel: {r: 4, g: 1.7, b: 0, a: 2}
 --- !u!1001 &332197402
 PrefabInstance:
   m_ObjectHideFlags: 0
