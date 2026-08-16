@@ -61,5 +61,16 @@ namespace GameDevTV.RTS.Units
             }
         }
 
+        protected void PaySupplies(SupplyCostSO cost){
+            Bus<SupplyEvent>.Raise(new SupplyEvent(-cost.Minerals, cost.MineralsSO));
+            Bus<SupplyEvent>.Raise(new SupplyEvent(-cost.Gas, cost.GasSO));
+        }
+
+        protected void RefundSupplies(SupplyCostSO cost, float fraction = 1.0f){
+            Bus<SupplyEvent>.Raise(new SupplyEvent((int)(fraction*cost.Minerals), cost.MineralsSO));
+            Bus<SupplyEvent>.Raise(new SupplyEvent((int)(fraction*cost.Gas), cost.GasSO));
+        }
+
+
     }
 }

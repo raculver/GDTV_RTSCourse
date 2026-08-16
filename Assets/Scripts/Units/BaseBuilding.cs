@@ -62,9 +62,7 @@ public class BaseBuilding : AbstractCommandable
         buildingQueue.Add(unit);
         DebugLogging.Instance.Message($"{this.name} adding {unit.name} to build queue.", DebugLogging.Instance.BUILDING_BASEBUILDING);
 
-        // pay supplies
-        Bus<SupplyEvent>.Raise(new SupplyEvent(-unit.Cost.Minerals, unit.Cost.MineralsSO));
-        Bus<SupplyEvent>.Raise(new SupplyEvent(-unit.Cost.Gas, unit.Cost.GasSO));
+        PaySupplies(unit.Cost);
 
         if (buildingQueue.Count == 1){            
             buildRoutine=StartCoroutine(DoBuildUnits());
@@ -94,10 +92,12 @@ public class BaseBuilding : AbstractCommandable
 
     public void CancelBuildingUnit(int index){
         if (index < 0 || index >= buildingQueue.Count){
-            Debug.LogError("Attemping to cancel a unit outside of build queue length.");
+            Debug.LogError($"Attemping to cancel a unit outside of build queue length: {index} / {buildingQueue.Count}");
             return;
         }
 
+        AbstractUnitSO unitSO = buildingQueue[index];
+        RefundSupplies(unitSO.Cost);
         // if the index is zero, we cancel current item... need to stop coroutine
         if (index == 0)
         {

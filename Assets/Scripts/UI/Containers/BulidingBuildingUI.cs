@@ -30,8 +30,7 @@ namespace GameDevTV.RTS.UI.Containers{
             {
                 // first buttons cancel the build
                 int ldiifl = i; // locally defined index in for loop... meaning of inline function will elvolve with i otherwise.
-//                unitButtons[i].EnableFor(building.Queue[i], () => building.CancelBuildingUnit(ldiifl));
-                unitButtons[i].EnableFor(building.Queue[i], () => building.CancelBuildingUnit((int)i));
+                unitButtons[i].EnableFor(building.Queue[i], () => building.CancelBuildingUnit(ldiifl));
             }
             for (int i=building.QueueSize; i < unitButtons.Length; i++)
             {

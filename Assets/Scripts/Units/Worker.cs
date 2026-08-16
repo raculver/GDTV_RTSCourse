@@ -7,6 +7,7 @@ using GameDevTV.RTS.Events;
 using GameDevTV.RTS.Utilities;
 using Unity.Behavior;
 using Unity.GraphToolkit.Editor;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UIElements;
@@ -67,9 +68,7 @@ public class Worker : AbstractUnit, IBuildingBuilder
         SetCommandsOverride(new ActionBase[] {cancelBuildingCmd});
         Bus<ActionsUIUpdateEvent>.Raise(new ActionsUIUpdateEvent(this));
         
-        // pay supplies
-        Bus<SupplyEvent>.Raise(new SupplyEvent(-building.Cost.Minerals, building.Cost.MineralsSO));
-        Bus<SupplyEvent>.Raise(new SupplyEvent(-building.Cost.Gas, building.Cost.GasSO));
+        PaySupplies(building.Cost);
 
         return tempGhostInstance;
     }
@@ -97,8 +96,13 @@ public class Worker : AbstractUnit, IBuildingBuilder
              && buildingVariable.Value != null)
         {
             DebugLogging.Instance.Message("ACTION_BUILD_BUILDING: Building cancellation part 2", DebugLogging.Instance.ACTION_BUILD_BUILDING);
-            //Destroy(buildingVariable.Value.gameObject);
+            // RefundSupplies(buildingVariable.Value.buildingSO.Cost, 0.75f);
+            Destroy(buildingVariable.Value.gameObject);
         }
+        if (graphAgent.GetVariable(BTVariables.BT_UNIT_BUILDING_TYPE, out BlackboardVariable<BuildingSO> buildingType)){
+            RefundSupplies(buildingType.Value.Cost, 0.75f);
+        }
+        
         SetCommandsOverride(Array.Empty<ActionBase>());
         Bus<ActionsUIUpdateEvent>.Raise(new ActionsUIUpdateEvent(this));
         Stop();
