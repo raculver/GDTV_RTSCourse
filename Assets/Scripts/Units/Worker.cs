@@ -9,6 +9,7 @@ using Unity.Behavior;
 using Unity.GraphToolkit.Editor;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UIElements;
 
 namespace GameDevTV.RTS.Units{
 
@@ -65,6 +66,10 @@ public class Worker : AbstractUnit, IBuildingBuilder
 
         SetCommandsOverride(new ActionBase[] {cancelBuildingCmd});
         Bus<ActionsUIUpdateEvent>.Raise(new ActionsUIUpdateEvent(this));
+        
+        // pay supplies
+        Bus<SupplyEvent>.Raise(new SupplyEvent(-building.Cost.Minerals, building.Cost.MineralsSO));
+        Bus<SupplyEvent>.Raise(new SupplyEvent(-building.Cost.Gas, building.Cost.GasSO));
 
         return tempGhostInstance;
     }

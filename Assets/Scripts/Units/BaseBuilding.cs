@@ -61,6 +61,11 @@ public class BaseBuilding : AbstractCommandable
 
         buildingQueue.Add(unit);
         DebugLogging.Instance.Message($"{this.name} adding {unit.name} to build queue.", DebugLogging.Instance.BUILDING_BASEBUILDING);
+
+        // pay supplies
+        Bus<SupplyEvent>.Raise(new SupplyEvent(-unit.Cost.Minerals, unit.Cost.MineralsSO));
+        Bus<SupplyEvent>.Raise(new SupplyEvent(-unit.Cost.Gas, unit.Cost.GasSO));
+
         if (buildingQueue.Count == 1){            
             buildRoutine=StartCoroutine(DoBuildUnits());
         }

@@ -1,6 +1,5 @@
 using GameDevTV.RTS.Environment;
 using GameDevTV.RTS.EventBus;
-using UnityEngine;
 
 namespace GameDevTV.RTS.Events
 {

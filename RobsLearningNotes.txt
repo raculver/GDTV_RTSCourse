@@ -71,5 +71,5 @@ Object initialisers
 - Example in BuildingRestrictionSO.cs
 Performative physics checking
 - note "non alloc" versions of physics sphere overlap and the like. Example in BuildingRestrictionSO.CanPlace
-Neat switch approach using structs.
+Neat switch approach using enums.
 - Example in BuildingRestrictionSO.CanPlace

@@ -1,4 +1,6 @@
+using GameDevTV.RTS.Player;
 using GameDevTV.RTS.Units;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace GameDevTV.RTS.Commands
@@ -111,14 +113,22 @@ flowchart TD
     [field:SerializeField] public AbstractUnitSO UnitToBuild{get; private set;}
     
     public override bool CanHandle(CommandContext cxt){
-        bool CanYouHandleIt = cxt.Commandable is BaseBuilding;
-        //Debug.Log(CanYouHandleIt ? "You can handle it!" : "You can't handle it :(");
+        bool CanYouHandleIt = cxt.Commandable is BaseBuilding && HasEnoughSupplies();
+        
         return CanYouHandleIt;
     }
 
     public override void Handle(CommandContext cxt){
+        if (!HasEnoughSupplies()) return;
+
         BaseBuilding building = (BaseBuilding)cxt.Commandable;
         building.BuildUnit(UnitToBuild);
+    }
+
+    private bool HasEnoughSupplies(){
+        // return UnitToBuild.Cost.Minerals <= SuppliesController.amountMinerals
+        //     && UnitToBuild.Cost.Gas <= SuppliesController.amountGas;
+        return SuppliesController.HasEnoughSupplies(UnitToBuild.Cost);
     }
 }
 }
