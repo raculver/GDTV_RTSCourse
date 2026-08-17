@@ -11,7 +11,7 @@ namespace GameDevTV.RTS.UI.Components{
 public class UIActionButton : MonoBehaviour, IUIElement<BaseCommand, UnityAction>, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private Image icon;
-    [SerializeField] private GameObject tooltipText;
+    [SerializeField] private Tooltip tooltip;
     
     private Button button;
     private float tooltipWaitTime { get;} = 0.8f;
@@ -27,12 +27,18 @@ public class UIActionButton : MonoBehaviour, IUIElement<BaseCommand, UnityAction
         button.interactable = !commandLockedOut;
         button.onClick.RemoveAllListeners();
         button.onClick.AddListener(onClick);
+        
+        // Deal with tooltip
+        if (tooltip != null) tooltip.SetText(action.name);
     }
 
     public void Disable(){
         SetIcon(null);
         button.interactable = false;
         button.onClick.RemoveAllListeners();
+        
+        // Deal with tooltip
+        HideTooltip();
     }
 
     private void SetIcon(Sprite icon){
@@ -51,13 +57,17 @@ public class UIActionButton : MonoBehaviour, IUIElement<BaseCommand, UnityAction
     }
 
     public void OnPointerExit(PointerEventData eventData){
-        // cancel pending invocation
-        CancelInvoke(nameof(ShowTooltip));
-        HideToolTip();
+        HideTooltip();
     }
 
-    private void ShowTooltip() => tooltipText.SetActive(true);
-    private void HideToolTip() => tooltipText.SetActive(false);
+    private void ShowTooltip(){
+        if (tooltip != null) tooltip.Show();
+    }
+
+    private void HideTooltip(){
+        if (tooltip != null) tooltip.Hide();
+        CancelInvoke(nameof(ShowTooltip));
+    }
 
 }
 }
