@@ -10,11 +10,11 @@ namespace GameDevTV.RTS.Units
     {
         [field: SerializeField] public int CurrentHealth{get; private set;}
         [field: SerializeField] public int MaximumHealth{get; private set;}
-        [field: SerializeField] public ActionBase [] AvailableCommands{get; private set;}
+        [field: SerializeField] public BaseCommand [] AvailableCommands{get; private set;}
         [field: SerializeField] public AbstractUnitSO unitSO{get; private set;}
         [SerializeField] private DecalProjector selectionDecal;
 
-        private ActionBase[] initialCommands;
+        private BaseCommand[] initialCommands;
         bool commandsOverridden;
         
         // "virtual means the child classes can override if they need to".
@@ -47,7 +47,7 @@ namespace GameDevTV.RTS.Units
             DebugLogging.Instance.Message($"{this.name} Deselected.", DebugLogging.Instance.REPORT_SELECTION);
         }
 
-        public void SetCommandsOverride(ActionBase[] commands){
+        public void SetCommandsOverride(BaseCommand[] commands){
             bool noCommands = commands == null || commands.Length == 0;
             if (noCommands){
                 commandsOverridden = false;

@@ -16,7 +16,7 @@ namespace GameDevTV.RTS.Units{
 
 public class Worker : AbstractUnit, IBuildingBuilder
 {
-    [SerializeField] private ActionBase cancelBuildingCmd;
+    [SerializeField] private BaseCommand cancelBuildingCmd;
 
     public bool HasSupplies{
         get{
@@ -65,7 +65,7 @@ public class Worker : AbstractUnit, IBuildingBuilder
         graphAgent.SetVariableValue<GameObject>(BTVariables.BT_UNIT_BUILDING_GHOST, tempGhostInstance);
         graphAgent.SetVariableValue<UnitCommands>(BTVariables.BT_UNIT_COMMAND, UnitCommands.BuildBuilding);
 
-        SetCommandsOverride(new ActionBase[] {cancelBuildingCmd});
+        SetCommandsOverride(new BaseCommand[] {cancelBuildingCmd});
         Bus<ActionsUIUpdateEvent>.Raise(new ActionsUIUpdateEvent(this));
         
         PaySupplies(building.Cost);
@@ -81,7 +81,7 @@ public class Worker : AbstractUnit, IBuildingBuilder
         graphAgent.SetVariableValue<GameObject>(BTVariables.BT_UNIT_BUILDING_GHOST, null);
         graphAgent.SetVariableValue<UnitCommands>(BTVariables.BT_UNIT_COMMAND, UnitCommands.BuildBuilding);
         
-        SetCommandsOverride(new ActionBase[] {cancelBuildingCmd});
+        SetCommandsOverride(new BaseCommand[] {cancelBuildingCmd});
         Bus<ActionsUIUpdateEvent>.Raise(new ActionsUIUpdateEvent(this));
     }
 
@@ -103,7 +103,7 @@ public class Worker : AbstractUnit, IBuildingBuilder
             RefundSupplies(buildingType.Value.Cost, 0.75f);
         }
         
-        SetCommandsOverride(Array.Empty<ActionBase>());
+        SetCommandsOverride(Array.Empty<BaseCommand>());
         Bus<ActionsUIUpdateEvent>.Raise(new ActionsUIUpdateEvent(this));
         Stop();
     }

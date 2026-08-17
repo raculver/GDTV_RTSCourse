@@ -3,9 +3,9 @@ using UnityEngine;
 namespace GameDevTV.RTS.Commands
 {
 [CreateAssetMenu(fileName = "Override Commands", menuName = "Units/Commands/ActionsOverride", order = 110)]
-public class OverrideCommandsCommand : ActionBase
+public class OverrideCommandsCommand : BaseCommand
 {
-    [field: SerializeField] public ActionBase[] newCommands {get; private set;}
+    [field: SerializeField] public BaseCommand[] newCommands {get; private set;}
 
     public override bool CanHandle(CommandContext cxt)
     {

@@ -7,7 +7,7 @@ using UnityEngine.AI;
 namespace GameDevTV.RTS.Commands
 {
     [CreateAssetMenu(fileName = "Build Building", menuName = "Units/Commands/Build Building")]
-    public class BuildBuildingCommand : ActionBase{
+    public class BuildBuildingCommand : BaseCommand{
         [field: SerializeField]  public BuildingSO BuildingType {get; private set;}
 
         public override bool CanHandle(CommandContext cxt){

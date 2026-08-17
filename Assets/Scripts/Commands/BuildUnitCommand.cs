@@ -6,7 +6,7 @@ using UnityEngine;
 namespace GameDevTV.RTS.Commands
 {
 [CreateAssetMenu(fileName = "Build Unit", menuName = "Buildings/Commands/Build Unit", order = 120)]
-public class BuildUnitCommand : ActionBase
+public class BuildUnitCommand : BaseCommand
 {
     // ====== Weird Shared Reference Across ALL BuildUnitCommand ====== 
     // Because ActionBase inherits from ScriptableObject, it is an asset (a file on disk). 

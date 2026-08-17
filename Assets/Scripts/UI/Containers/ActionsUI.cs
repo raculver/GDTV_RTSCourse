@@ -15,14 +15,14 @@ public class ActionsUI : MonoBehaviour, IUIElement<HashSet<AbstractCommandable>>
     [SerializeField] private UIActionButton[] actionButtons;  
 
     private void RefreshButtons(HashSet<AbstractCommandable> selectedUnits){
-        HashSet<ActionBase> availableCommands = new(9);
+        HashSet<BaseCommand> availableCommands = new(9);
 
         foreach(AbstractCommandable commandable in selectedUnits){
             availableCommands.UnionWith(commandable.AvailableCommands);
         }
 
         for(int i= 0; i < actionButtons.Length; i++){
-            ActionBase actionForSlot = availableCommands.FirstOrDefault(action => action.Slot == i); // use lambda function
+            BaseCommand actionForSlot = availableCommands.FirstOrDefault(action => action.Slot == i); // use lambda function
             if (actionForSlot != null){
                 actionButtons[i].EnableFor(actionForSlot, HandleClick(actionForSlot));
             }
@@ -32,7 +32,7 @@ public class ActionsUI : MonoBehaviour, IUIElement<HashSet<AbstractCommandable>>
         }
     }
 
-    private UnityAction HandleClick(ActionBase action){
+    private UnityAction HandleClick(BaseCommand action){
         return () => {
             Bus<ActionSelectedEvent>.Raise(new ActionSelectedEvent(action));
         };

@@ -2413,7 +2413,7 @@
          y="135.83984"
          id="tspan42"><tspan
            style="text-align:center;text-anchor:middle"
-           id="tspan41">&lt;ActionBase, UnityAction&gt;</tspan></tspan></text><rect
+           id="tspan41">&lt;BaseCommand, UnityAction&gt;</tspan></tspan></text><rect
        style="fill:#fabe9a;fill-opacity:1;stroke:#010101;stroke-width:0.264999;stroke-opacity:1"
        id="rect1-4-6-9-8"
        width="45"
@@ -2518,7 +2518,7 @@
        y="0"><tspan
          x="86.982422"
          y="120.83984"
-         id="tspan49">ActionBase</tspan></text><rect
+         id="tspan49">BaseCommand</tspan></text><rect
        style="fill:#c3fa9a;fill-opacity:1;stroke:none;stroke-width:0.264999;stroke-dasharray:0.264999, 0.264999;stroke-dashoffset:0;stroke-opacity:1"
        id="rect1-2-7-9-0-5"
        width="45"
@@ -2623,7 +2623,7 @@
        y="0"><tspan
          x="86.982422"
          y="120.83984"
-         id="tspan57">ActionBase</tspan></text><rect
+         id="tspan57">BaseCommand</tspan></text><rect
        style="fill:#9ae3fa;fill-opacity:1;stroke-width:0.264999"
        id="rect1-2-7-4-4-4-9-9-8"
        width="45"
@@ -2823,7 +2823,7 @@
          y="135.83984"
          id="tspan71"><tspan
            style="text-align:center;text-anchor:middle"
-           id="tspan70">&lt;ActionBase, UnityAction&gt;</tspan></tspan></text><rect
+           id="tspan70">&lt;BaseCommand, UnityAction&gt;</tspan></tspan></text><rect
        style="fill:#fabe9a;fill-opacity:1;stroke:#010101;stroke-width:0.264999;stroke-opacity:1"
        id="rect1-4-6-9-7-9"
        width="45"
@@ -2853,7 +2853,7 @@
        y="0"><tspan
          x="86.982422"
          y="120.83984"
-         id="tspan73">ActionBase</tspan></text><rect
+         id="tspan73">BaseCommand</tspan></text><rect
        style="fill:#9ae3fa;fill-opacity:1;stroke-width:0.264999"
        id="rect1-2-7-4-4-4-9"
        width="45"
@@ -3324,7 +3324,7 @@
        y="0"><tspan
          x="49.540039"
          y="117.30078"
-         id="tspan100">EnableFor(ActionBase, UnityAction)</tspan></text><rect
+         id="tspan100">EnableFor(BaseCommand, UnityAction)</tspan></text><rect
        style="fill:#fcdbc7;fill-opacity:1;stroke:#010101;stroke-width:0.264999;stroke-opacity:1"
        id="rect1-9-6-6-0-4-2"
        width="44.999996"
@@ -3354,7 +3354,7 @@
        y="0"><tspan
          x="47.395473"
          y="116.1211"
-         id="tspan102">HashSet&lt;ActionBase&gt; availableCommands</tspan></text><rect
+         id="tspan102">HashSet&lt;BaseCommand&gt; availableCommands</tspan></text><rect
        style="fill:#fcdbc7;fill-opacity:1;stroke:#010101;stroke-width:0.264999;stroke-opacity:1"
        id="rect1-9-6-1"
        width="44.999996"
@@ -3804,7 +3804,7 @@
        y="0"><tspan
          x="41.740912"
          y="118.48047"
-         id="tspan119">ActionBase[] AvailableCommands</tspan></text><rect
+         id="tspan119">BaseCommand[] AvailableCommands</tspan></text><rect
        style="fill:#fcdbc7;fill-opacity:1;stroke:#010101;stroke-width:0.264999;stroke-opacity:1"
        id="rect1-9-6-15-2-2-7-4"
        width="44.999996"
@@ -3949,7 +3949,7 @@
        y="0"><tspan
          x="86.982422"
          y="120.83984"
-         id="tspan125">ActionBase</tspan></text><path
+         id="tspan125">BaseCommand</tspan></text><path
        style="fill:#ffffff;fill-opacity:1;stroke:#010101;stroke-width:0.365001;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker18-1-8-1-6)"
        d="m 465.13249,494.96471 h -5"
        id="path17-6-18-0-2" /><rect
@@ -4125,7 +4125,7 @@
        y="0"><tspan
          x="86.982422"
          y="120.83984"
-         id="tspan129">ActionBase</tspan></text><rect
+         id="tspan129">BaseCommand</tspan></text><rect
        style="fill:#9ae3fa;fill-opacity:1;stroke-width:0.264999"
        id="rect1-2-7-4-4-4-9-9-5"
        width="45"
@@ -4258,7 +4258,7 @@
          y="135.83984"
          id="tspan142"><tspan
            style="text-align:center;text-anchor:middle"
-           id="tspan141">&lt;ActionBase, UnityAction&gt;</tspan></tspan></text><rect
+           id="tspan141">&lt;BaseCommand, UnityAction&gt;</tspan></tspan></text><rect
        style="fill:#fabe9a;fill-opacity:1;stroke:#010101;stroke-width:0.264999;stroke-opacity:1"
        id="rect1-4-6-9-7-9-41"
        width="45"
@@ -4334,7 +4334,7 @@
        y="0"><tspan
          x="41.740912"
          y="118.48047"
-         id="tspan146">ActionBase[] AvailableCommands</tspan></text><rect
+         id="tspan146">BaseCommand[] AvailableCommands</tspan></text><rect
        style="fill:#fcdbc7;fill-opacity:1;stroke:#010101;stroke-width:0.264999;stroke-opacity:1"
        id="rect1-9-6-15-2-2-9"
        width="44.999996"
@@ -4355,7 +4355,7 @@
        y="0"><tspan
          x="41.740912"
          y="118.48047"
-         id="tspan147">ActionBase[] AvailableCommands</tspan></text><text
+         id="tspan147">BaseCommand[] AvailableCommands</tspan></text><text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,21.01595,638.51955)"
        id="text1-7-7-7-4-5-4-8"
@@ -4552,7 +4552,7 @@
        y="0"><tspan
          x="86.982422"
          y="120.83984"
-         id="tspan159">ActionBase</tspan></text><rect
+         id="tspan159">BaseCommand</tspan></text><rect
        style="fill:#9ae3fa;fill-opacity:1;stroke-width:0.264999"
        id="rect1-2-7-4-4-4-9-9-8-3"
        width="45"
@@ -4769,7 +4769,7 @@
        y="0"><tspan
          x="41.740912"
          y="118.48047"
-         id="tspan164">ActionBase[] AvailableCommands</tspan></text><text
+         id="tspan164">BaseCommand[] AvailableCommands</tspan></text><text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,121.01524,753.51953)"
        id="text1-7-7-7-4-5-4-8-7"
@@ -4853,7 +4853,7 @@
        y="0"><tspan
          x="86.982422"
          y="120.83984"
-         id="tspan170">ActionBase</tspan></text><rect
+         id="tspan170">BaseCommand</tspan></text><rect
        style="fill:#9ae3fa;fill-opacity:1;stroke-width:0.264999"
        id="rect1-2-7-4-4-4-9-9-8-3-0"
        width="45"

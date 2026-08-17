@@ -4,10 +4,10 @@ using UnityEngine;
 namespace GameDevTV.RTS.Commands
 {
 [CreateAssetMenu(fileName = "Move Action", menuName = "Units/Commands/Move", order = 100)]
-public class MoveCommand : ActionBase
+public class MoveCommand : BaseCommand
 {
     // ====== Weird Shared Reference Across ALL MoveCommand ====== 
-    // Because ActionBase inherits from ScriptableObject, it is an asset (a file on disk). 
+    // Because BaseCommand inherits from ScriptableObject, it is an asset (a file on disk). 
     // When you put a MoveCommand into the AvailableCommands array on the prefab, every instantiated unit 
     // gets a reference to that same asset. They do not get their own separate copy.
     //

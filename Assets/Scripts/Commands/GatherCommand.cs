@@ -5,7 +5,7 @@ using UnityEngine;
 namespace GameDevTV.RTS.Commands
 {
 [CreateAssetMenu(fileName = "Gather Action", menuName = "Units/Commands/Gather", order = 105)]
-public class GatherCommand : ActionBase
+public class GatherCommand : BaseCommand
 {
     [SerializeField] private AbstractUnitSO commandPostSO;
 

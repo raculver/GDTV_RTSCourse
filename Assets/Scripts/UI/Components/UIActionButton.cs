@@ -6,7 +6,7 @@ using UnityEngine.UI;
 namespace GameDevTV.RTS.UI.Components{
 
 [RequireComponent(typeof (Button))]
-public class UIActionButton : MonoBehaviour, IUIElement<ActionBase, UnityAction>
+public class UIActionButton : MonoBehaviour, IUIElement<BaseCommand, UnityAction>
 {
     [SerializeField] private Image icon;
     private Button button;
@@ -16,7 +16,7 @@ public class UIActionButton : MonoBehaviour, IUIElement<ActionBase, UnityAction>
         Disable();
     }
 
-    public void EnableFor(ActionBase action, UnityAction onClick){
+    public void EnableFor(BaseCommand action, UnityAction onClick){
         SetIcon(action.Icon);
         button.interactable = true;
         button.onClick.RemoveAllListeners();

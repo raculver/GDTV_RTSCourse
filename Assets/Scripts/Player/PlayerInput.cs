@@ -36,7 +36,7 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] [ColorUsage(showAlpha:true, hdr:true)] private Color availableToPlaceColorTint = new(0.2f, 0.65f, 1, 2); 
     [SerializeField] [ColorUsage(showAlpha:true, hdr:true)] private Color availableToPlaceColorFresnel = new(4, 1.7f, 0, 2);
 
-    private ActionBase activeAction;
+    private BaseCommand activeAction;
     private CinemachineFollow cinemachineFollow;
     private float zoomStartTime;
     private float rotationStartTime;
@@ -290,9 +290,9 @@ public class PlayerInput : MonoBehaviour
         }
     }
 
-    private List<ActionBase> GetAvailableCommands(AbstractCommandable unit){
+    private List<BaseCommand> GetAvailableCommands(AbstractCommandable unit){
         // this is horrendously dynamic
-        List<ActionBase> availableCommands = new();
+        List<BaseCommand> availableCommands = new();
         
         // WARNING: we want the priority to depend on order...
         // for this reason, we're currently reading out override commands first for the sake of 

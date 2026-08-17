@@ -5,7 +5,7 @@ namespace GameDevTV.RTS.Events
 {
 public struct ActionSelectedEvent : IEvent
     {
-        public ActionBase Action {get;}
-        public ActionSelectedEvent(ActionBase action){Action = action;}
+        public BaseCommand Action {get;}
+        public ActionSelectedEvent(BaseCommand action){Action = action;}
     }
 }
