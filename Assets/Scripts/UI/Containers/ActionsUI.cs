@@ -34,7 +34,7 @@ public class ActionsUI : MonoBehaviour, IUIElement<HashSet<AbstractCommandable>>
 
     private UnityAction HandleClick(BaseCommand action){
         return () => {
-            Bus<ActionSelectedEvent>.Raise(new ActionSelectedEvent(action));
+            Bus<CommandSelectedEvent>.Raise(new CommandSelectedEvent(action));
         };
     }
 

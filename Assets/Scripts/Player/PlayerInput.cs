@@ -36,7 +36,7 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] [ColorUsage(showAlpha:true, hdr:true)] private Color availableToPlaceColorTint = new(0.2f, 0.65f, 1, 2); 
     [SerializeField] [ColorUsage(showAlpha:true, hdr:true)] private Color availableToPlaceColorFresnel = new(4, 1.7f, 0, 2);
 
-    private BaseCommand activeAction;
+    private BaseCommand activeCommand;
     private CinemachineFollow cinemachineFollow;
     private float zoomStartTime;
     private float rotationStartTime;
@@ -79,7 +79,7 @@ public class PlayerInput : MonoBehaviour
         Bus<UnitDeselectedEvent>.OnEvent += HandleUnitDeselected;
         Bus<UnitSpawnEvent>.OnEvent += HandleUnitSpawn;
         Bus<UnitDeathEvent>.OnEvent += HandleUnitDeath;
-        Bus<ActionSelectedEvent>.OnEvent += HandleActionSelected;
+        Bus<CommandSelectedEvent>.OnEvent += HandleCommandSelected;
     }
 
     private void OnDisable()
@@ -88,7 +88,7 @@ public class PlayerInput : MonoBehaviour
         Bus<UnitDeselectedEvent>.OnEvent -= HandleUnitDeselected;
         Bus<UnitSpawnEvent>.OnEvent -= HandleUnitSpawn;
         Bus<UnitDeathEvent>.OnEvent -= HandleUnitDeath;
-        Bus<ActionSelectedEvent>.OnEvent -= HandleActionSelected;
+        Bus<CommandSelectedEvent>.OnEvent -= HandleCommandSelected;
     }
 
     #endregion
@@ -204,7 +204,7 @@ public class PlayerInput : MonoBehaviour
         Ray ray = camera.ScreenPointToRay(Mouse.current.position.ReadValue());
 
         if (Mouse.current.leftButton.wasReleasedThisFrame){
-            if (activeAction == null
+            if (activeCommand == null
                 && Physics.Raycast(ray, out RaycastHit hitInfo, float.MaxValue, selectableLayers)
                 && hitInfo.collider.TryGetComponent(out ISelectable selectable))
             {
@@ -212,8 +212,8 @@ public class PlayerInput : MonoBehaviour
                 DebugLogging.Instance.Message($"REPORT_SELECTION: Selection from HandleLeftClick: {hitInfo.collider.name}",DebugLogging.Instance.REPORT_SELECTION);
                 selectable.Select();
             }
-            else if (activeAction != null
-                // Deal with second LMB click action (ActionBase.RequiresClickToActivate)
+            else if (activeCommand != null
+                // Deal with second LMB click command (BaseCommand.RequiresClickToActivate)
                 && !EventSystem.current.IsPointerOverGameObject()
                 && Physics.Raycast(ray, out hitInfo, float.MaxValue, floorLayers | interactableLayers))
                 {
@@ -221,12 +221,12 @@ public class PlayerInput : MonoBehaviour
                         $"REPORT_CLICKS: Left click registered: {hitInfo.collider.name}",
                         DebugLogging.Instance.REPORT_CLICKS
                     );
-                    ActivateAction(hitInfo);
+                    ActivateCommand(hitInfo);
                 }
             }
     }
 
-        private void ActivateAction(RaycastHit hitInfo)
+        private void ActivateCommand(RaycastHit hitInfo)
         {
             List<AbstractCommandable> commandables = selectedUnits
                 .Where((unit) => unit is AbstractCommandable)
@@ -238,7 +238,7 @@ public class PlayerInput : MonoBehaviour
                 CommandContext context = new(commandables[i], hitInfo, i);
                 // Chris Kurhan's version broke, so he had to remove this... so we have to remove as well. Cheers Chris.
                 //if (activeAction.CanHandle(context)){
-                    activeAction.Handle(context);
+                    activeCommand.Handle(context);
                 //}
             }
 
@@ -248,7 +248,7 @@ public class PlayerInput : MonoBehaviour
                 ghostInstance = null;
             }
 
-            activeAction = null;
+            activeCommand = null;
         }
 
         private void HandleRightClick()
@@ -331,7 +331,7 @@ public class PlayerInput : MonoBehaviour
             HandleDragSelect_Drag();
         }
         else if (Mouse.current.leftButton.wasReleasedThisFrame){
-            if (!wasMouseDownOnUI && activeAction == null && !Keyboard.current.shiftKey.isPressed) { DeselectAll(); }
+            if (!wasMouseDownOnUI && activeCommand == null && !Keyboard.current.shiftKey.isPressed) { DeselectAll(); }
             HandleLeftClick(); // This code is rife, Chris
             HandleDragSelect_Stop();
         }
@@ -346,7 +346,7 @@ public class PlayerInput : MonoBehaviour
     }
 
     private void HandleDragSelect_Drag(){
-        if (activeAction != null || wasMouseDownOnUI){return;}
+        if (activeCommand != null || wasMouseDownOnUI){return;}
 
         Bounds selectionBoxBounds = ResizeSelectionBox();
         foreach (AbstractUnit unit in aliveUnits)
@@ -398,28 +398,28 @@ public class PlayerInput : MonoBehaviour
         aliveUnits.Remove(evt.Unit);
     }
 
-    private void HandleActionSelected(ActionSelectedEvent evt){
+    private void HandleCommandSelected(CommandSelectedEvent evt){
         DebugLogging.Instance.Message(
-            $"REPORT_CLICKS Click registered on {evt.Action.name}",
+            $"REPORT_CLICKS Click registered on {evt.Command.name}",
             DebugLogging.Instance.REPORT_CLICKS
         );
-        activeAction = evt.Action;
-        if (!activeAction.RequiresClickToActivate){
-            ActivateAction(new RaycastHit()); // use dummy raycast hit
+        activeCommand = evt.Command;
+        if (!activeCommand.RequiresClickToActivate){
+            ActivateCommand(new RaycastHit()); // use dummy raycast hit
         }
-        else if (activeAction.GhostPrefab != null){
+        else if (activeCommand.GhostPrefab != null){
             // we're placing the ghost
-            ghostInstance =  Instantiate(activeAction.GhostPrefab);
+            ghostInstance =  Instantiate(activeCommand.GhostPrefab);
             ghostRenderer = ghostInstance.GetComponentInChildren<MeshRenderer>();
         }
     }
 
     private void HandleGhost(){
-        if (activeAction == null || ghostInstance == null) return;
+        if (activeCommand == null || ghostInstance == null) return;
         if (Keyboard.current.escapeKey.wasReleasedThisFrame){
             Destroy(ghostInstance);
             ghostInstance = null;
-            activeAction = null;
+            activeCommand = null;
             return;
         }
 
@@ -427,7 +427,7 @@ public class PlayerInput : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit hitInfo, float.MaxValue, floorLayers)){
             ghostInstance.transform.position = hitInfo.point;
 
-            bool restrictionsPass =activeAction.AllRestrictionsPass(hitInfo.point);
+            bool restrictionsPass =activeCommand.AllRestrictionsPass(hitInfo.point);
             ghostRenderer.material.SetColor(TINT, restrictionsPass? availableToPlaceColorTint : errorColorTint);
             ghostRenderer.material.SetColor(FRESNEL, restrictionsPass? availableToPlaceColorFresnel : errorColorFresnel);
         }

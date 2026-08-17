@@ -9,10 +9,10 @@ using UnityEngine;
 /* Mermaid attempt
 flowchart LR
     RUI[RuntimeUI]-->|activates|UI["UI.Container.ActionUI"]-->|activates|UIC["UI.Component.UIActionButton"]
-    UIC -->|inherits from|IUIE2["IUIElement(ActionBase,UnityAction)"]
+    UIC -->|inherits from|IUIE2["IUIElement(BaseCommand,UnityAction)"]
     UI -->|inherits from|IUIE1["IUIElement(T)"]
     RUI -->|owns|L_AC["List<_AbstractCommandable_>"]-->AC[AbstractCommandable]
-    AB[ActionBase]--> IUIE2
+    AB[BaseCommand]--> IUIE2
     q[?]-->AB
 */
 
@@ -40,7 +40,7 @@ flowchart TD
         C[AbstractCommandable.AvailableCommands]
     end
     subgraph WorkerSO
-        D[ActionBase]
+        D[BaseCommand]
         E[MoveCommand]
         F[WorkerSO]
     end
