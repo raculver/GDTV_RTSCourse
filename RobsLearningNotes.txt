@@ -73,3 +73,9 @@ Performative physics checking
 - note "non alloc" versions of physics sphere overlap and the like. Example in BuildingRestrictionSO.CanPlace
 Neat switch approach using enums.
 - Example in BuildingRestrictionSO.CanPlace
+Event System Triggers (Event Triggers)
+- Attatch EventTrigger to UI objects
+- Key example use is on UI objects
+- look at tooltips (UIActionButton, OnPointerEnter, OnPointerExit)
+nameof function
+- oh my god. Solves issue of hard coding variable names as strings directly into code.
