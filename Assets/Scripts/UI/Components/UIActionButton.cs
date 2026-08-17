@@ -18,7 +18,8 @@ public class UIActionButton : MonoBehaviour, IUIElement<BaseCommand, UnityAction
 
     public void EnableFor(BaseCommand action, UnityAction onClick){
         SetIcon(action.Icon);
-        button.interactable = true;
+        bool commandLockedOut = action.IsLocked(new CommandContext());
+        button.interactable = !commandLockedOut;
         button.onClick.RemoveAllListeners();
         button.onClick.AddListener(onClick);
     }

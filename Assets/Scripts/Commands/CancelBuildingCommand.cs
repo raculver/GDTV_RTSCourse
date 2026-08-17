@@ -15,5 +15,7 @@ public class CancelBuildingCommand : BaseCommand
 
         buildingBuilder.CancelBuilding();
     }
+
+    public override bool IsLocked(CommandContext cxt) => false; // never locked
 }
 }

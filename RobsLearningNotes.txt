@@ -47,7 +47,7 @@ Design Patterns
 - Structs are much quicker to instantiate, apparently
 Handling UI
 - The whole thing is a cluster f.
-- See mermaid diagrams in ActionBase and PlayerInput for some nightmarish design patterns
+- See mermaid diagrams in BaseCommand and PlayerInput for some nightmarish design patterns
 - apparently wasMouseDownOnUI = EventSystem.current.IsPointerOverGameObject() detects mouse over UI?
 Queues
 - Like lists, but can Enqueue, Dequeue and Peek next value

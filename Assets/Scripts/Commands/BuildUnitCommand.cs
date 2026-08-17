@@ -9,7 +9,7 @@ namespace GameDevTV.RTS.Commands
 public class BuildUnitCommand : BaseCommand
 {
     // ====== Weird Shared Reference Across ALL BuildUnitCommand ====== 
-    // Because ActionBase inherits from ScriptableObject, it is an asset (a file on disk). 
+    // Because BaseCommand inherits from ScriptableObject, it is an asset (a file on disk). 
     // When you put a BuildUnitCommand into the AvailableCommands array on the prefab, every instantiated unit 
     // gets a reference to that same asset. They do not get their own separate copy.
     //
@@ -53,11 +53,11 @@ flowchart TD
         F[BuildTime]
     end
 
-    subgraph ActionBaseSO
-        ABSO[ActionBaseSO]
-        ABI[ActionBaseSO.Icon]
-        ABS[ActionBaseSO.Slot]
-        ABRC[ActionBaseSO.RequiresClickToActivate]
+    subgraph BaseCommandSO
+        ABSO[BaseCommandSO]
+        ABI[BaseCommandSO.Icon]
+        ABS[BaseCommandSO.Slot]
+        ABRC[BaseCommandSO.RequiresClickToActivate]
     end
 
     subgraph UnitSelectedEvent Bus
@@ -125,10 +125,12 @@ flowchart TD
         building.BuildUnit(UnitToBuild);
     }
 
+    public override bool IsLocked(CommandContext cxt) => !HasEnoughSupplies();
+
     private bool HasEnoughSupplies(){
-        // return UnitToBuild.Cost.Minerals <= SuppliesController.amountMinerals
-        //     && UnitToBuild.Cost.Gas <= SuppliesController.amountGas;
-        return SuppliesController.HasEnoughSupplies(UnitToBuild.Cost);
+    // return UnitToBuild.Cost.Minerals <= SuppliesController.amountMinerals
+    //     && UnitToBuild.Cost.Gas <= SuppliesController.amountGas;
+    return SuppliesController.HasEnoughSupplies(UnitToBuild.Cost);
     }
 }
 }

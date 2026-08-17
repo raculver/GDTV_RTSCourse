@@ -16,5 +16,7 @@ public class StopCommand : BaseCommand
         AbstractUnit unit = (AbstractUnit)cxt.Commandable;
         unit.Stop();
     }
+
+    public override bool IsLocked(CommandContext cxt) => false; // never locked
 }
 }

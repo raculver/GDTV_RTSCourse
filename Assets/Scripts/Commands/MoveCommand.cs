@@ -48,6 +48,8 @@ public class MoveCommand : BaseCommand
         }
     }
 
+    public override bool IsLocked(CommandContext cxt) => false; // never lock this
+
     private void ResetFancyMove(){
         unitsOnLayer = 0;
         maxUnitsOnLayer = 1;

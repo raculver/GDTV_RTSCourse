@@ -102,6 +102,7 @@ public class RuntimeUI:MonoBehaviour{
         Bus<UnitDeselectedEvent>.OnEvent += HandleUnitDeselected;
         Bus<UnitDeathEvent>.OnEvent += HandleUnitDeath;
         Bus<ActionsUIUpdateEvent>.OnEvent += HandleActionsUIUpdate;
+        Bus<SupplyEvent>.OnEvent += HandleSupplyUpdate;
     }
 
     void OnDisable(){
@@ -109,6 +110,11 @@ public class RuntimeUI:MonoBehaviour{
         Bus<UnitDeselectedEvent>.OnEvent -= HandleUnitDeselected;
         Bus<UnitDeathEvent>.OnEvent -= HandleUnitDeath;
         Bus<ActionsUIUpdateEvent>.OnEvent -= HandleActionsUIUpdate;
+        Bus<SupplyEvent>.OnEvent -= HandleSupplyUpdate;
+    }
+
+    private void HandleSupplyUpdate(SupplyEvent evt){
+        actionsUI.EnableFor(currentlySelected);
     }
 
     private void HandleActionsUIUpdate(ActionsUIUpdateEvent evt){

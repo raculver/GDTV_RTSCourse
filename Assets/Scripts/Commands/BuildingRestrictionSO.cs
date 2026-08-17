@@ -46,7 +46,6 @@ namespace GameDevTV.RTS.Commands
                 && NavMesh.SamplePosition(position + new Vector3(-HitExtents.x, 0, -HitExtents.z), out NavMeshHit _, NavMeshTolerance, query);
         }
 
-
         public enum OverlapStyle{
             Sphere,
             Box

@@ -34,6 +34,8 @@ public class GatherCommand : BaseCommand
         }
     }
 
+    public override bool IsLocked(CommandContext cxt) => false; // never locked
+
     private bool ColliderIsCommandPost(Collider collider) => collider.TryGetComponent(out BaseBuilding building) && building.unitSO.Equals(commandPostSO);
     private bool ColliderIsGatherableOrCommandPost(Collider collider) => collider.TryGetComponent(out GatherableSupply _) || ColliderIsCommandPost(collider);
 }

@@ -15,5 +15,7 @@ public class OverrideCommandsCommand : BaseCommand
     public override void Handle(CommandContext cxt){
         cxt.Commandable.SetCommandsOverride(newCommands);
     }
+
+    public override bool IsLocked(CommandContext cxt) => false;
 }
 }

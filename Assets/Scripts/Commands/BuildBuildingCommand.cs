@@ -44,6 +44,8 @@ namespace GameDevTV.RTS.Commands
             }
         }
 
+        public override bool IsLocked(CommandContext cxt) => !HasEnoughSupplies();
+
         private bool HasEnoughSupplies(){
             // return BuildingType.Cost.Minerals <= SuppliesController.amountMinerals
             //     && BuildingType.Cost.Gas <= SuppliesController.amountGas;
