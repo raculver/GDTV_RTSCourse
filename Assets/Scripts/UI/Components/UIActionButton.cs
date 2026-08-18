@@ -1,5 +1,7 @@
 using System;
 using GameDevTV.RTS.Commands;
+using GameDevTV.RTS.Units;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -29,7 +31,7 @@ public class UIActionButton : MonoBehaviour, IUIElement<BaseCommand, UnityAction
         button.onClick.AddListener(onClick);
         
         // Deal with tooltip
-        if (tooltip != null) tooltip.SetText(action.name);
+        if (tooltip != null) tooltip.SetText(GetTooltipText(action));
     }
 
     public void Disable(){
@@ -44,7 +46,7 @@ public class UIActionButton : MonoBehaviour, IUIElement<BaseCommand, UnityAction
     private void SetIcon(Sprite icon){
         if (icon == null){
             this.icon.enabled = false;
-        }
+        }   
         else {
             this.icon.sprite = icon;    
             this.icon.enabled = true;
@@ -67,6 +69,28 @@ public class UIActionButton : MonoBehaviour, IUIElement<BaseCommand, UnityAction
     private void HideTooltip(){
         if (tooltip != null) tooltip.Hide();
         CancelInvoke(nameof(ShowTooltip));
+    }
+
+    private string GetTooltipText(BaseCommand command){
+        string tooltipText = command.CommandName;         
+
+        SupplyCostSO supplyCost = null;
+        if (command is BuildBuildingCommand buildBuildingCommand){
+            supplyCost = buildBuildingCommand.BuildingType.Cost;
+        }
+        else if (command is BuildUnitCommand buildUnitCommand){
+            supplyCost = buildUnitCommand.UnitToBuild.Cost;
+        }
+        if (supplyCost != null){
+            if (supplyCost.Minerals > 0){
+                tooltipText += $"\n{supplyCost.Minerals} Minerals";
+            }
+            if (supplyCost.Gas > 0){
+                tooltipText += $"\n{supplyCost.Gas} Gas";
+            }
+        }
+        return tooltipText;
+
     }
 
 }
