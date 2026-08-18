@@ -1,7 +1,5 @@
-using System;
 using GameDevTV.RTS.Commands;
 using GameDevTV.RTS.Units;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -15,11 +13,14 @@ public class UIActionButton : MonoBehaviour, IUIElement<BaseCommand, UnityAction
     [SerializeField] private Image icon;
     [SerializeField] private Tooltip tooltip;
     
+    private bool isActive = false;
     private Button button;
     private float tooltipWaitTime { get;} = 0.8f;
+    private RectTransform rectTransform;
 
     void Awake(){
         button = GetComponent<Button>();
+        rectTransform = GetComponent<RectTransform>();
         Disable();
     }
 
@@ -32,6 +33,8 @@ public class UIActionButton : MonoBehaviour, IUIElement<BaseCommand, UnityAction
         
         // Deal with tooltip
         if (tooltip != null) tooltip.SetText(GetTooltipText(action));
+
+        isActive = true;
     }
 
     public void Disable(){
@@ -41,6 +44,8 @@ public class UIActionButton : MonoBehaviour, IUIElement<BaseCommand, UnityAction
         
         // Deal with tooltip
         HideTooltip();
+
+        isActive = false;
     }
 
     private void SetIcon(Sprite icon){
@@ -55,6 +60,7 @@ public class UIActionButton : MonoBehaviour, IUIElement<BaseCommand, UnityAction
 
     public void OnPointerEnter(PointerEventData eventData){
         // invoke calls after a certain delay
+        if (!isActive) return;
         Invoke(nameof(ShowTooltip), tooltipWaitTime);
     }
 
@@ -63,7 +69,13 @@ public class UIActionButton : MonoBehaviour, IUIElement<BaseCommand, UnityAction
     }
 
     private void ShowTooltip(){
-        if (tooltip != null) tooltip.Show();
+        if (tooltip != null){
+            tooltip.TransformObject.position = new Vector2 (
+                rectTransform.position.x + rectTransform.rect.width / 2f,
+                rectTransform.position.y + rectTransform.rect.height / 2f
+            );
+            tooltip.Show();
+        }
     }
 
     private void HideTooltip(){

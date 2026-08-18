@@ -89,6 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91ceb43315010df4198bc2f5fe6bfc44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameDevTV.RTS.UI.Components.Tooltip
+  <TransformObject>k__BackingField: {fileID: 8142159870844363649}
   <HoverDelay>k__BackingField: 0.8
   textObject: {fileID: 753312127254192795}
 --- !u!1 &4803793363255682526
