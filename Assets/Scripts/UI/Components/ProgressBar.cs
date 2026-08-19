@@ -24,6 +24,7 @@ public class ProgressBar : MonoBehaviour
     }
 
     public void SetProgress(float progress){
+        if (mask == null || maskParent == null) return;
         Vector2 padding = new (padding_x,0);
 
         Vector2 parentSize = maskParent.sizeDelta;

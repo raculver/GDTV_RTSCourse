@@ -90,6 +90,8 @@ namespace GameDevTV.RTS.UI
 public class RuntimeUI:MonoBehaviour{
     [SerializeField] private ActionsUI actionsUI;
     [SerializeField] private BuildingBuildingUI buildingBuildingUI;
+    [SerializeField] private UnitIconUI unitIconUI;
+    [SerializeField] private SingleUnitSelectedUI singleUnitSelectedUI;
 
     private HashSet<AbstractCommandable> currentlySelected = new(12);
 
@@ -133,14 +135,15 @@ public class RuntimeUI:MonoBehaviour{
         // enable 
         if (evt.Unit is AbstractCommandable commandable){
             currentlySelected.Add(commandable);
-            actionsUI.EnableFor(currentlySelected);
+            //actionsUI.EnableFor(currentlySelected);
+            RefreshUI();
             DebugLogging.Instance.Message($"Running Enablefor commandable {commandable}.", DebugLogging.Instance.REPORT_SELECTION);
         }
 
-        if (currentlySelected.Count == 1 && evt.Unit is BaseBuilding building){
-            buildingBuildingUI.EnableFor(building);
-            DebugLogging.Instance.Message($"Running Enablefor building {building}.", DebugLogging.Instance.REPORT_SELECTION);
-        }
+        // if (currentlySelected.Count == 1 && evt.Unit is BaseBuilding building){
+        //     buildingBuildingUI.EnableFor(building);
+        //     DebugLogging.Instance.Message($"Running Enablefor building {building}.", DebugLogging.Instance.REPORT_SELECTION);
+        // }
     }
 
     private void HandleUnitDeselected(UnitDeselectedEvent evt)
@@ -156,6 +159,18 @@ public class RuntimeUI:MonoBehaviour{
         if (currentlySelected.Count > 0)
         {
             actionsUI.EnableFor(currentlySelected);
+
+            if (currentlySelected.Count == 1){
+                unitIconUI.EnableFor(currentlySelected.First());
+                if (currentlySelected.First() is AbstractUnit){
+                        singleUnitSelectedUI.EnableFor((AbstractUnit) currentlySelected.First());
+                }
+                
+            }
+            else
+            {
+                unitIconUI.Disable();
+            }
 
             if (currentlySelected.Count == 1 && currentlySelected.First() is BaseBuilding building)
             {
@@ -175,6 +190,8 @@ public class RuntimeUI:MonoBehaviour{
     private void DisableAll(){
         actionsUI.Disable();
         buildingBuildingUI.Disable();
+        unitIconUI.Disable();
+        singleUnitSelectedUI.Disable();
     }
 
     private void HandleUnitDeath(UnitDeathEvent evt){
