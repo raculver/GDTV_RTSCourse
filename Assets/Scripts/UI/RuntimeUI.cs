@@ -161,30 +161,38 @@ public class RuntimeUI:MonoBehaviour{
             actionsUI.EnableFor(currentlySelected);
 
             if (currentlySelected.Count == 1){
-                unitIconUI.EnableFor(currentlySelected.First());
-                if (currentlySelected.First() is AbstractUnit){
-                        singleUnitSelectedUI.EnableFor((AbstractUnit) currentlySelected.First());
-                }
+                AbstractCommandable commandable = currentlySelected.First();
+                unitIconUI.EnableFor(commandable);
                 
+                if (commandable is AbstractUnit unit){
+                    singleUnitSelectedUI.EnableFor(unit);
+                }
+                else{
+                    singleUnitSelectedUI.Disable();
+                }
+
+                if (commandable is BaseBuilding building){
+                    buildingBuildingUI.EnableFor(building);
+                }                
+                else{
+                    buildingBuildingUI.Disable();
+                }
             }
-            else
-            {
-                unitIconUI.Disable();
+            else{
+                DisableSingleSelectionUIs();
             }
 
-            if (currentlySelected.Count == 1 && currentlySelected.First() is BaseBuilding building)
-            {
-                buildingBuildingUI.EnableFor(building);
             }
-            else
-            {
-                buildingBuildingUI.Disable();
-            }
-        }
-        else
-        {
+        else{
             DisableAll();
         }
+    }
+
+    private void DisableSingleSelectionUIs()
+    {
+        unitIconUI.Disable();
+        singleUnitSelectedUI.Disable();
+        buildingBuildingUI.Disable();
     }
 
     private void DisableAll(){
