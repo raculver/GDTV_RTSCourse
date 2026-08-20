@@ -4,13 +4,13 @@ using UnityEngine;
 
 namespace GameDevTV.RTS.UI.Containers
 {
-    public class SingleUnitSelectedUI : MonoBehaviour, IUIElement<AbstractUnit>
+    public class SingleUnitSelectedUI : MonoBehaviour, IUIElement<AbstractCommandable>
     {
         [SerializeField] private TextMeshProUGUI unitName;
 
-        public void EnableFor(AbstractUnit item){
+        public void EnableFor(AbstractCommandable commandable){
             gameObject.SetActive(true);
-            unitName.text = item.unitSO.Name;
+            unitName.text = commandable.unitSO.Name;
         }
 
         public void Disable()

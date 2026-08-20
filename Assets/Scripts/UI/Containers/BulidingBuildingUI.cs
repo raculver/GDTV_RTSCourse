@@ -26,6 +26,8 @@ namespace GameDevTV.RTS.UI.Containers{
 
         private void UpdateBuildQueueUI()
         {
+            if (building == null) return; // how did we get here?
+
             for (int i=0; i < building.QueueSize; i++)
             {
                 // first buttons cancel the build

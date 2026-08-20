@@ -5645,13 +5645,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 467497951}
+  - component: {fileID: 467497952}
   m_Layer: 5
   m_Name: Building Selected Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &467497951
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5673,6 +5674,21 @@ RectTransform:
   m_AnchoredPosition: {x: 100, y: 0}
   m_SizeDelta: {x: -200, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &467497952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 467497949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27d6da6faf521b74ca1cb0e5a51f1b00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameDevTV.RTS.UI.Containers.BuildingSelectedUI
+  singleUnitSelectedUI: {fileID: 1315305436}
+  buildingBuildingUI: {fileID: 1619984283}
+  buildingUnderConstructionUI: {fileID: 678677022}
 --- !u!1 &468676273
 GameObject:
   m_ObjectHideFlags: 0
@@ -7077,9 +7093,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameDevTV.RTS.UI.RuntimeUI
   actionsUI: {fileID: 1741608388}
-  buildingBuildingUI: {fileID: 1619984283}
   unitIconUI: {fileID: 1439996932}
   singleUnitSelectedUI: {fileID: 1315305436}
+  singleBuildingSelectedUI: {fileID: 467497952}
 --- !u!114 &640315636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7688,13 +7704,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 678677021}
+  - component: {fileID: 678677022}
   m_Layer: 5
   m_Name: Building Under Construction Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &678677021
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7717,6 +7734,20 @@ RectTransform:
   m_AnchoredPosition: {x: -100, y: 0}
   m_SizeDelta: {x: 200, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &678677022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 678677020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d7124fc6f4f0534cacb427267f351ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameDevTV.RTS.UI.Containers.BuildingUnderConstructionUI
+  unitName: {fileID: 749207882}
+  progressBar: {fileID: 1819996209}
 --- !u!1 &679504034
 GameObject:
   m_ObjectHideFlags: 0
@@ -8830,8 +8861,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Unit Name
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: de5a42f739cb1344b8c4fac04113013b, type: 2}
-  m_sharedMaterial: {fileID: 4660662461759981731, guid: de5a42f739cb1344b8c4fac04113013b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -10203,8 +10234,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: de5a42f739cb1344b8c4fac04113013b, type: 2}
-  m_sharedMaterial: {fileID: 4660662461759981731, guid: de5a42f739cb1344b8c4fac04113013b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -23969,7 +24000,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7481742095462984395, guid: 599856f3bd9a1614f9c0db64f2ddcacd, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8917218801222976451, guid: 599856f3bd9a1614f9c0db64f2ddcacd, type: 3}
       propertyPath: m_SizeDelta.x
@@ -23989,6 +24020,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4960964140495102217, guid: 599856f3bd9a1614f9c0db64f2ddcacd, type: 3}
   m_PrefabInstance: {fileID: 1819996207}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1819996209 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2158401428669723003, guid: 599856f3bd9a1614f9c0db64f2ddcacd, type: 3}
+  m_PrefabInstance: {fileID: 1819996207}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70033395bd102d64193881e156805b7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameDevTV.RTS.UI.Components.ProgressBar
 --- !u!1 &1825563893
 GameObject:
   m_ObjectHideFlags: 0

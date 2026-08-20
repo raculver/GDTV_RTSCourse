@@ -89,9 +89,9 @@ namespace GameDevTV.RTS.UI
 {
 public class RuntimeUI:MonoBehaviour{
     [SerializeField] private ActionsUI actionsUI;
-    [SerializeField] private BuildingBuildingUI buildingBuildingUI;
     [SerializeField] private UnitIconUI unitIconUI;
     [SerializeField] private SingleUnitSelectedUI singleUnitSelectedUI;
+    [SerializeField] private BuildingSelectedUI singleBuildingSelectedUI;
 
     private HashSet<AbstractCommandable> currentlySelected = new(12);
 
@@ -171,19 +171,21 @@ public class RuntimeUI:MonoBehaviour{
                     singleUnitSelectedUI.Disable();
                 }
 
-                if (commandable is BaseBuilding building){
-                    buildingBuildingUI.EnableFor(building);
-                }                
-                else{
-                    buildingBuildingUI.Disable();
+                if (commandable is BaseBuilding building)
+                {
+                    singleBuildingSelectedUI.EnableFor(building);    
+                }
+                else
+                {
+                    singleBuildingSelectedUI.Disable();
                 }
             }
             else{
                 DisableSingleSelectionUIs();
             }
-
-            }
-        else{
+        }
+        else
+        {
             DisableAll();
         }
     }
@@ -192,14 +194,14 @@ public class RuntimeUI:MonoBehaviour{
     {
         unitIconUI.Disable();
         singleUnitSelectedUI.Disable();
-        buildingBuildingUI.Disable();
+        singleBuildingSelectedUI.Disable();
     }
 
     private void DisableAll(){
         actionsUI.Disable();
-        buildingBuildingUI.Disable();
         unitIconUI.Disable();
         singleUnitSelectedUI.Disable();
+        singleBuildingSelectedUI.Disable();
     }
 
     private void HandleUnitDeath(UnitDeathEvent evt){
