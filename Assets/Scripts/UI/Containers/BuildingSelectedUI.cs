@@ -1,3 +1,5 @@
+using GameDevTV.RTS.EventBus;
+using GameDevTV.RTS.Events;
 using GameDevTV.RTS.Units;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -17,8 +19,13 @@ namespace GameDevTV.RTS.UI.Containers
         {
             selectedBuilding = building;
             UnsubscribeFromOnBuildingQueueUpdated();
-            selectedBuilding.OnQueueUpdated += OnBuildingQueueUpdated;
-
+            
+            if (building.BuildStatus.State == BuildingProgress.BuildingState.Bulding)
+            {
+                Bus<BuildingSpawnEvent>.OnEvent += HandleBuildingSpawn;
+            }
+            
+            selectedBuilding.OnQueueUpdated += HandleBuildingQueueUpdated;
             gameObject.SetActive(true);
             RefreshUI();
         }
@@ -50,11 +57,6 @@ namespace GameDevTV.RTS.UI.Containers
             }
         }
 
-        private void OnBuildingQueueUpdated(AbstractUnitSO[] _)
-        {
-            RefreshUI();
-        }
-
         public void Disable()
         {
             gameObject.SetActive(false);
@@ -63,6 +65,7 @@ namespace GameDevTV.RTS.UI.Containers
             buildingUnderConstructionUI.Disable();
 
             UnsubscribeFromOnBuildingQueueUpdated();
+            Bus<BuildingSpawnEvent>.OnEvent -= HandleBuildingSpawn;
             selectedBuilding = null;
         }
 
@@ -70,7 +73,21 @@ namespace GameDevTV.RTS.UI.Containers
         {
             if (selectedBuilding != null)
             {
-                selectedBuilding.OnQueueUpdated -= OnBuildingQueueUpdated;
+                selectedBuilding.OnQueueUpdated -= HandleBuildingQueueUpdated;
+            }
+        }
+
+        private void HandleBuildingQueueUpdated(AbstractUnitSO[] _)
+        {
+            RefreshUI();
+        }
+
+        private void HandleBuildingSpawn(BuildingSpawnEvent buildingSpawnEvent)
+        {
+            if (buildingSpawnEvent.Building == selectedBuilding)
+            {
+                Bus<BuildingSpawnEvent>.OnEvent -= HandleBuildingSpawn;
+                RefreshUI();
             }
         }
     }

@@ -44,7 +44,8 @@ public class BaseBuilding : AbstractCommandable
         // Set the building state to complenticated
         BuildStatus = new BuildingProgress(BuildingProgress.BuildingState.Completed,0,1);
         unitBuildingThis = null;
-        Bus<UnitDeathEvent>.OnEvent -= HandleUnitDeath;       
+        Bus<UnitDeathEvent>.OnEvent -= HandleUnitDeath;
+        Bus<BuildingSpawnEvent>.Raise(new BuildingSpawnEvent(this));
     }
 
     public void SetNavMeshObstacleEnabled(bool enabled){
