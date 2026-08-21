@@ -125,7 +125,9 @@ flowchart TD
         building.BuildUnit(UnitToBuild);
     }
 
-    public override bool IsLocked(CommandContext cxt) => !HasEnoughSupplies();
+    public override bool IsLocked(CommandContext cxt){
+        return !HasEnoughSupplies();
+    }
 
     private bool HasEnoughSupplies(){
     // return UnitToBuild.Cost.Minerals <= SuppliesController.amountMinerals
