@@ -7,6 +7,7 @@ namespace GameDevTV.RTS.Commands
         [field:SerializeField] public string CommandName {get; private set;} = "Command";
         [field:SerializeField] public Sprite Icon {get; private set;}
         [field:Range(0,8)][field:SerializeField] public int Slot {get; private set;}
+        [field: SerializeField] public bool IsSingleUnitCommand {get; private set;} = false;
         [field:SerializeField] public bool RequiresClickToActivate {get; private set;}
         [field:SerializeField] public GameObject GhostPrefab {get; private set;}
         [field: SerializeField]  public BuildingRestrictionSO[] Restrictions {get; private set;}

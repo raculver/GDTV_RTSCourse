@@ -236,10 +236,13 @@ public class PlayerInput : MonoBehaviour
             for (int i = 0; i < commandables.Count; i++)
             {
                 CommandContext context = new(commandables[i], hitInfo, i);
-                // Chris Kurhan's version broke, so he had to remove this... so we have to remove as well. Cheers Chris.
-                //if (activeAction.CanHandle(context)){
+                if (activeCommand.CanHandle(context)){
                     activeCommand.Handle(context);
-                //}
+                    if (activeCommand.IsSingleUnitCommand)
+                    {
+                        break;
+                    }
+                }
             }
 
             if (ghostInstance != null)
@@ -279,11 +282,14 @@ public class PlayerInput : MonoBehaviour
             int unitCtr = 0;
             foreach (AbstractUnit unit in abstractUnits){
                 foreach (ICommand command in GetAvailableCommands(unit)){
-                    CommandContext cxt = new CommandContext(unit, hitInfo, unitCtr);
+                    CommandContext cxt = new CommandContext(unit, hitInfo, unitCtr, UnityEngine.InputSystem.LowLevel.MouseButton.Right);
                     if (command.CanHandle(cxt)){
-                         command.Handle(cxt);
-                         unitCtr +=1;
-                         break; // only issue one cmd per unit, and if any, chose first.
+                        command.Handle(cxt);
+                        if (command.IsSingleUnitCommand){
+                            return; // return early, only issue to one unit.
+                        }
+                        unitCtr +=1;
+                        break; // only issue one cmd per unit, and if any, chose first.
                     }
                 }
             }

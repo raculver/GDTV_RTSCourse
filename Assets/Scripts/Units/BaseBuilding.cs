@@ -144,14 +144,18 @@ public class BaseBuilding : AbstractCommandable
         Bus<UnitDeathEvent>.OnEvent += HandleUnitDeath;
     }
 
+    public void PauseBuilding(){
+        BuildStatus = new BuildingProgress(
+            BuildingProgress.BuildingState.Paused,
+            BuildStatus.StartTime,
+            (Time.time - BuildStatus.StartTime) / buildingSO.BuildTime 
+        );
+        DebugLogging.Instance.Message("ACTION_BUILD_BUILDING: Pausing Building", DebugLogging.Instance.ACTION_BUILD_BUILDING);
+    }
+
     private void HandleUnitDeath(UnitDeathEvent evt){
         if (evt.Unit.TryGetComponent(out IBuildingBuilder buildingBuilder) && buildingBuilder == unitBuildingThis){
-            BuildStatus = new BuildingProgress(
-                BuildingProgress.BuildingState.Paused,
-                BuildStatus.StartTime,
-                (Time.time - BuildStatus.StartTime) / buildingSO.BuildTime 
-            );
-            DebugLogging.Instance.Message("ACTION_BUILD_BUILDING: Pausing Building", DebugLogging.Instance.ACTION_BUILD_BUILDING);
+            PauseBuilding();
             // if I had £1 for every time we unsubscribe from the unit death event...
             Bus<UnitDeathEvent>.OnEvent -= HandleUnitDeath;
         }        

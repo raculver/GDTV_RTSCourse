@@ -81,6 +81,7 @@ public partial class BuildBuildingAction : Action
             DebugLogging.Instance.Message("ACTION_BUILD_BUILDING Completed", DebugLogging.Instance.ACTION_BUILD_BUILDING);
         }
         else{
+            completedBuilding.PauseBuilding();
             DebugLogging.Instance.Message("ACTION_BUILD_BUILDING Ended prematureley", DebugLogging.Instance.ACTION_BUILD_BUILDING);
         }
     }

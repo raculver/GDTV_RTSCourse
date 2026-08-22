@@ -17,6 +17,8 @@ namespace GameDevTV.RTS.Units{
 public class Worker : AbstractUnit, IBuildingBuilder
 {
     [SerializeField] private BaseCommand cancelBuildingCmd;
+    public bool IsBuildingNow => graphAgent.GetVariable(BTVariables.BT_UNIT_COMMAND, out BlackboardVariable<UnitCommands> commandEnum)
+                                   && commandEnum.Value == UnitCommands.BuildBuilding;
 
     public bool HasSupplies{
         get{
