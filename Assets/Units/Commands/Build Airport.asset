@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf6d9cecc357f0d438690f229632b0e4, type: 3}
+  m_Name: Build Airport
+  m_EditorClassIdentifier: Assembly-CSharp::GameDevTV.RTS.Commands.BuildBuildingCommand
+  <CommandName>k__BackingField: Airport
+  <Icon>k__BackingField: {fileID: 21300000, guid: b947cd2ebe26be8448a6f7c04aabc5e5, type: 3}
+  <Slot>k__BackingField: 4
+  <IsSingleUnitCommand>k__BackingField: 1
+  <RequiresClickToActivate>k__BackingField: 1
+  <GhostPrefab>k__BackingField: {fileID: 2213711631038708623, guid: a1c2670cb14f387428e970030076d034, type: 3}
+  <Restrictions>k__BackingField:
+  - {fileID: 11400000, guid: 5fd32947fcad2dc4d977442506360da3, type: 2}
+  - {fileID: 11400000, guid: 446a6bfe6f8c0734780dc556389087f9, type: 2}
+  - {fileID: 11400000, guid: 2bbc50e8b242b9c459f80010dea4d643, type: 2}
+  <BuildingType>k__BackingField: {fileID: 11400000, guid: fdaecf9b0d645d14a8140814324403dc, type: 2}

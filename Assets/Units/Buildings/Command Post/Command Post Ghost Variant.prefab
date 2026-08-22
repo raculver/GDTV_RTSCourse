@@ -12,6 +12,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Command Post Ghost
       objectReference: {fileID: 0}
+    - target: {fileID: 1589499662120937400, guid: 43943267dde60fe4a88cf5bd885c00e3, type: 3}
+      propertyPath: m_Layer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5148385008998441963, guid: 43943267dde60fe4a88cf5bd885c00e3, type: 3}
+      propertyPath: m_Layer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6018277380246554126, guid: 43943267dde60fe4a88cf5bd885c00e3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -51,6 +59,10 @@ PrefabInstance:
     - target: {fileID: 6018277380246554126, guid: 43943267dde60fe4a88cf5bd885c00e3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6530391538695146096, guid: 43943267dde60fe4a88cf5bd885c00e3, type: 3}
+      propertyPath: m_Layer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8639605290185970391, guid: 43943267dde60fe4a88cf5bd885c00e3, type: 3}
