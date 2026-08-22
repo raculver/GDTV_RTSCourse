@@ -26,13 +26,17 @@ namespace GameDevTV.RTS.Units
 
         protected override void Start(){
             base.Start(); // call AbstractCommandable implementation of start
+            
+            CurrentHealth = unitSO.Health;
+            MaximumHealth = unitSO.Health;
+            
             Bus<UnitSpawnEvent>.Raise(new UnitSpawnEvent(this));
         }
 
         public void MoveTo(Vector3 position) {
             graphAgent.SetVariableValue<Vector3>(BTVariables.BT_UNIT_TGT_POSITION, position);
             graphAgent.SetVariableValue<Enum>(BTVariables.BT_UNIT_COMMAND, UnitCommands.Move);
-        }
+    }
 
         public void Stop(){
             graphAgent.SetVariableValue<Enum>(BTVariables.BT_UNIT_COMMAND, UnitCommands.Stop);

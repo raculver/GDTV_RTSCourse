@@ -29,6 +29,8 @@ public class BaseBuilding : AbstractCommandable
 
     private void Awake(){
         buildingSO =  unitSO as BuildingSO;
+        //CurrentHealth = buildingSO.Health;
+        MaximumHealth = buildingSO.Health;
     }
 
     protected override void Start(){
@@ -122,6 +124,8 @@ public class BaseBuilding : AbstractCommandable
     }
 
     public void StartBuilding(IBuildingBuilder buildingBuilder){
+        Awake();
+        
         unitBuildingThis = buildingBuilder;
         MainRenderer.material = buildingSO.PlacementMaterial;
 
@@ -131,7 +135,11 @@ public class BaseBuilding : AbstractCommandable
             BuildStatus.Progress
         );
         
-        // nice one Chris
+        if (BuildStatus.Progress == 0){
+            Heal(1); // building health starts at one.
+        }
+
+        // nice one Chris, yeah
         Bus<UnitDeathEvent>.OnEvent -= HandleUnitDeath;
         Bus<UnitDeathEvent>.OnEvent += HandleUnitDeath;
     }

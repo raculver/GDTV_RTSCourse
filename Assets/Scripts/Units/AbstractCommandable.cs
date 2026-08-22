@@ -1,3 +1,4 @@
+using System;
 using GameDevTV.RTS.Commands;
 using GameDevTV.RTS.EventBus;
 using GameDevTV.RTS.Events;
@@ -8,19 +9,20 @@ namespace GameDevTV.RTS.Units
 {   
     public abstract class AbstractCommandable : MonoBehaviour, ISelectable
     {
-        [field: SerializeField] public int CurrentHealth{get; private set;}
-        [field: SerializeField] public int MaximumHealth{get; private set;}
+        [field: SerializeField] public int CurrentHealth{get; protected set;}
+        [field: SerializeField] public int MaximumHealth{get; protected set;}
         [field: SerializeField] public BaseCommand [] AvailableCommands{get; private set;}
         [field: SerializeField] public AbstractUnitSO unitSO{get; private set;}
         [SerializeField] private DecalProjector selectionDecal;
 
         private BaseCommand[] initialCommands;
         bool commandsOverridden;
+
+        public delegate void HealthUpdatedEvent(AbstractCommandable commandable, int lastHeath, int newHealth);
+        public event HealthUpdatedEvent OnHealthUpdated;
         
         // "virtual means the child classes can override if they need to".
         protected virtual void Start(){
-            CurrentHealth = unitSO.Health;
-            MaximumHealth = unitSO.Health;
             initialCommands = AvailableCommands;
             commandsOverridden = false;
         }
@@ -44,7 +46,12 @@ namespace GameDevTV.RTS.Units
                 commandsOverridden = false;
             }
             Bus<UnitDeselectedEvent>.Raise(new UnitDeselectedEvent(this));
-            DebugLogging.Instance.Message($"{this.name} Deselected.", DebugLogging.Instance.REPORT_SELECTION);
+            
+            // unit might be destroyed while selected
+            if (this != null)
+            {
+                DebugLogging.Instance.Message($"{this.name} Deselected.", DebugLogging.Instance.REPORT_SELECTION);
+            }
         }
 
         public void SetCommandsOverride(BaseCommand[] commands){
@@ -71,6 +78,12 @@ namespace GameDevTV.RTS.Units
             Bus<SupplyEvent>.Raise(new SupplyEvent((int)(fraction*cost.Gas), cost.GasSO));
         }
 
+        public void Heal(int amount)
+        {
+            int lastHeath = CurrentHealth;
+            CurrentHealth = Mathf.Clamp(CurrentHealth + amount, 0, MaximumHealth);
+            OnHealthUpdated?.Invoke(this, lastHeath, CurrentHealth);
+        }
 
     }
 }

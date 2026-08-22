@@ -4,7 +4,6 @@ using Unity.Behavior;
 using UnityEngine;
 using Action = Unity.Behavior.Action;
 using Unity.Properties;
-using Unity.VisualScripting;
 
 namespace GameDevTV.RTS.Behahavior{
 [Serializable, GeneratePropertyBag]
@@ -18,6 +17,7 @@ public partial class BuildBuildingAction : Action
 
     private float startBuildTime;
     private float invTotalBuildTime;
+    private float targetHealHealthCounter = 0f;
     private BaseBuilding completedBuilding;
     private Vector3 startingBuildingTransform;
     private Vector3 finishedBuildingTransform;
@@ -63,6 +63,14 @@ public partial class BuildBuildingAction : Action
     {
         float normalisedTime = (Time.time - startBuildTime) * invTotalBuildTime;
         buildingRenderer.transform.position = Vector3.Lerp(startingBuildingTransform, finishedBuildingTransform, normalisedTime);
+        
+        // ugh
+        targetHealHealthCounter += Time.deltaTime*invTotalBuildTime*completedBuilding.MaximumHealth;
+        if (targetHealHealthCounter > 1){
+            int amountToHeal = Mathf.FloorToInt(targetHealHealthCounter);
+            targetHealHealthCounter -= amountToHeal;
+            completedBuilding.Heal(amountToHeal);
+        }
         return normalisedTime >= 1 ? Status.Success : Status.Running;
     }
 
