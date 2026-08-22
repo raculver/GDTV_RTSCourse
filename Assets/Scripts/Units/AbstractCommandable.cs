@@ -14,7 +14,7 @@ namespace GameDevTV.RTS.Units
         [field: SerializeField] public BaseCommand [] AvailableCommands{get; private set;}
         [field: SerializeField] public AbstractUnitSO unitSO{get; private set;}
         [field: SerializeField] public bool IsSelected{get; protected set;}
-        [SerializeField] private DecalProjector selectionDecal;
+        [SerializeField] protected DecalProjector selectionDecal;
 
         private BaseCommand[] initialCommands;
         bool commandsOverridden;
@@ -28,7 +28,7 @@ namespace GameDevTV.RTS.Units
             commandsOverridden = false;
         }
 
-        public void Select() {
+        public virtual void Select() {
             if (selectionDecal != null){
                 selectionDecal.gameObject.SetActive(true);
             }
@@ -37,7 +37,7 @@ namespace GameDevTV.RTS.Units
             DebugLogging.Instance.Message($"{this.name} Selected.", DebugLogging.Instance.REPORT_SELECTION);
         }
 
-        public void Deselect() {
+        public virtual void Deselect() {
             if (selectionDecal != null){
                 selectionDecal.gameObject.SetActive(false);
             }

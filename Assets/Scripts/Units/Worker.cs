@@ -37,6 +37,24 @@ public class Worker : AbstractUnit, IBuildingBuilder
         }
     }
 
+    public override void Deselect() {
+        if (selectionDecal != null){
+            selectionDecal.gameObject.SetActive(false);
+        }
+
+        if (IsBuildingNow){
+            SetCommandsOverride(new BaseCommand[] {cancelBuildingCmd});
+        }
+        Bus<UnitDeselectedEvent>.Raise(new UnitDeselectedEvent(this));
+        
+        // unit might be destroyed while selected
+        if (this != null)
+        {
+            DebugLogging.Instance.Message($"{this.name} Deselected.", DebugLogging.Instance.REPORT_SELECTION);
+        }
+        IsSelected = false;
+    }
+
     public void Gather(GatherableSupply supply)
     {
         graphAgent.SetVariableValue<GameObject>(BTVariables.BT_UNIT_TGT_GAME_OBJECT, supply.gameObject);
@@ -64,7 +82,7 @@ public class Worker : AbstractUnit, IBuildingBuilder
         graphAgent.SetVariableValue<UnitCommands>(BTVariables.BT_UNIT_COMMAND, UnitCommands.BuildBuilding);
 
         SetCommandsOverride(new BaseCommand[] {cancelBuildingCmd});
-//        Bus<ActionsUIUpdateEvent>.Raise(new ActionsUIUpdateEvent(this)); // not needed?
+        Bus<ActionsUIUpdateEvent>.Raise(new ActionsUIUpdateEvent(this)); // not needed?
         
         PaySupplies(building.Cost);
 
@@ -79,8 +97,8 @@ public class Worker : AbstractUnit, IBuildingBuilder
         graphAgent.SetVariableValue<GameObject>(BTVariables.BT_UNIT_BUILDING_GHOST, null);
         graphAgent.SetVariableValue<UnitCommands>(BTVariables.BT_UNIT_COMMAND, UnitCommands.BuildBuilding);
         
-//        SetCommandsOverride(new BaseCommand[] {cancelBuildingCmd});
-//        Bus<ActionsUIUpdateEvent>.Raise(new ActionsUIUpdateEvent(this));
+        SetCommandsOverride(new BaseCommand[] {cancelBuildingCmd});
+        Bus<ActionsUIUpdateEvent>.Raise(new ActionsUIUpdateEvent(this));
     }
 
     public void CancelBuilding(){
@@ -123,12 +141,11 @@ public class Worker : AbstractUnit, IBuildingBuilder
             case BuildingEventType.Begin:
                 SetCommandsOverride(new BaseCommand[] {cancelBuildingCmd}); // basically not needed probably
                 break;
+            // All of these will reset COR to Null
             case BuildingEventType.Cancel:
-                break;
             case BuildingEventType.Abort:
-                SetCommandsOverride(null);
-                break;
             case BuildingEventType.Complete:
+                SetCommandsOverride(null);
                 break;
             default:
                 break;
