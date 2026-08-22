@@ -64,7 +64,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5827066523746683823}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 879281d972fbc4145a209caaadb90720, type: 3}
   m_Name: 
@@ -75,7 +75,16 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cb38a19b2643b0843b7914dd131a3817, type: 2}
   - {fileID: 11400000, guid: 2763668f6e76d2c43b53311071441ee7, type: 2}
   <unitSO>k__BackingField: {fileID: 11400000, guid: 2b055f6c028f33a40ad532d7971a62ce, type: 2}
+  <IsSelected>k__BackingField: 0
   selectionDecal: {fileID: 2788263148094776442}
+  <buildingSO>k__BackingField: {fileID: 0}
+  <MainRenderer>k__BackingField: {fileID: 254357829607820714}
+  primaryMaterial: {fileID: 2100000, guid: b35c532178876e94f917ff0196f65258, type: 2}
+  navMeshObstacle: {fileID: 276156866879075234}
+  <BuildStatus>k__BackingField:
+    <StartTime>k__BackingField: 0
+    <Progress>k__BackingField: 0
+    <State>k__BackingField: 2
 --- !u!208 &276156866879075234
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -216,7 +225,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: e000aecf108266147a639a6e08659832, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: b35c532178876e94f917ff0196f65258, type: 2}
+      objectReference: {fileID: 2100000, guid: f402f3292a84a04418e6ea20db691e70, type: 2}
     - target: {fileID: -7511558181221131132, guid: e000aecf108266147a639a6e08659832, type: 3}
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
@@ -230,6 +239,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e000aecf108266147a639a6e08659832, type: 3}
+--- !u!23 &254357829607820714 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: e000aecf108266147a639a6e08659832, type: 3}
+  m_PrefabInstance: {fileID: 1460921894348755246}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1426662265331054277 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e000aecf108266147a639a6e08659832, type: 3}
