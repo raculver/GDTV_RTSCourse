@@ -7,7 +7,8 @@ namespace GameDevTV.RTS.Commands
 public class CancelBuildingCommand : BaseCommand
 {
     public override bool CanHandle(CommandContext cxt){
-        return cxt.Commandable is IBuildingBuilder;
+        return cxt.Commandable is IBuildingBuilder
+               && cxt.MouseButtonUsed == UnityEngine.InputSystem.LowLevel.MouseButton.Left;
     }
 
     public override void Handle(CommandContext cxt){

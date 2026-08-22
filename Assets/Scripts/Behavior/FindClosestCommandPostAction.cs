@@ -6,6 +6,7 @@ using Unity.Properties;
 using GameDevTV.RTS.Units;
 using System.Collections.Generic;
 using GameDevTV.RTS.Constants;
+using GameDevTV.RTS.Utilities;
 
 namespace GameDevTV.RTS.Behahavior
 {
@@ -27,7 +28,10 @@ public partial class FindClosestCommandPostAction : Action
      
         List<BaseBuilding> nearbyCommandPosts = new();
         foreach (Collider col in colliders){
-            if (col.TryGetComponent(out BaseBuilding building) && building.unitSO.Equals(CommandPostUnitSO.Value)){
+            if (col.TryGetComponent(out BaseBuilding building)
+                && building.unitSO.Equals(CommandPostUnitSO.Value)
+                && building.BuildStatus.State == BuildingProgress.BuildingState.Completed)
+            {
                 nearbyCommandPosts.Add(building);
             }
         }
@@ -41,17 +45,8 @@ public partial class FindClosestCommandPostAction : Action
             return Status.Failure;
         }
 
-        int iClosest = 0;
-        float closestDist = (nearbyCommandPosts[0].transform.position - unitPosition).magnitude;
-        for(int i=1; i<nearbyCommandPosts.Count; i++){
-            float thisDist = (nearbyCommandPosts[i].transform.position - unitPosition).magnitude;
-            if (thisDist < closestDist){
-                iClosest = i;
-                closestDist = thisDist;
-            }
-        }
-
-        CommandPost.Value = nearbyCommandPosts[iClosest].gameObject;
+        nearbyCommandPosts.Sort(new ClosestCommandPostComparer(Unit.Value.transform.position));
+        CommandPost.Value = nearbyCommandPosts[0].gameObject; 
         return Status.Success;
     }
 }
