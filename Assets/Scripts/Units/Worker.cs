@@ -6,11 +6,7 @@ using GameDevTV.RTS.EventBus;
 using GameDevTV.RTS.Events;
 using GameDevTV.RTS.Utilities;
 using Unity.Behavior;
-using Unity.GraphToolkit.Editor;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.AI;
-using UnityEngine.UIElements;
 
 namespace GameDevTV.RTS.Units{
 
@@ -31,9 +27,13 @@ public class Worker : AbstractUnit, IBuildingBuilder
 
     protected override void Start(){
         base.Start();
-        if (graphAgent.GetVariable(BTVariables.BT_UNIT_GATHSUP_EVT_CH, out BlackboardVariable<GatherSuppliesEventChannel> evtChannelVariable))
+        if (graphAgent.GetVariable(BTVariables.BT_UNIT_GATHSUP_EVT_CH, out BlackboardVariable<GatherSuppliesEventChannel> gathSupEvtChannelVariable))
         {
-            evtChannelVariable.Value.Event += HandleGatherSupplies;
+            gathSupEvtChannelVariable.Value.Event += HandleGatherSupplies;
+        }
+        if (graphAgent.GetVariable(BTVariables.BT_UNIT_BUILDING_EVT_CH, out BlackboardVariable<BuildingEventChannel> buildingEvtChannelVariable))
+        {
+            buildingEvtChannelVariable.Value.Event += HandleBuildingEvent;
         }
     }
 
@@ -43,10 +43,6 @@ public class Worker : AbstractUnit, IBuildingBuilder
         graphAgent.SetVariableValue<GatherableSupply>(BTVariables.BT_UNIT_TGT_GATHSUP, supply);
         graphAgent.SetVariableValue<Enum>(BTVariables.BT_UNIT_COMMAND, UnitCommands.Gather);
     }   
-
-    private void HandleGatherSupplies(GameObject agent, int amount, SupplySO gathSupSO){
-        Bus<SupplyEvent>.Raise( new(amount, gathSupSO));
-    }
 
     public void ReturnSupplies(GameObject targetCommandPost){
         graphAgent.SetVariableValue<GameObject>(BTVariables.BT_UNIT_TGT_CMD_POST, targetCommandPost);
@@ -68,7 +64,7 @@ public class Worker : AbstractUnit, IBuildingBuilder
         graphAgent.SetVariableValue<UnitCommands>(BTVariables.BT_UNIT_COMMAND, UnitCommands.BuildBuilding);
 
         SetCommandsOverride(new BaseCommand[] {cancelBuildingCmd});
-        Bus<ActionsUIUpdateEvent>.Raise(new ActionsUIUpdateEvent(this));
+//        Bus<ActionsUIUpdateEvent>.Raise(new ActionsUIUpdateEvent(this)); // not needed?
         
         PaySupplies(building.Cost);
 
@@ -83,8 +79,8 @@ public class Worker : AbstractUnit, IBuildingBuilder
         graphAgent.SetVariableValue<GameObject>(BTVariables.BT_UNIT_BUILDING_GHOST, null);
         graphAgent.SetVariableValue<UnitCommands>(BTVariables.BT_UNIT_COMMAND, UnitCommands.BuildBuilding);
         
-        SetCommandsOverride(new BaseCommand[] {cancelBuildingCmd});
-        Bus<ActionsUIUpdateEvent>.Raise(new ActionsUIUpdateEvent(this));
+//        SetCommandsOverride(new BaseCommand[] {cancelBuildingCmd});
+//        Bus<ActionsUIUpdateEvent>.Raise(new ActionsUIUpdateEvent(this));
     }
 
     public void CancelBuilding(){
@@ -109,6 +105,37 @@ public class Worker : AbstractUnit, IBuildingBuilder
         Bus<ActionsUIUpdateEvent>.Raise(new ActionsUIUpdateEvent(this));
         Stop();
     }
+
+    private void HandleGatherSupplies(GameObject agent, int amount, SupplySO gathSupSO){
+        Bus<SupplyEvent>.Raise( new(amount, gathSupSO));
+    }
+
+    private void HandleBuildingEvent(GameObject agent, BuildingEventType eventType, BaseBuilding building){
+        switch (eventType)
+        {
+            case BuildingEventType.ArrivedAt:
+                // Only when we've arrived at the building can we add the cancel buliding command
+                if (building != null && building.BuildStatus.State == BuildingProgress.BuildingState.Bulding){
+                    Stop();
+                }
+                SetCommandsOverride(new BaseCommand[] {cancelBuildingCmd});
+                break;
+            case BuildingEventType.Begin:
+                SetCommandsOverride(new BaseCommand[] {cancelBuildingCmd}); // basically not needed probably
+                break;
+            case BuildingEventType.Cancel:
+                break;
+            case BuildingEventType.Abort:
+                SetCommandsOverride(null);
+                break;
+            case BuildingEventType.Complete:
+                break;
+            default:
+                break;
+
+        }
+    }
+    
     }
 
 };

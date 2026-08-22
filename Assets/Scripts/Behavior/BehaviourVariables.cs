@@ -9,9 +9,12 @@ public static class BTVariables
     public const string BT_UNIT_TGT_CMD_POST = "TargetCommandPost";
     public const string BT_UNIT_TGT_GATHSUP = "TargetGathSup";
     public const string BT_UNIT_GATHSUP_AMOUNT = "SupplyAmountHeld";
-    public const string BT_UNIT_GATHSUP_EVT_CH = "GathSupEvtChannel";
     public const string BT_UNIT_BUILDING_TYPE = "BuildBuildingSO";
     public const string BT_UNIT_BUILDING_GHOST = "GhostBuilding";
     public const string BT_UNIT_BUILDING_CONSTR = "BuildingUnderContsr";
+    
+    public const string BT_UNIT_GATHSUP_EVT_CH = "GathSupEvtChannel";
+    public const string BT_UNIT_BUILDING_EVT_CH = "BuildingEvtChannel";
+
 }
 }

@@ -4,5 +4,6 @@ namespace GameDevTV.RTS.Units
     {
         void Select();
         void Deselect();
+        bool IsSelected {get;}
     }
 }

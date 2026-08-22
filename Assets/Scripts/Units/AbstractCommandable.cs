@@ -13,6 +13,7 @@ namespace GameDevTV.RTS.Units
         [field: SerializeField] public int MaximumHealth{get; protected set;}
         [field: SerializeField] public BaseCommand [] AvailableCommands{get; private set;}
         [field: SerializeField] public AbstractUnitSO unitSO{get; private set;}
+        [field: SerializeField] public bool IsSelected{get; protected set;}
         [SerializeField] private DecalProjector selectionDecal;
 
         private BaseCommand[] initialCommands;
@@ -31,7 +32,7 @@ namespace GameDevTV.RTS.Units
             if (selectionDecal != null){
                 selectionDecal.gameObject.SetActive(true);
             }
-            
+            IsSelected = true;
             Bus<UnitSelectedEvent>.Raise(new UnitSelectedEvent(this));
             DebugLogging.Instance.Message($"{this.name} Selected.", DebugLogging.Instance.REPORT_SELECTION);
         }
@@ -52,6 +53,7 @@ namespace GameDevTV.RTS.Units
             {
                 DebugLogging.Instance.Message($"{this.name} Deselected.", DebugLogging.Instance.REPORT_SELECTION);
             }
+            IsSelected = false;
         }
 
         public void SetCommandsOverride(BaseCommand[] commands){
@@ -59,12 +61,15 @@ namespace GameDevTV.RTS.Units
             if (noCommands){
                 commandsOverridden = false;
                 AvailableCommands = initialCommands;
-                Bus<ActionsUIUpdateEvent>.Raise(new ActionsUIUpdateEvent(this)); // Mr Kurhan did UnitSelectedEvent. Weird doubley selected unit were causing errors after worker spawn
             }
             else{
                 commandsOverridden = true;
                 AvailableCommands = commands;
-                Bus<ActionsUIUpdateEvent>.Raise(new ActionsUIUpdateEvent(this)); // Mr Kurhan did UnitSelectedEvent. Weird doubley selected units were causing errors after worker spawn
+            }
+
+            if (IsSelected)
+            {
+                Bus<ActionsUIUpdateEvent>.Raise(new ActionsUIUpdateEvent(this)); // Mr Kurhan did UnitSelectedEvent. Weird doubley selected unit were causing errors after worker spawn
             }
         }
 

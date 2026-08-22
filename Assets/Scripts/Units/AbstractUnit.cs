@@ -34,11 +34,13 @@ namespace GameDevTV.RTS.Units
         }
 
         public void MoveTo(Vector3 position) {
+            SetCommandsOverride(null);
             graphAgent.SetVariableValue<Vector3>(BTVariables.BT_UNIT_TGT_POSITION, position);
             graphAgent.SetVariableValue<Enum>(BTVariables.BT_UNIT_COMMAND, UnitCommands.Move);
     }
 
         public void Stop(){
+            SetCommandsOverride(null);
             graphAgent.SetVariableValue<Enum>(BTVariables.BT_UNIT_COMMAND, UnitCommands.Stop);
         }
 
