@@ -431,7 +431,7 @@ MonoBehaviour:
   - rid: 2073193453771293653
   - rid: 2073193453771293654
   - rid: 2073193453771293655
-  m_VersionTimestamp: 639229949176436060
+  m_VersionTimestamp: 639230006275928679
   m_SerializedVersion: 3
   m_DebugInfo: {fileID: -502783059348202161}
   m_RuntimeGraph: {fileID: 7667912501035009127}
@@ -3963,7 +3963,7 @@ MonoBehaviour:
     - rid: 2073193453740360429
       type: {class: EventNodeModel, ns: Unity.Behavior, asm: Unity.Behavior.Authoring}
       data:
-        Position: {x: 369.4651, y: 1010.78595}
+        Position: {x: 738.9478, y: 924.94586}
         ID:
           m_Value0: 323954561210653130
           m_Value1: 9064578264284975426
@@ -4349,7 +4349,7 @@ MonoBehaviour:
     - rid: 2073193453771293653
       type: {class: FloatingPortNodeModel, ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
       data:
-        Position: {x: 369.4651, y: 922.78595}
+        Position: {x: 738.9478, y: 836.94586}
         ID:
           m_Value0: 5878606008043497952
           m_Value1: 9745108791423530074
@@ -8765,7 +8765,7 @@ MonoBehaviour:
         BlackboardGroupReferences: []
         Root:
           rid: 2073193453825295063
-        m_VersionTimestamp: 639229949176436060
+        m_VersionTimestamp: 639230006275928679
     - rid: 6075706059198824528
       type: {class: BlackboardReference, ns: Unity.Behavior, asm: Unity.Behavior}
       data:
