@@ -45,6 +45,10 @@ public class Worker : AbstractUnit, IBuildingBuilder
         if (IsBuildingNow){
             SetCommandsOverride(new BaseCommand[] {cancelBuildingCmd});
         }
+        else
+        {
+            SetCommandsOverride(null);
+        }
         Bus<UnitDeselectedEvent>.Raise(new UnitDeselectedEvent(this));
         
         // unit might be destroyed while selected
